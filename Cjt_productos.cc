@@ -20,7 +20,7 @@ Cjt_productos::Cjt_productos(){}
     }
 
     int Cjt_productos::num_total(){
-        cout << prod_peso_volumen.size() << endl;
+        return prod_peso_volumen.size();
     }
 
     void Cjt_productos::nuevos_productos(int num_prod_nuevos){

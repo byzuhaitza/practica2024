@@ -20,9 +20,6 @@
 #endif
 using namespace std;
 
-/*
-poner, quitar y modificar, usan cjt_prod desde cjt_rios y puedo hacerlo directamente desde ciudad
-*/
 
 /**
     @brief Controla todas las operaciones que se pueden realizar en la cuenca fluvial.
@@ -63,13 +60,13 @@ int main() {
             int ident_prod_vend;
             int cant_prod_comp, cant_prod_vend;
             cin >> ident_prod_comp >> cant_prod_comp >> ident_prod_vend >> cant_prod_vend;
-            cout << "#" << op << " " << ident_prod_comp << " " << ident_prod_vend << " " << cant_prod_comp << " " << cant_prod_vend << endl;
+            cout << "#" << op << endl;
             if (not p.existe_prod(ident_prod_comp) or not p.existe_prod(ident_prod_vend)) {
                 cout << "error: no existe el producto" << endl;
             }
             else {
                 if(ident_prod_comp == ident_prod_vend) {
-                    cout << "error: los productos son iguales" << endl;
+                    cout << "error: no se puede comprar y vender el mismo producto" << endl;
                 }
                 else {
                     b.modificar_barco(ident_prod_comp, ident_prod_vend, cant_prod_comp, cant_prod_vend);
@@ -117,7 +114,7 @@ int main() {
             int ident_prod;
             int uni_tiene, uni_quiere;
             cin >> ident_ciudad >> ident_prod >> uni_tiene >> uni_quiere;
-            cout << "#" << op << " " << ident_ciudad << " " << ident_prod << " " << uni_tiene << " " << uni_quiere << endl;
+            cout << "#" << op << " " << ident_ciudad << " " << ident_prod << endl;
             if (not p.existe_prod(ident_prod)) {
                 cout << "error: no existe el producto" << endl;
             }
@@ -127,7 +124,7 @@ int main() {
                 }
                 else{
                     if (r.existe_prod_ciudad(ident_ciudad, ident_prod)){
-                    cout << "error: el producto ya esta en el inventario de la ciudad" << endl;
+                    cout << "error: la ciudad ya tiene el producto" << endl;
                     }
                     else {
                         r.poner_prod(ident_ciudad, ident_prod, uni_tiene, uni_quiere, p);
@@ -140,7 +137,7 @@ int main() {
             int ident_prod;
             int uni_tiene, uni_quiere;
             cin >> ident_ciudad >> ident_prod >> uni_tiene >> uni_quiere;
-            cout << "#" << op << " " << ident_ciudad << " " << ident_prod << " " << uni_tiene << " " << uni_quiere << endl;
+            cout << "#" << op << " " << ident_ciudad << " " << ident_prod << endl;
             if (not p.existe_prod(ident_prod)) {
                 cout << "error: no existe el producto" << endl;
             }
@@ -150,7 +147,7 @@ int main() {
                 }
                 else{
                     if (not r.existe_prod_ciudad(ident_ciudad, ident_prod)){
-                    cout << "error: el producto no esta en el inventario de la ciudad" << endl;
+                    cout << "error: la ciudad no tiene el producto" << endl;
                     }
                     else {
                         r.modificar_prod(ident_ciudad, ident_prod, uni_tiene, uni_quiere, p);
@@ -172,7 +169,7 @@ int main() {
                 }
                 else{
                     if (not r.existe_prod_ciudad(ident_ciudad, ident_prod)){
-                    cout << "error: el producto no esta en el inventario de la ciudad" << endl;
+                    cout << "error: la ciudad no tiene el producto" << endl;
                     }
                     else {
                         r.quitar_prod(ident_ciudad, ident_prod, p);
@@ -194,7 +191,7 @@ int main() {
                 }
                 else{
                     if (not r.existe_prod_ciudad(ident_ciudad, ident_prod)){
-                    cout << "error: el producto no esta en el inventario de la ciudad" << endl;
+                    cout << "error: la ciudad no tiene el producto" << endl;
                     }
                     else {
                         r.consultar(ident_ciudad, ident_prod);
@@ -207,8 +204,8 @@ int main() {
             string ident_ciudad_1, ident_ciudad_2;
             cin >> ident_ciudad_1 >> ident_ciudad_2;
             cout << "#" << op << " " << ident_ciudad_1 << " " << ident_ciudad_2 << endl;
-            if (r.comerciar(ident_ciudad_1, ident_ciudad_2) == 23) cout << "No existe la ciudad" << endl;
-            else cout << "linea 212" << endl;
+            if (r.comerciar(ident_ciudad_1, ident_ciudad_2) == 23) cout << "error: no existe la ciudad" << endl;
+            else if (r.comerciar(ident_ciudad_1, ident_ciudad_2) == 22) cout << "error: ciudad repetida" << endl;
         }
         else if (op == "redistribuir" or op == "re") {
             cout << "#" << op << endl;

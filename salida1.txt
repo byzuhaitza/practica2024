@@ -4,8 +4,10 @@
 3 4 6
 #consultar_num
 5
+1769599104
 #cn
 5
+1769599104
 #ep 6
 error: no existe el producto
 #escribir_producto 0
@@ -57,6 +59,7 @@ error: no existe la ciudad
 #ap 2
 #consultar_num
 7
+1769599104
 #ep 6
 6 3 4
 #ep 7
@@ -70,6 +73,7 @@ error: no existe la ciudad
 7 1 5
 #cn
 8
+1769599104
 #leer_inventarios
 #leer_inventarios
 #ec Girona

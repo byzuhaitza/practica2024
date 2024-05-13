@@ -46,8 +46,8 @@
         for(int i = 1; i <= num; ++i) {
             int ident_prod, uni_tiene, uni_quiere;
             cin >> ident_prod >> uni_tiene >> uni_quiere;
-            itc->second.poner_prod(ident_prod, uni_tiene, uni_quiere, Cjt_productos);
-            
+            bool leer = true;
+            itc->second.poner_prod(ident_prod, uni_tiene, uni_quiere, Cjt_productos, leer);
         }
     }
 
@@ -80,7 +80,8 @@
     }
 
     void Cjt_rios::poner_prod(const string& ident_ciudad, const int& ident_prod, const int& uni_tiene, const int& uni_quiere, Cjt_productos& Cjt_productos) {
-        (ciudades.find(ident_ciudad))->second.poner_prod(ident_prod, uni_tiene, uni_quiere, Cjt_productos);
+        bool leer = false;
+        (ciudades.find(ident_ciudad))->second.poner_prod(ident_prod, uni_tiene, uni_quiere, Cjt_productos, leer);
     }
 
     void Cjt_rios::quitar_prod(const string& ident_ciudad, const int& ident_prod, Cjt_productos& Cjt_productos){
@@ -88,11 +89,13 @@
     }
 
     int Cjt_rios::comerciar(const string& ident_ciudad_1, const string& ident_ciudad_2){
+        if(ident_ciudad_1 == ident_ciudad_2) return 22;
         map<string, Ciudad>::iterator it1 = ciudades.find(ident_ciudad_1);
         if (it1 == ciudades.end()) return 23;
         map<string, Ciudad>::iterator it2 = ciudades.find(ident_ciudad_2);
         if (it2 == ciudades.end()) return 23;
         it1->second.comerciar_prod(it2->second);
+        return 0;
     }
 
     void Cjt_rios::redistribuir(){
@@ -100,5 +103,5 @@
     }
     
     void Cjt_rios::hacer_viaje(Barco& b){
-
+        Barco c = b;
     }

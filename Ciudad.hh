@@ -88,7 +88,7 @@ class Ciudad{
     \pre: Cierto.
     \post: -La funcion nos devuelve el peso y volumen total de la ciudad una vez cambiada, debido al posible cambio de las unidades que tiene la ciudad.
 */
-    void poner_prod(const int& ident_prod,const int& uni_tiene, const int& uni_quiere, Cjt_productos& p);
+    void poner_prod(const int& ident_prod,const int& uni_tiene, const int& uni_quiere, Cjt_productos& p, bool& leer);
 /**  
     @brief Eliminamos todos los datos que tenemos del producto que acabamos de leer.
     @param ident_prod, peso, volumen

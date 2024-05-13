@@ -44,7 +44,7 @@
         Cjt_productos p;
         map<int, pair <int, int>>::iterator it1 = productos.begin();
         map<int, pair <int, int>>::iterator it2 = otra_ciudad.productos.begin();
-        while(it1 != productos.end() or it2 != otra_ciudad.productos.end()) {
+        while(it1 != productos.end() and it2 != otra_ciudad.productos.end()) {
             if (it1->first < it2->first) {
                 ++it1;
             }
@@ -86,10 +86,11 @@
         it->second.first = uni_tiene;
         it->second.second = uni_quiere;
     }
-    void Ciudad::poner_prod(const int& ident_prod, const int& uni_tiene, const int& uni_quiere, Cjt_productos& p){
+    void Ciudad::poner_prod(const int& ident_prod, const int& uni_tiene, const int& uni_quiere, Cjt_productos& p, bool& leer){
         productos.insert(make_pair(ident_prod, make_pair(uni_tiene, uni_quiere)));
         peso_total += uni_tiene*p.peso(ident_prod);
         volumen_total += uni_tiene*p.volumen(ident_prod);
+        if(not leer) cout << peso_total << ' ' << volumen_total << endl;
     }
     void Ciudad::comerciar_ajustes(const int& ident_prod, int& intercambio, bool& poner, Cjt_productos& p) {
         map<int, pair <int, int>>::iterator it = productos.find(ident_prod);
