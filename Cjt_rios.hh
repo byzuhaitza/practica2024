@@ -136,7 +136,7 @@ class Cjt_rios{
     \pre: Cierto.
     \post: 
 */
-    void comerciar(const string& ident_ciudad_1, const string& ident_ciudad_2);
+    int comerciar(const string& ident_ciudad_1, const string& ident_ciudad_2);
 /**  
     @brief 
     \pre: Cierto.

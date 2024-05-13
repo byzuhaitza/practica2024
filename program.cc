@@ -204,14 +204,11 @@ int main() {
             }
         }
         else if (op == "comerciar" or op == "co") {
-            string ident_ciudad_1;
-            string ident_ciudad_2;
+            string ident_ciudad_1, ident_ciudad_2;
             cin >> ident_ciudad_1 >> ident_ciudad_2;
             cout << "#" << op << " " << ident_ciudad_1 << " " << ident_ciudad_2 << endl;
-            if (not r.existe_ciudad(ident_ciudad_1) or not r.existe_ciudad(ident_ciudad_2)) {
-                cout << "error: no existe la ciudad" << endl;
-            }
-            else r.comerciar(ident_ciudad_1, ident_ciudad_2);
+            if (r.comerciar(ident_ciudad_1, ident_ciudad_2) == 23) cout << "No existe la ciudad" << endl;
+            else cout << "linea 212" << endl;
         }
         else if (op == "redistribuir" or op == "re") {
             cout << "#" << op << endl;

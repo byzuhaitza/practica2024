@@ -41,7 +41,8 @@
 
     //MODIFICADORAS
     void Ciudad::comerciar_prod(Ciudad& otra_ciudad){
-    
+        map<int, pair <int, int>>::iterator it = productos.begin();
+        map<int, pair <int, int>>::iterator it2 = otra_ciudad.productos.begin();
     }
     
     void Ciudad::modificar_prod(const int& ident_prod, int& uni_tiene, int& uni_quiere, int &peso, int& volumen){

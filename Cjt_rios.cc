@@ -95,9 +95,11 @@
         (ciudades.find(ident_ciudad))->second.quitar_prod(ident_prod, peso, volumen);
     }
 
-    void Cjt_rios::comerciar(const string& ident_ciudad_1, const string& ident_ciudad_2){
+    int Cjt_rios::comerciar(const string& ident_ciudad_1, const string& ident_ciudad_2){
         map<string, Ciudad>::iterator it1 = ciudades.find(ident_ciudad_1);
+        if (it1 == ciudades.end()) return 23;
         map<string, Ciudad>::iterator it2 = ciudades.find(ident_ciudad_2);
+        if (it2 == ciudades.end()) return 23;
         it1->second.comerciar_prod(it2->second);
     }
 
