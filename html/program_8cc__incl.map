@@ -1,0 +1,7 @@
+<map id="program.cc" name="program.cc">
+<area shape="rect" id="node1" title="Programa princicpal para la practica Comercio fluvial." alt="" coords="165,5,260,32"/>
+<area shape="rect" id="node2" href="$_cjt__rios_8hh.html" title="Especificación de la clase Cjt_rios." alt="" coords="85,80,175,107"/>
+<area shape="rect" id="node4" href="$_cjt__productos_8hh.html" title="Especificación de la clase Cjt_productos." alt="" coords="65,229,195,256"/>
+<area shape="rect" id="node5" href="$_barco_8hh.html" title="Especificación de la clase Barco." alt="" coords="168,155,247,181"/>
+<area shape="rect" id="node3" href="$_ciudad_8hh.html" title="Especificación de la clase Ciudad." alt="" coords="5,155,92,181"/>
+</map>
