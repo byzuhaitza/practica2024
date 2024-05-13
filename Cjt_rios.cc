@@ -46,9 +46,7 @@
         for(int i = 1; i <= num; ++i) {
             int ident_prod, uni_tiene, uni_quiere;
             cin >> ident_prod >> uni_tiene >> uni_quiere;
-            int peso = Cjt_productos.peso(ident_prod);
-            int volumen = Cjt_productos.volumen(ident_prod);;
-            itc->second.poner_prod(ident_prod, uni_tiene, uni_quiere, peso, volumen);
+            itc->second.poner_prod(ident_prod, uni_tiene, uni_quiere, Cjt_productos);
             
         }
     }
@@ -78,21 +76,15 @@
     //MODIFICADORAS
 
     void Cjt_rios::modificar_prod(const string& ident_ciudad, const int& ident_prod, int& uni_tiene, int& uni_quiere, Cjt_productos& Cjt_productos){
-        int peso = Cjt_productos.peso(ident_prod);
-        int volumen = Cjt_productos.volumen(ident_prod);
-        (ciudades.find(ident_ciudad))->second.modificar_prod(ident_prod, uni_tiene, uni_quiere, peso, volumen);
+        (ciudades.find(ident_ciudad))->second.modificar_prod(ident_prod, uni_tiene, uni_quiere, Cjt_productos);
     }
 
     void Cjt_rios::poner_prod(const string& ident_ciudad, const int& ident_prod, const int& uni_tiene, const int& uni_quiere, Cjt_productos& Cjt_productos) {
-        int peso = Cjt_productos.peso(ident_prod);
-        int volumen = Cjt_productos.volumen(ident_prod);
-        (ciudades.find(ident_ciudad))->second.poner_prod(ident_prod, uni_tiene, uni_quiere, peso, volumen);
+        (ciudades.find(ident_ciudad))->second.poner_prod(ident_prod, uni_tiene, uni_quiere, Cjt_productos);
     }
 
     void Cjt_rios::quitar_prod(const string& ident_ciudad, const int& ident_prod, Cjt_productos& Cjt_productos){
-        int peso = Cjt_productos.peso(ident_prod);
-        int volumen = Cjt_productos.volumen(ident_prod);
-        (ciudades.find(ident_ciudad))->second.quitar_prod(ident_prod, peso, volumen);
+        (ciudades.find(ident_ciudad))->second.quitar_prod(ident_prod, Cjt_productos);
     }
 
     int Cjt_rios::comerciar(const string& ident_ciudad_1, const string& ident_ciudad_2){

@@ -81,21 +81,22 @@ class Ciudad{
     \pre: Cierto.
     \post: -La funcion nos devuelve el peso y volumen total de la ciudad una vez cambiada, debido al posible cambio de las unidades que tiene la ciudad.
 */
-    void modificar_prod(const int& ident_prod, int& uni_tiene, int& uni_quiere, int &peso, int& volumen);
+    void modificar_prod(const int& ident_prod, int& uni_tiene, int& uni_quiere, Cjt_productos& p);
 /**  
     @brief Añadimos el producto que leemos, junto con las unidades que tendra esta ciudad y las que necesita.
     @param ident_prod, uni_tiene, uni_quiere, peso, volumen
     \pre: Cierto.
     \post: -La funcion nos devuelve el peso y volumen total de la ciudad una vez cambiada, debido al posible cambio de las unidades que tiene la ciudad.
 */
-    void poner_prod(const int& ident_prod,const int& uni_tiene, const int& uni_quiere, int &peso, int& volumen);
+    void poner_prod(const int& ident_prod,const int& uni_tiene, const int& uni_quiere, Cjt_productos& p);
 /**  
     @brief Eliminamos todos los datos que tenemos del producto que acabamos de leer.
     @param ident_prod, peso, volumen
     \pre: Cierto.
     \post: -La funcion nos devuelve el peso y volumen total de la ciudad una vez cambiada, debido al posible cambio de las unidades que tiene la ciudad.
 */
-    void quitar_prod(const int& ident_prod, int &peso, int& volumen);
+    void quitar_prod(const int& ident_prod, Cjt_productos p);
+    void comerciar_ajustes(const int& ident_prod, int& intercambio, bool& poner, Cjt_productos& p);
     void eliminar_inventario();
 };
 #endif
