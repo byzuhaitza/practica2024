@@ -38,17 +38,21 @@
         else return false;
     }
 
-    void Cjt_rios::leer_inventario(const string& ident_ciudad, Cjt_productos& Cjt_productos){
-        map<string, Ciudad>::iterator itc = ciudades.find(ident_ciudad);
-        itc->second.eliminar_inventario();
-        int num;
-        cin >> num;
-        for(int i = 1; i <= num; ++i) {
-            int ident_prod, uni_tiene, uni_quiere;
-            cin >> ident_prod >> uni_tiene >> uni_quiere;
-            bool leer = true;
-            itc->second.poner_prod(ident_prod, uni_tiene, uni_quiere, Cjt_productos, leer);
-        }
+    int Cjt_rios::leer_inventario(const string& ident_ciudad, Cjt_productos& Cjt_productos){
+        if (not existe_ciudad(ident_ciudad)) return 23;
+            else{
+                map<string, Ciudad>::iterator itc = ciudades.find(ident_ciudad);
+                itc->second.eliminar_inventario();
+                int num;
+                cin >> num;
+                for(int i = 1; i <= num; ++i) {
+                    int ident_prod, uni_tiene, uni_quiere;
+                    cin >> ident_prod >> uni_tiene >> uni_quiere;
+                    bool leer = true;
+                    itc->second.poner_prod(ident_prod, uni_tiene, uni_quiere, Cjt_productos, leer);
+                }
+                return 0;
+            }
     }
 
     void Cjt_rios::leer_inventarios(Cjt_productos& Cjt_productos){
@@ -58,16 +62,30 @@
         }
     }
 
-    void Cjt_rios::escribir_ciudad(const string& ident_ciudad) {
-        (ciudades.find(ident_ciudad))->second.escribir_ciudad();
+    int Cjt_rios::escribir_ciudad(const string& ident_ciudad) {
+        if(not existe_ciudad(ident_ciudad)) return 23;
+        else {
+            (ciudades.find(ident_ciudad))->second.escribir_ciudad();
+            return 0;
+        } 
     }
 
     bool Cjt_rios::existe_prod_ciudad(const string& ident_ciudad, const int& ident_prod) const{
         return (ciudades.find(ident_ciudad))->second.existe_prod(ident_prod);
     }
 
-    void Cjt_rios::consultar(const string& ident_ciudad, const int& ident_prod) const{
-        return (ciudades.find(ident_ciudad))->second.consultar_prod(ident_prod);
+    int Cjt_rios::consultar(const string& ident_ciudad, const int& ident_prod, Cjt_productos& Cjt_productos) const{
+        if (not Cjt_productos.existe_prod(ident_prod)) return 21;
+        else {
+            if (not existe_ciudad(ident_ciudad)) return 23;
+            else{
+                if (not existe_prod_ciudad(ident_ciudad, ident_prod)) return 20; 
+                else {
+                    (ciudades.find(ident_ciudad))->second.consultar_prod(ident_prod);
+                    return 0;
+                }   
+            }
+        }
     }
     bool Cjt_rios::inv_ciu_vacio(const string& ident_ciudad)const {
         return (ciudades.find(ident_ciudad))->second.inv_ciu_vacio();
@@ -75,17 +93,47 @@
 
     //MODIFICADORAS
 
-    void Cjt_rios::modificar_prod(const string& ident_ciudad, const int& ident_prod, int& uni_tiene, int& uni_quiere, Cjt_productos& Cjt_productos){
-        (ciudades.find(ident_ciudad))->second.modificar_prod(ident_prod, uni_tiene, uni_quiere, Cjt_productos);
+    int Cjt_rios::modificar_prod(const string& ident_ciudad, const int& ident_prod, int& uni_tiene, int& uni_quiere, Cjt_productos& Cjt_productos){
+        if (not Cjt_productos.existe_prod(ident_prod)) return 21;
+        else {
+            if (not existe_ciudad(ident_ciudad)) return 23;
+            else{
+                if (not existe_prod_ciudad(ident_ciudad, ident_prod)) return 20; 
+                else {
+                    (ciudades.find(ident_ciudad))->second.modificar_prod(ident_prod, uni_tiene, uni_quiere, Cjt_productos);
+                    return 0;
+                }
+            }
+        }
     }
 
-    void Cjt_rios::poner_prod(const string& ident_ciudad, const int& ident_prod, const int& uni_tiene, const int& uni_quiere, Cjt_productos& Cjt_productos) {
-        bool leer = false;
-        (ciudades.find(ident_ciudad))->second.poner_prod(ident_prod, uni_tiene, uni_quiere, Cjt_productos, leer);
+    int Cjt_rios::poner_prod(const string& ident_ciudad, const int& ident_prod, const int& uni_tiene, const int& uni_quiere, Cjt_productos& Cjt_productos) {
+        if (not Cjt_productos.existe_prod(ident_prod)) return 21;
+        else {
+             if (not existe_ciudad(ident_ciudad)) return 23;
+                else{
+                    if (existe_prod_ciudad(ident_ciudad, ident_prod)) return 18;
+                    else {
+                        bool leer = false;
+                        (ciudades.find(ident_ciudad))->second.poner_prod(ident_prod, uni_tiene, uni_quiere, Cjt_productos, leer);
+                        return 0;
+                    }
+            }
+        }
     }
 
-    void Cjt_rios::quitar_prod(const string& ident_ciudad, const int& ident_prod, Cjt_productos& Cjt_productos){
-        (ciudades.find(ident_ciudad))->second.quitar_prod(ident_prod, Cjt_productos);
+    int Cjt_rios::quitar_prod(const string& ident_ciudad, const int& ident_prod, Cjt_productos& Cjt_productos){
+        if (not Cjt_productos.existe_prod(ident_prod)) return 21;
+        else {
+            if (not existe_ciudad(ident_ciudad)) return 23;
+            else{
+                if (not existe_prod_ciudad(ident_ciudad, ident_prod)) return 20; 
+                else {
+                    (ciudades.find(ident_ciudad))->second.quitar_prod(ident_prod, Cjt_productos);
+                    return 0;
+                }
+            }
+        }
     }
 
     int Cjt_rios::comerciar(const string& ident_ciudad_1, const string& ident_ciudad_2){

@@ -11,6 +11,7 @@
 #include <map>
 #include <list>
 #endif
+#include "Cjt_productos.hh"
 
 using namespace std;
 
@@ -58,7 +59,7 @@ class Barco{
     \pre: Cierto.
     \post: 
 */
-    void modificar_barco(const int& ident_prod_comp, const int& ident_prod_vend, const int& cant_prod_comp, const int& cant_prod_vend);
+    int modificar_barco(const int& ident_prod_comp, const int& ident_prod_vend, const int& cant_prod_comp, const int& cant_prod_vend, Cjt_productos& p);
 /**  
     @brief 
     @param

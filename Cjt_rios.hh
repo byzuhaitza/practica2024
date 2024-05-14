@@ -76,7 +76,7 @@ class Cjt_rios{
     \pre: Cierto.
     \post: -La funcion nos escribe todos los productos que hay en la dicha ciudad, junto con la cantidad que tienen y necesitan de dicho producto.
 */
-    void leer_inventario(const string& ident_ciudad, Cjt_productos& Cjt_productos);
+    int leer_inventario(const string& ident_ciudad, Cjt_productos& Cjt_productos);
 /**  
     @brief Imprime los inventarios de las ciudades del rio.
     \pre: Cierto.
@@ -89,7 +89,7 @@ class Cjt_rios{
     \pre: Cierto.
     \post: -La funcion nos devuelve todos los productos de la ciudad. Tambien el peso y el volumen total.
 */
-    void escribir_ciudad(const string& ident_ciudad);
+    int escribir_ciudad(const string& ident_ciudad);
 /**  
     @brief Indica si el producto que acabamos de leer esta en la ciudad indicada.
     @param ident_ciudad, ident_prod
@@ -103,7 +103,7 @@ class Cjt_rios{
     \pre: Cierto.
     \post: -La funcion devuelve cuantas unidades tiene y necesita la ciudad.
 */
-    void consultar(const string& ident_ciudad, const int& ident_prod) const;
+    int consultar(const string& ident_ciudad, const int& ident_prod, Cjt_productos& Cjt_productos) const;
     bool inv_ciu_vacio(const string& ident_ciudad) const;
 
     //MODIFICADORA
@@ -115,21 +115,21 @@ class Cjt_rios{
     \pre: Cierto.
     \post: -La funcion nos devuelve el peso y volumen total de la ciudad una vez cambiada, debido al posible cambio de las unidades que tiene la ciudad.
 */
-    void modificar_prod(const string& ident_ciudad, const int& ident_prod, int& uni_tiene, int& uni_quiere, Cjt_productos& Cjt_productos);
+    int modificar_prod(const string& ident_ciudad, const int& ident_prod, int& uni_tiene, int& uni_quiere, Cjt_productos& Cjt_productos);
 /**  
     @brief Vamos a la ciudad establecida y añadimos el producto que leemos, junto con las unidades que tendra esta ciudad y las que necesita.
     @param ident_ciudad, ident_prod, uni_tiene, uni_quiere
     \pre: Cierto.
     \post: -La funcion nos devuelve el peso y volumen total de la ciudad una vez cambiada, debido al posible cambio de las unidades que tiene la ciudad.
 */
-    void poner_prod(const string& ident_ciudad, const int& ident_prod, const int& uni_tiene, const int& uni_quiere, Cjt_productos& Cjt_productos) ;
+    int poner_prod(const string& ident_ciudad, const int& ident_prod, const int& uni_tiene, const int& uni_quiere, Cjt_productos& Cjt_productos) ;
 /**  
     @brief Vamos a la ciudad establecida y eliminamos todos los datos que tenemos del producto que acabamos de leer.
     @param ident_ciudad, ident_prod
     \pre: Cierto.
     \post: -La funcion nos devuelve el peso y volumen total de la ciudad una vez cambiada, debido al posible cambio de las unidades que tiene la ciudad.
 */
-    void quitar_prod(const string& ident_ciudad, const int& ident_prod, Cjt_productos& Cjt_productos) ;
+    int quitar_prod(const string& ident_ciudad, const int& ident_prod, Cjt_productos& Cjt_productos) ;
 /**  
     @brief 
     @param ident_ciudad_1, ident_ciudad_2

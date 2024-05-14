@@ -25,9 +25,16 @@
     }
 
     //MODIFICADORAS
-    void Barco::modificar_barco(const int& ident_prod_comp, const int& ident_prod_vend, const int& cant_prod_comp, const int& cant_prod_vend){
-        id_prod_comp = ident_prod_comp;
-        total_uni_comp = cant_prod_comp;
-        id_prod_vend = ident_prod_vend;
-        total_uni_vend = cant_prod_vend;
+    int Barco::modificar_barco(const int& ident_prod_comp, const int& ident_prod_vend, const int& cant_prod_comp, const int& cant_prod_vend, Cjt_productos& p){
+        if (not p.existe_prod(ident_prod_comp) or not p.existe_prod(ident_prod_vend)) return 21;
+        else {
+            if(ident_prod_comp == ident_prod_vend) return 19;
+            else {
+                id_prod_comp = ident_prod_comp;
+                total_uni_comp = cant_prod_comp;
+                id_prod_vend = ident_prod_vend;
+                total_uni_vend = cant_prod_vend;
+                return 0;
+             }
+         }
     }
