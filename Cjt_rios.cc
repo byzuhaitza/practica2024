@@ -41,7 +41,7 @@ typedef map<string, Ciudad>::iterator no_fijo;
         else return false;
     }
 
-    int Cjt_rios::leer_inventario(const string& ident_ciudad, Cjt_productos& Cjt_productos){
+    int Cjt_rios::leer_inventario(const string& ident_ciudad, const Cjt_productos& Cjt_productos){
         if (not existe_ciudad(ident_ciudad)) return 23;
             else{
                 no_fijo itc = ciudades.find(ident_ciudad);
@@ -58,7 +58,7 @@ typedef map<string, Ciudad>::iterator no_fijo;
             }
     }
 
-    void Cjt_rios::leer_inventarios(Cjt_productos& Cjt_productos){
+    void Cjt_rios::leer_inventarios(const Cjt_productos& Cjt_productos){
         string ident_ciudad;
         while(cin >> ident_ciudad and ident_ciudad != "#"){
             leer_inventario(ident_ciudad, Cjt_productos);
@@ -77,7 +77,7 @@ typedef map<string, Ciudad>::iterator no_fijo;
         return (ciudades.find(ident_ciudad))->second.existe_prod(ident_prod);
     }
 
-    int Cjt_rios::consultar(const string& ident_ciudad, const int& ident_prod, Cjt_productos& Cjt_productos) const{
+    int Cjt_rios::consultar(const string& ident_ciudad, const int& ident_prod, const Cjt_productos& Cjt_productos) const{
         if (not Cjt_productos.existe_prod(ident_prod)) return 21;
         else {
             if (not existe_ciudad(ident_ciudad)) return 23;
@@ -96,7 +96,7 @@ typedef map<string, Ciudad>::iterator no_fijo;
 
     //MODIFICADORAS
 
-    int Cjt_rios::modificar_prod(const string& ident_ciudad, const int& ident_prod, int& uni_tiene, int& uni_quiere, Cjt_productos& Cjt_productos){
+    int Cjt_rios::modificar_prod(const string& ident_ciudad, const int& ident_prod, int& uni_tiene, int& uni_quiere, const Cjt_productos& Cjt_productos){
         if (not Cjt_productos.existe_prod(ident_prod)) return 21;
         else {
             if (not existe_ciudad(ident_ciudad)) return 23;
@@ -110,7 +110,7 @@ typedef map<string, Ciudad>::iterator no_fijo;
         }
     }
 
-    int Cjt_rios::poner_prod(const string& ident_ciudad, const int& ident_prod, const int& uni_tiene, const int& uni_quiere, Cjt_productos& Cjt_productos) {
+    int Cjt_rios::poner_prod(const string& ident_ciudad, const int& ident_prod, const int& uni_tiene, const int& uni_quiere, const Cjt_productos& Cjt_productos) {
         if (not Cjt_productos.existe_prod(ident_prod)) return 21;
         else {
              if (not existe_ciudad(ident_ciudad)) return 23;
@@ -125,7 +125,7 @@ typedef map<string, Ciudad>::iterator no_fijo;
         }
     }
 
-    int Cjt_rios::quitar_prod(const string& ident_ciudad, const int& ident_prod, Cjt_productos& Cjt_productos){
+    int Cjt_rios::quitar_prod(const string& ident_ciudad, const int& ident_prod, const Cjt_productos& Cjt_productos){
         if (not Cjt_productos.existe_prod(ident_prod)) return 21;
         else {
             if (not existe_ciudad(ident_ciudad)) return 23;
@@ -139,56 +139,60 @@ typedef map<string, Ciudad>::iterator no_fijo;
         }
     }
 
-    int Cjt_rios::comerciar(const string& ident_ciudad_1, const string& ident_ciudad_2){
+    int Cjt_rios::comerciar(const string& ident_ciudad_1, const string& ident_ciudad_2, const Cjt_productos& Cjt_productos){
         if(ident_ciudad_1 == ident_ciudad_2) return 22;
         no_fijo it1 = ciudades.find(ident_ciudad_1);
         if (it1 == ciudades.end()) return 23;
         no_fijo it2 = ciudades.find(ident_ciudad_2);
         if (it2 == ciudades.end()) return 23;
-        it1->second.comerciar_prod(it2->second);
+        it1->second.comerciar_prod(it2->second, Cjt_productos);
         return 0;
     }
 
-    void Cjt_rios::redistribuir(BinTree<string> a, const string& ciudad_ahora){
-        if (a.empty()) {
-            return;
-        }
+    void Cjt_rios::redistribuir(const Cjt_productos& p){
+        redistribuir_rec(arbol,p);
+    }
+    
+    void Cjt_rios::redistribuir_rec(const BinTree<string>& a, const Cjt_productos& Cjt_productos){
+        
+        if(not a.empty() and not a.left().empty()){
+            string ciudad_ahora = a.value();
+            string ciudad_izquierda = a.left().value();
+            string ciudad_derecha = a.right().value();
 
-        string ciudad_ahora = a.value();
-        string ciudad_izquierda = a.left().value();
-        string ciudad_derecha = a.right().value();
+            comerciar(ciudad_ahora, ciudad_izquierda,Cjt_productos);
+            redistribuir_rec(a.left(), Cjt_productos);
 
-        if (ciudad_izquierda != "#") {
-            comerciar(ciudad_ahora, ciudad_izquierda);
-            redistribuir(a.left(), ciudad_ahora);
-        }
+            comerciar(ciudad_ahora, ciudad_derecha,Cjt_productos);
+            redistribuir_rec(a.right(), Cjt_productos);
+            
 
-        if (ciudad_derecha != "#") {
-            comerciar(ciudad_ahora, ciudad_derecha);
-            redistribuir(a.right(), ciudad_ahora);
         }
     }
     
-    void Cjt_rios::hacer_viaje(Barco& b, BinTree<string>& a){
-        string desembocadura = a.value();
-        string ruta;
-        int max_comprado = 0;
-        int max_vendido = 0;
-        calcular_ruta(desembocadura, ruta, max_comprado, max_vendido, a);
+    void Cjt_rios::hacer_viaje(Barco& b, const Cjt_productos& Cjt_productos){
+        vector<string> ruta;
+        int ya_comprado = 0;
+        int ya_vendido = 0;
+        int total_compvend = calcular_ruta_rec( ruta, b, ya_comprado, ya_vendido, arbol);
+        viajar_ruta(ruta,b,Cjt_productos); //recorrer la ruta y ir comprando y vendiendo sin superar el maximo del barco
+        //b.hacer_viaje()
     }
 
-    void Cjt_rios::calcular_ruta(const string& ciudad, string& ruta, int& max_comprado, int& max_vendido, BinTree<string>& a){
-        vector<string> ruta_actual;
-        vector<string> mejor_ruta;
-        set<string> ciudades_visitadas;
-        int max_acumulado = 0;
-
-        calcular_ruta_rec(ciudad, ruta_actual, mejor_ruta, ciudades_visitadas, max_comprado, max_vendido, max_acumulado, a);
-
-        ruta = "";
-        for (const string& ciudad : mejor_ruta) {
-            ruta += ciudad;
+    int Cjt_rios::calcular_ruta_rec(vector<string>& mejor_ruta, Barco& b, int ya_comprado, int ya_vendido, const BinTree<string>& a) {
+        //ya_comprado es lo que mis ascendientes ya han comprado
+        //ya_vendido es lo que mis ascendientes ya han vendido
+        // return tiene q ser lo que yo y mis hijos hemos comprado + lo que hemos vendido
+        int max_compra = b.consultar_cantidad_compra();
+        int max_venta = b.consultar_cantidad_venta();
+        
+        if(not a.empty() and (ya_comprado < max_compra or ya_vendido < max_venta)){
+            //interaccion con la ciudad a.value() --> c, v a la ciudad (teniendo en cuenta el maximo del barco)
+            ya_comprado += c;
+            ya_vendido += v;
+            vector<string> ruta1, ruta2;
+            int total1 = calcular_ruta_rec(ruta1,b,ya_comprado,ya_vendido,a.left());
+            int total2 = calcular_ruta_rec(ruta2,b,ya_comprado,ya_vendido,a.right());
+            //comparaciones de las dos rutas 1 y 2
         }
     }
-
-    void Cjt_rios::calcular_ruta_rec(const string& ciudad, vector<string>& ruta_actual, vector<string>& mejor_ruta, set<string>& ciudades_visitadas, int& max_comprado, int& max_vendido, int& max_acumulado, BinTree<string>& a) {}

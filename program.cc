@@ -142,17 +142,17 @@ int main() {
             string ident_ciudad_1, ident_ciudad_2;
             cin >> ident_ciudad_1 >> ident_ciudad_2;
             cout << "#" << op << " " << ident_ciudad_1 << " " << ident_ciudad_2 << endl;
-            int output = r.comerciar(ident_ciudad_1, ident_ciudad_2);
+            int output = r.comerciar(ident_ciudad_1, ident_ciudad_2, p);
             if (output == 23) cout << "error: no existe la ciudad" << endl;
             else if (output == 22) cout << "error: ciudad repetida" << endl;
         }
         else if (op == "redistribuir" or op == "re") {
             cout << "#" << op << endl;
-            r.redistribuir(); //tengo que tener redistribuir y redistribuir_rec?
+            r.redistribuir(p); //tengo que tener redistribuir y redistribuir_rec?
         }
         else if (op == "hacer_viaje" or op == "hv") {
             cout << "#" << op << endl;
-            r.hacer_viaje(b);
+            r.hacer_viaje(b,p);
         }
     }
 }

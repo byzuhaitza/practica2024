@@ -37,7 +37,15 @@ class Cjt_rios{
     */
     map<string, Ciudad> ciudades;
     
-
+    void redistribuir_rec(const BinTree<string>& a, const Cjt_productos& Cjt_productos);
+    int calcular_ruta_rec(vector<string>& mejor_ruta, Barco& b, int ya_comprado, int ya_vendido, const BinTree<string>& a);
+/**  
+    @brief Inicializa el árbol, es decir, crea el conjunto de rios.
+    \pre: Cierto.
+    \post: -Si el árbol está vacio, se devuelve un -1.
+          -Registramos un árbol no vacío.
+*/
+    void ini_cuenca(BinTree<string>& a);
     public:
     //CONSTRUCTORAS
 /**
@@ -53,13 +61,6 @@ class Cjt_rios{
           -Registramos un árbol no vacío.
 */
     void inicializar_cuenca();
-/**  
-    @brief Inicializa el árbol, es decir, crea el conjunto de rios.
-    \pre: Cierto.
-    \post: -Si el árbol está vacio, se devuelve un -1.
-          -Registramos un árbol no vacío.
-*/
-    void ini_cuenca(BinTree<string>& a);
 
     //CONSULTORAS
 
@@ -76,13 +77,13 @@ class Cjt_rios{
     \pre: Cierto.
     \post: -La funcion nos escribe todos los productos que hay en la dicha ciudad, junto con la cantidad que tienen y necesitan de dicho producto.
 */
-    int leer_inventario(const string& ident_ciudad, Cjt_productos& Cjt_productos);
+    int leer_inventario(const string& ident_ciudad, const Cjt_productos& Cjt_productos);
 /**  
     @brief Imprime los inventarios de las ciudades del rio.
     \pre: Cierto.
     \post: ?????????????????????????????????????????????????????????????????????????????????????????????????????????????????????
 */
-    void leer_inventarios(Cjt_productos& Cjt_productos) ;
+    void leer_inventarios(const Cjt_productos& Cjt_productos) ;
 /**  
     @brief Imprime el inventario de la ciudad junto con el peso y el volumen de todos los productos almacenados.
     @param ident_ciudad
@@ -103,7 +104,7 @@ class Cjt_rios{
     \pre: Cierto.
     \post: -La funcion devuelve cuantas unidades tiene y necesita la ciudad.
 */
-    int consultar(const string& ident_ciudad, const int& ident_prod, Cjt_productos& Cjt_productos) const;
+    int consultar(const string& ident_ciudad, const int& ident_prod, const Cjt_productos& Cjt_productos) const;
     bool inv_ciu_vacio(const string& ident_ciudad) const;
 
     //MODIFICADORA
@@ -115,37 +116,40 @@ class Cjt_rios{
     \pre: Cierto.
     \post: -La funcion nos devuelve el peso y volumen total de la ciudad una vez cambiada, debido al posible cambio de las unidades que tiene la ciudad.
 */
-    int modificar_prod(const string& ident_ciudad, const int& ident_prod, int& uni_tiene, int& uni_quiere, Cjt_productos& Cjt_productos);
+    int modificar_prod(const string& ident_ciudad, const int& ident_prod, int& uni_tiene, int& uni_quiere, const Cjt_productos& Cjt_productos);
 /**  
     @brief Vamos a la ciudad establecida y añadimos el producto que leemos, junto con las unidades que tendra esta ciudad y las que necesita.
     @param ident_ciudad, ident_prod, uni_tiene, uni_quiere
     \pre: Cierto.
     \post: -La funcion nos devuelve el peso y volumen total de la ciudad una vez cambiada, debido al posible cambio de las unidades que tiene la ciudad.
 */
-    int poner_prod(const string& ident_ciudad, const int& ident_prod, const int& uni_tiene, const int& uni_quiere, Cjt_productos& Cjt_productos) ;
+    int poner_prod(const string& ident_ciudad, const int& ident_prod, const int& uni_tiene, const int& uni_quiere, const Cjt_productos& Cjt_productos) ;
 /**  
     @brief Vamos a la ciudad establecida y eliminamos todos los datos que tenemos del producto que acabamos de leer.
     @param ident_ciudad, ident_prod
     \pre: Cierto.
     \post: -La funcion nos devuelve el peso y volumen total de la ciudad una vez cambiada, debido al posible cambio de las unidades que tiene la ciudad.
 */
-    int quitar_prod(const string& ident_ciudad, const int& ident_prod, Cjt_productos& Cjt_productos) ;
+    int quitar_prod(const string& ident_ciudad, const int& ident_prod, const Cjt_productos& Cjt_productos) ;
 /**  
     @brief 
     @param ident_ciudad_1, ident_ciudad_2
     \pre: Cierto.
     \post: 
 */
-    int comerciar(const string& ident_ciudad_1, const string& ident_ciudad_2);
+    int comerciar(const string& ident_ciudad_1, const string& ident_ciudad_2, const Cjt_productos& Cjt_productos);
 /**  
     @brief 
     \pre: Cierto.
     \post: 
 */
-    void redistribuir(BinTree<string> a, const string& ciudad_ahora);
+    /**  
+    @brief 
+    \pre: Cierto.
+    \post: 
+*/
+    void redistribuir(const Cjt_productos& Cjt_productos);
 
-    void hacer_viaje(Barco& b, BinTree<string>& a);
-    void calcular_ruta(const string& ciudad, string& ruta, int& max_comprado, int& max_vendido, BinTree<string>& a);
-    void calcular_ruta_rec(const string& ciudad, vector<string>& ruta_actual, vector<string>& mejor_ruta, set<string>& ciudades_visitadas, int& max_comprado, int& max_vendido, int& max_acumulado, BinTree<string>& a);
+    void hacer_viaje(Barco& b, const Cjt_productos& Cjt_productos);
 };
 #endif

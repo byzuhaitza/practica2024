@@ -42,8 +42,7 @@ typedef map<int,pair<int, int>>::const_iterator constante; //ahorrar crear el mi
     }
 
     //MODIFICADORAS
-    void Ciudad::comerciar_prod(Ciudad& otra_ciudad){
-        Cjt_productos p;
+    void Ciudad::comerciar_prod(Ciudad& otra_ciudad, const Cjt_productos& p ){
         map<int, pair <int, int>>::iterator it1 = productos.begin();
         map<int, pair <int, int>>::iterator it2 = otra_ciudad.productos.begin();
         while(it1 != productos.end() and it2 != otra_ciudad.productos.end()) {
@@ -54,43 +53,34 @@ typedef map<int,pair<int, int>>::const_iterator constante; //ahorrar crear el mi
                 ++it2;
             }
             else {
-                cout << it1->first << "                " << it2->first << endl; 
                 int cant1 = it1->second.second - it1->second.first;
-                cout << "1 aaaaaaaaaaaaaaaa" << endl;
                 int cant2 = it2->second.second - it2->second.first;
-                cout << "2 aaaaaaaaaaaaaaaa" << endl;
-                if (cant1*cant2 >= 0) { //es <
+                if (cant1*cant2 < 0) { //es <
                     int intercambio = min(abs(cant1), abs(cant2));
                     bool poner = false;
-                    cout << "3 aaaaaaaaaaaaaaaa" << endl;
                     if (cant1 < cant2) {
                         it1->second.first -= intercambio;
-                        cout << "4 aaaaaaaaaaaaaaaa" << endl;
                         comerciar_ajustes(it1->first, intercambio, poner, p);
                         poner = true;
                         it2->second.first += intercambio;
-                        cout << "5 aaaaaaaaaaaaaaaa" << endl;
-                        comerciar_ajustes(it1->first, intercambio, poner, p);
+                        otra_ciudad.comerciar_ajustes(it1->first, intercambio, poner, p);
                     }
                     else {
                         poner = true;
                         it1->second.first += intercambio;
-                        cout << "6 aaaaaaaaaaaaaaaa" << endl;
                         comerciar_ajustes(it1->first, intercambio, poner, p);
                         poner = false;
                         it2->second.first -= intercambio;
-                        cout << "7 aaaaaaaaaaaaaaaa" << endl;
-                        comerciar_ajustes(it1->first, intercambio, poner, p);
+                        otra_ciudad.comerciar_ajustes(it1->first, intercambio, poner, p);
                     }
                 }
                 ++it1;
-                cout << "aqui" << endl;
                 ++it2;
             }
         }
     }
     
-    void Ciudad::modificar_prod(const int& ident_prod, int& uni_tiene, int& uni_quiere, Cjt_productos& p){
+    void Ciudad::modificar_prod(const int& ident_prod, int& uni_tiene, int& uni_quiere, const Cjt_productos& p){
         map<int, pair <int, int>>::iterator it = productos.find(ident_prod);
         peso_total += (uni_tiene-(it->second.first))*p.peso(ident_prod);
         volumen_total += (uni_tiene-(it->second.first))*p.volumen(ident_prod);
@@ -98,24 +88,22 @@ typedef map<int,pair<int, int>>::const_iterator constante; //ahorrar crear el mi
         it->second.second = uni_quiere;
         cout << peso_total << ' ' << volumen_total << endl;
     }
-    void Ciudad::poner_prod(const int& ident_prod, const int& uni_tiene, const int& uni_quiere, Cjt_productos& p, bool& leer){
+    void Ciudad::poner_prod(const int& ident_prod, const int& uni_tiene, const int& uni_quiere, const Cjt_productos& p, bool& leer){
         productos.insert(make_pair(ident_prod, make_pair(uni_tiene, uni_quiere)));
         peso_total += uni_tiene*p.peso(ident_prod);
         volumen_total += uni_tiene*p.volumen(ident_prod);
         if(not leer) cout << peso_total << ' ' << volumen_total << endl;
     }
-    void Ciudad::comerciar_ajustes(const int& ident_prod, int& intercambio, bool& poner, Cjt_productos& p) {
+    void Ciudad::comerciar_ajustes(const int& ident_prod, int& intercambio, bool& poner, const Cjt_productos& p) {
         int peso_prod = p.peso(ident_prod);
         int vol_prod = p.volumen(ident_prod);
-        /////////////////////////// en ambos casos solo me cambia la informacion del 1, no?
-        map<int, pair <int, int>>::iterator it = productos.find(ident_prod);
         if(poner){
             peso_total += intercambio*peso_prod;
             volumen_total += intercambio*vol_prod;
         }
         else{
-            peso_total += intercambio*peso_prod;
-            volumen_total += intercambio*vol_prod;
+            peso_total -= intercambio*peso_prod;
+            volumen_total -= intercambio*vol_prod;
         }
     }
     void Ciudad::quitar_prod(const int& ident_prod, Cjt_productos p){
