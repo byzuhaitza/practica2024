@@ -144,6 +144,8 @@ class Cjt_rios{
 */
     void redistribuir(BinTree<string> a, const string& ciudad_ahora);
 
-    void hacer_viaje(Barco& b);
+    void hacer_viaje(Barco& b, BinTree<string>& a);
+    void calcular_ruta(const string& ciudad, string& ruta, int& max_comprado, int& max_vendido, BinTree<string>& a);
+    void calcular_ruta_rec(const string& ciudad, vector<string>& ruta_actual, vector<string>& mejor_ruta, set<string>& ciudades_visitadas, int& max_comprado, int& max_vendido, int& max_acumulado, BinTree<string>& a);
 };
 #endif

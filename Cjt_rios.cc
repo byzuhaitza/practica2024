@@ -169,6 +169,26 @@ typedef map<string, Ciudad>::iterator no_fijo;
         }
     }
     
-    void Cjt_rios::hacer_viaje(Barco& b){
-        Barco c = b;
+    void Cjt_rios::hacer_viaje(Barco& b, BinTree<string>& a){
+        string desembocadura = a.value();
+        string ruta;
+        int max_comprado = 0;
+        int max_vendido = 0;
+        calcular_ruta(desembocadura, ruta, max_comprado, max_vendido, a);
     }
+
+    void Cjt_rios::calcular_ruta(const string& ciudad, string& ruta, int& max_comprado, int& max_vendido, BinTree<string>& a){
+        vector<string> ruta_actual;
+        vector<string> mejor_ruta;
+        set<string> ciudades_visitadas;
+        int max_acumulado = 0;
+
+        calcular_ruta_rec(ciudad, ruta_actual, mejor_ruta, ciudades_visitadas, max_comprado, max_vendido, max_acumulado, a);
+
+        ruta = "";
+        for (const string& ciudad : mejor_ruta) {
+            ruta += ciudad;
+        }
+    }
+
+    void Cjt_rios::calcular_ruta_rec(const string& ciudad, vector<string>& ruta_actual, vector<string>& mejor_ruta, set<string>& ciudades_visitadas, int& max_comprado, int& max_vendido, int& max_acumulado, BinTree<string>& a) {}

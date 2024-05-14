@@ -148,7 +148,7 @@ int main() {
         }
         else if (op == "redistribuir" or op == "re") {
             cout << "#" << op << endl;
-            r.redistribuir();
+            r.redistribuir(); //tengo que tener redistribuir y redistribuir_rec?
         }
         else if (op == "hacer_viaje" or op == "hv") {
             cout << "#" << op << endl;
