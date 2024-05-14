@@ -7,6 +7,8 @@
 
 #include "Ciudad.hh"
 
+typedef map<int,pair<int, int>>::const_iterator constante; //ahorrar crear el mismo iterador una y otra vez
+
     //CONSTRUCTORAS
     Ciudad::Ciudad(){
         peso_total = 0;
@@ -15,7 +17,7 @@
 
     //CONSULTORAS
     bool Ciudad::existe_prod(const int& ident_prod) const{
-        map<int, pair <int, int>>::const_iterator it = productos.find(ident_prod);
+        constante it = productos.find(ident_prod);
         if (it != productos.end()) return true;
         else return false;
     }
@@ -24,14 +26,14 @@
         cout << peso_total << ' ' << volumen_total << endl;
     }
     void Ciudad::escribir_inventario(){
-        map<int, pair <int, int>>::const_iterator it = productos.begin();
+        constante it = productos.begin();
         while(it != productos.end()) {
             cout << it->first << ' ' << it->second.first << ' ' << it->second.second << endl;
             ++it; 
         }
     }
     void Ciudad::consultar_prod(const int& ident_prod) const{
-        map<int, pair <int, int>>::const_iterator it = productos.find(ident_prod);
+        constante it = productos.find(ident_prod);
         cout << it->second.first << ' ' << it->second.second << endl;
     }
     bool Ciudad::inv_ciu_vacio() const{
@@ -57,7 +59,7 @@
                 cout << "1 aaaaaaaaaaaaaaaa" << endl;
                 int cant2 = it2->second.second - it2->second.first;
                 cout << "2 aaaaaaaaaaaaaaaa" << endl;
-                if (cant1*cant2 >= 0) {
+                if (cant1*cant2 >= 0) { //es <
                     int intercambio = min(abs(cant1), abs(cant2));
                     bool poner = false;
                     cout << "3 aaaaaaaaaaaaaaaa" << endl;
@@ -117,7 +119,7 @@
         }
     }
     void Ciudad::quitar_prod(const int& ident_prod, Cjt_productos p){
-        map<int, pair <int, int>>::const_iterator it = productos.find(ident_prod);
+        constante it = productos.find(ident_prod);
         int cant = it->second.first;
         peso_total -= cant*p.peso(ident_prod);
         volumen_total -= cant*p.volumen(ident_prod);

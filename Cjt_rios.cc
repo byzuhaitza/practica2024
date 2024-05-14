@@ -7,6 +7,9 @@
 
 #include "Cjt_rios.hh"
 
+typedef map<string, Ciudad>::const_iterator fijo;
+typedef map<string, Ciudad>::iterator no_fijo;
+
     //CONSTRUCTORAS
     Cjt_rios::Cjt_rios(){}
 
@@ -33,7 +36,7 @@
     //CONSULTORAS
 
     bool Cjt_rios::existe_ciudad(const string& ident_ciudad) const{
-        map<string, Ciudad>::const_iterator it = ciudades.find(ident_ciudad);
+        fijo it = ciudades.find(ident_ciudad);
         if (it != ciudades.end()) return true;
         else return false;
     }
@@ -41,7 +44,7 @@
     int Cjt_rios::leer_inventario(const string& ident_ciudad, Cjt_productos& Cjt_productos){
         if (not existe_ciudad(ident_ciudad)) return 23;
             else{
-                map<string, Ciudad>::iterator itc = ciudades.find(ident_ciudad);
+                no_fijo itc = ciudades.find(ident_ciudad);
                 itc->second.eliminar_inventario();
                 int num;
                 cin >> num;
@@ -138,9 +141,9 @@
 
     int Cjt_rios::comerciar(const string& ident_ciudad_1, const string& ident_ciudad_2){
         if(ident_ciudad_1 == ident_ciudad_2) return 22;
-        map<string, Ciudad>::iterator it1 = ciudades.find(ident_ciudad_1);
+        no_fijo it1 = ciudades.find(ident_ciudad_1);
         if (it1 == ciudades.end()) return 23;
-        map<string, Ciudad>::iterator it2 = ciudades.find(ident_ciudad_2);
+        no_fijo it2 = ciudades.find(ident_ciudad_2);
         if (it2 == ciudades.end()) return 23;
         it1->second.comerciar_prod(it2->second);
         return 0;
