@@ -142,7 +142,7 @@ class Cjt_rios{
     \pre: Cierto.
     \post: 
 */
-    void redistribuir();
+    void redistribuir(BinTree<string> a, const string& ciudad_ahora);
 
     void hacer_viaje(Barco& b);
 };

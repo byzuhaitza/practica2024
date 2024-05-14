@@ -146,8 +146,24 @@
         return 0;
     }
 
-    void Cjt_rios::redistribuir(){
+    void Cjt_rios::redistribuir(BinTree<string> a, const string& ciudad_ahora){
+        if (a.empty()) {
+            return;
+        }
 
+        string ciudad_ahora = a.value();
+        string ciudad_izquierda = a.left().value();
+        string ciudad_derecha = a.right().value();
+
+        if (ciudad_izquierda != "#") {
+            comerciar(ciudad_ahora, ciudad_izquierda);
+            redistribuir(a.left(), ciudad_ahora);
+        }
+
+        if (ciudad_derecha != "#") {
+            comerciar(ciudad_ahora, ciudad_derecha);
+            redistribuir(a.right(), ciudad_ahora);
+        }
     }
     
     void Cjt_rios::hacer_viaje(Barco& b){
