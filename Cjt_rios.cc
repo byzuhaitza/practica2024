@@ -154,7 +154,6 @@ typedef map<string, Ciudad>::iterator no_fijo;
     }
     
     void Cjt_rios::redistribuir_rec(const BinTree<string>& a, const Cjt_productos& Cjt_productos){
-        
         if(not a.empty() and not a.left().empty()){
             string ciudad_ahora = a.value();
             string ciudad_izquierda = a.left().value();
@@ -167,14 +166,15 @@ typedef map<string, Ciudad>::iterator no_fijo;
             redistribuir_rec(a.right(), Cjt_productos);
         }
     }
-    
-    void Cjt_rios::hacer_viaje(Barco& b, const Cjt_productos& Cjt_productos){
+
+    int Cjt_rios::hacer_viaje(Barco& b, const Cjt_productos& Cjt_productos){
         vector<string> mejor_ruta;
         int ya_comprado = 0;
         int ya_vendido = 0;
         int total_compvend = calcular_ruta_rec(mejor_ruta, b, ya_comprado, ya_vendido, arbol);
         string ult_ciudad = viajar_ruta(mejor_ruta,b,Cjt_productos); //recorrer la ruta y ir comprando y vendiendo sin superar el maximo del barco
-        b.hacer_viaje(ult_ciudad, ya_comprado, ya_vendido);//actualizar las cantidades de los productos y guardar la ultima ciudad. no cambia cantidad
+        b.hacer_viaje(ult_ciudad);//actualizar las cantidades de los productos y guardar la ultima ciudad. no cambia cantidad
+        return total_compvend;
     }
 
     int Cjt_rios::calcular_ruta_rec(vector<string>& mejor_ruta, Barco& b, int ya_comprado, int ya_vendido, const BinTree<string>& a) {
@@ -195,13 +195,23 @@ typedef map<string, Ciudad>::iterator no_fijo;
             if (total1 > total2) {
                 mejor_ruta = ruta1;
                 return total1;
-            } else {
+            } 
+            else {
                 mejor_ruta = ruta2;
                 return total2;
             }
         }
+        return 0;
     }
     string Cjt_rios::viajar_ruta(vector<string>& mejor_ruta, Barco& b, Cjt_productos Cjt_productos) {
         //simplemente cambio las cantidades de la ciudad, porque se supone que el barco no tengo que tocarlo.
+        int max_compra_ciudad = b.consultar_cantidad_compra();
+        int max_venta_ciudad = b.consultar_cantidad_venta();
+        for(int i = 0; i < mejor_ruta.size(); ++i) {
+            int nuevo1 = ciudades.find(mejor_ruta[i])->second.barco_comprar(b.consultar_id_prod_comp(), max_compra_ciudad, Cjt_productos);
+            max_compra_ciudad = nuevo1;
+            int nuevo2 = ciudades.find(mejor_ruta[i])->second.barco_vender(b.consultar_id_prod_vend(), max_venta_ciudad, Cjt_productos);
+            max_venta_ciudad = nuevo2;
+        }
         return mejor_ruta[mejor_ruta.size()-1];
     }

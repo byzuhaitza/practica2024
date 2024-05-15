@@ -66,7 +66,7 @@ class Barco{
     \pre: Cierto.
     \post: 
 */
-    void hacer_viaje(string ult_ciudad, int ya_comprado, int ya_vendido);
+    void hacer_viaje(string ult_ciudad);
 /**  
     @brief 
     @param

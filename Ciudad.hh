@@ -100,5 +100,7 @@ class Ciudad{
     void eliminar_inventario();
     int barco_puede_comprar(int id_producto, int max_compra) const;
     int barco_puede_vender(int id_producto, int max_venta) const;
+    int barco_comprar(int id_producto, int max_compra_ciudad, Cjt_productos& p);
+    int barco_vender(int id_producto, int max_venta_ciudad, Cjt_productos& p);
 };
 #endif

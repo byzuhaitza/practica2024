@@ -50,8 +50,6 @@
     int Barco::consultar_cantidad_venta() {
         return total_uni_vend;
     }
-    void Barco::hacer_viaje(string ult_ciudad, int ya_comprado, int ya_vendido){
+    void Barco::hacer_viaje(string ult_ciudad){
         viajes.push_back(ult_ciudad);
-        total_uni_comp -= ya_comprado;
-        total_uni_vend -= ya_vendido;
     }

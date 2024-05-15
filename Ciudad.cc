@@ -127,7 +127,7 @@ typedef map<int, pair <int, int>>::iterator iterador;
         }
         else {
             int cantidad_disponible = it->second.second - it->second.first;
-            if(cantidad_disponible < 0) return abs(cantidad_disponible);
+            if(cantidad_disponible < 0 and cantidad_disponible <= max_compra_ciudad) return abs(cantidad_disponible);
             else return 0;
         }
     }
@@ -139,7 +139,33 @@ typedef map<int, pair <int, int>>::iterator iterador;
         }
         else {
             int cantidad_disponible = it->second.second - it->second.first;
-            if(cantidad_disponible > 0) return abs(cantidad_disponible);
+            if(cantidad_disponible > 0 and cantidad_disponible <= max_venta_ciudad) return abs(cantidad_disponible);
             else return 0;
         }
+    }
+    int Ciudad::barco_comprar(int id_producto, int max_compra_ciudad, Cjt_productos& p) { //si el barco puede comprar es que la ciudad vende
+        auto it = productos.find(id_producto);
+        if (it != productos.end()) {
+            int intercambio = it->second.second - it->second.first;
+            if(max_compra_ciudad-abs(intercambio) >= 0) {
+                bool poner = false;
+                comerciar_ajustes(id_producto, intercambio, poner, p);
+                return max_compra_ciudad-abs(intercambio);
+            }
+            else return max_compra_ciudad;
+        }
+        else return max_compra_ciudad;
+    }
+    int Ciudad::barco_vender(int id_producto, int max_vender_ciudad, Cjt_productos& p) { //si el barco puede comprar es que la ciudad vende
+        auto it = productos.find(id_producto);
+        if (it != productos.end()) {
+            int intercambio = it->second.second - it->second.first;
+            if(max_vender_ciudad-abs(intercambio) >= 0) {
+                bool poner = true;
+                comerciar_ajustes(id_producto, intercambio, poner, p);
+                return max_vender_ciudad-abs(intercambio);
+            }
+            else return max_vender_ciudad;
+        }
+        else return max_vender_ciudad;
     }
