@@ -165,18 +165,16 @@ typedef map<string, Ciudad>::iterator no_fijo;
 
             comerciar(ciudad_ahora, ciudad_derecha,Cjt_productos);
             redistribuir_rec(a.right(), Cjt_productos);
-            
-
         }
     }
     
     void Cjt_rios::hacer_viaje(Barco& b, const Cjt_productos& Cjt_productos){
-        vector<string> ruta;
+        vector<string> mejor_ruta;
         int ya_comprado = 0;
         int ya_vendido = 0;
-        int total_compvend = calcular_ruta_rec( ruta, b, ya_comprado, ya_vendido, arbol);
-        viajar_ruta(ruta,b,Cjt_productos); //recorrer la ruta y ir comprando y vendiendo sin superar el maximo del barco
-        //b.hacer_viaje()
+        int total_compvend = calcular_ruta_rec(mejor_ruta, b, ya_comprado, ya_vendido, arbol);
+        string ult_ciudad = viajar_ruta(mejor_ruta,b,Cjt_productos); //recorrer la ruta y ir comprando y vendiendo sin superar el maximo del barco
+        b.hacer_viaje(ult_ciudad, ya_comprado, ya_vendido);//actualizar las cantidades de los productos y guardar la ultima ciudad. no cambia cantidad
     }
 
     int Cjt_rios::calcular_ruta_rec(vector<string>& mejor_ruta, Barco& b, int ya_comprado, int ya_vendido, const BinTree<string>& a) {
@@ -187,12 +185,23 @@ typedef map<string, Ciudad>::iterator no_fijo;
         int max_venta = b.consultar_cantidad_venta();
         
         if(not a.empty() and (ya_comprado < max_compra or ya_vendido < max_venta)){
-            //interaccion con la ciudad a.value() --> c, v a la ciudad (teniendo en cuenta el maximo del barco)
-            ya_comprado += c;
-            ya_vendido += v;
+            //interaccion con la ciudad, a.value(), --> c, v a la ciudad (teniendo en cuenta el maximo del barco)
+            ya_comprado += ciudades.find(a.value())->second.barco_puede_comprar(b.consultar_id_prod_comp(), (max_compra-ya_comprado));
+            ya_vendido += ciudades.find(a.value())->second.barco_puede_vender(b.consultar_id_prod_vend(), (max_venta-ya_vendido));
             vector<string> ruta1, ruta2;
             int total1 = calcular_ruta_rec(ruta1,b,ya_comprado,ya_vendido,a.left());
             int total2 = calcular_ruta_rec(ruta2,b,ya_comprado,ya_vendido,a.right());
             //comparaciones de las dos rutas 1 y 2
+            if (total1 > total2) {
+                mejor_ruta = ruta1;
+                return total1;
+            } else {
+                mejor_ruta = ruta2;
+                return total2;
+            }
         }
+    }
+    string Cjt_rios::viajar_ruta(vector<string>& mejor_ruta, Barco& b, Cjt_productos Cjt_productos) {
+        //simplemente cambio las cantidades de la ciudad, porque se supone que el barco no tengo que tocarlo.
+        return mejor_ruta[mejor_ruta.size()-1];
     }

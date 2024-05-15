@@ -98,5 +98,7 @@ class Ciudad{
     void quitar_prod(const int& ident_prod, Cjt_productos p);
     void comerciar_ajustes(const int& ident_prod, int& intercambio, bool& poner, const Cjt_productos& p);
     void eliminar_inventario();
+    int barco_puede_comprar(int id_producto, int max_compra) const;
+    int barco_puede_vender(int id_producto, int max_venta) const;
 };
 #endif

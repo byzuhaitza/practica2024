@@ -151,5 +151,6 @@ class Cjt_rios{
     void redistribuir(const Cjt_productos& Cjt_productos);
 
     void hacer_viaje(Barco& b, const Cjt_productos& Cjt_productos);
+    string viajar_ruta(vector<string>& mejor_ruta, Barco& b, Cjt_productos Cjt_productos);
 };
 #endif

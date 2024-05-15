@@ -35,6 +35,23 @@
                 id_prod_vend = ident_prod_vend;
                 total_uni_vend = cant_prod_vend;
                 return 0;
-             }
-         }
+            }
+        }
+    }
+    int Barco::consultar_id_prod_vend() {
+        return id_prod_vend;
+    }
+    int Barco::consultar_id_prod_comp() {
+        return id_prod_comp;
+    }
+    int Barco::consultar_cantidad_compra() {
+        return total_uni_comp;
+    }
+    int Barco::consultar_cantidad_venta() {
+        return total_uni_vend;
+    }
+    void Barco::hacer_viaje(string ult_ciudad, int ya_comprado, int ya_vendido){
+        viajes.push_back(ult_ciudad);
+        total_uni_comp -= ya_comprado;
+        total_uni_vend -= ya_vendido;
     }

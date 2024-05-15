@@ -8,6 +8,7 @@
 #include "Ciudad.hh"
 
 typedef map<int,pair<int, int>>::const_iterator constante; //ahorrar crear el mismo iterador una y otra vez
+typedef map<int, pair <int, int>>::iterator iterador;
 
     //CONSTRUCTORAS
     Ciudad::Ciudad(){
@@ -43,8 +44,8 @@ typedef map<int,pair<int, int>>::const_iterator constante; //ahorrar crear el mi
 
     //MODIFICADORAS
     void Ciudad::comerciar_prod(Ciudad& otra_ciudad, const Cjt_productos& p ){
-        map<int, pair <int, int>>::iterator it1 = productos.begin();
-        map<int, pair <int, int>>::iterator it2 = otra_ciudad.productos.begin();
+        iterador it1 = productos.begin();
+        iterador it2 = otra_ciudad.productos.begin();
         while(it1 != productos.end() and it2 != otra_ciudad.productos.end()) {
             if (it1->first < it2->first) {
                 ++it1;
@@ -81,7 +82,7 @@ typedef map<int,pair<int, int>>::const_iterator constante; //ahorrar crear el mi
     }
     
     void Ciudad::modificar_prod(const int& ident_prod, int& uni_tiene, int& uni_quiere, const Cjt_productos& p){
-        map<int, pair <int, int>>::iterator it = productos.find(ident_prod);
+        iterador it = productos.find(ident_prod);
         peso_total += (uni_tiene-(it->second.first))*p.peso(ident_prod);
         volumen_total += (uni_tiene-(it->second.first))*p.volumen(ident_prod);
         it->second.first = uni_tiene;
@@ -118,4 +119,27 @@ typedef map<int,pair<int, int>>::const_iterator constante; //ahorrar crear el mi
         productos.clear();
         peso_total = 0;
         volumen_total = 0;
+    }
+    int Ciudad::barco_puede_comprar(int id_producto, int max_compra_ciudad) const {
+        auto it = productos.find(id_producto);
+        if (it == productos.end()) {
+            return 0; // El producto no está disponible en esta ciudad
+        }
+        else {
+            int cantidad_disponible = it->second.second - it->second.first;
+            if(cantidad_disponible < 0) return abs(cantidad_disponible);
+            else return 0;
+        }
+    }
+
+    int Ciudad::barco_puede_vender(int id_producto, int max_venta_ciudad) const {
+        auto it = productos.find(id_producto);
+        if (it == productos.end()) {
+            return 0; // El producto no está disponible en esta ciudad
+        }
+        else {
+            int cantidad_disponible = it->second.second - it->second.first;
+            if(cantidad_disponible > 0) return abs(cantidad_disponible);
+            else return 0;
+        }
     }

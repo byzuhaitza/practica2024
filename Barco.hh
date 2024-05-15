@@ -21,7 +21,7 @@ class Barco{
         @brief ID del producto que el barco quiere comprar.   
     */
         int id_prod_comp;
-        /**
+    /**
         @brief ID del producto que el barco quiere vender.   
     */
         int id_prod_vend;
@@ -66,7 +66,7 @@ class Barco{
     \pre: Cierto.
     \post: 
 */
-    void hacer_viaje(string ciudad);
+    void hacer_viaje(string ult_ciudad, int ya_comprado, int ya_vendido);
 /**  
     @brief 
     @param
@@ -74,5 +74,9 @@ class Barco{
     \post: 
 */
     void escribir_barco();
+    int consultar_cantidad_compra();
+    int consultar_cantidad_venta();
+    int consultar_id_prod_vend();
+    int consultar_id_prod_comp();
 };
 #endif
