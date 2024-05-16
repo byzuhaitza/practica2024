@@ -95,16 +95,16 @@ typedef map<int, pair <int, int>>::iterator iterador;
         volumen_total += uni_tiene*p.volumen(ident_prod);
         if(not leer) cout << peso_total << ' ' << volumen_total << endl;
     }
-    void Ciudad::comerciar_ajustes(const int& ident_prod, int& intercambio, bool& poner, const Cjt_productos& p) {
+    void Ciudad::comerciar_ajustes(const int& ident_prod, int intercambio, bool& poner, const Cjt_productos& p) {
         int peso_prod = p.peso(ident_prod);
         int vol_prod = p.volumen(ident_prod);
         if(poner){
-            peso_total += intercambio*peso_prod;
-            volumen_total += intercambio*vol_prod;
+            peso_total += abs(intercambio)*peso_prod;
+            volumen_total += abs(intercambio)*vol_prod;
         }
         else{
-            peso_total -= intercambio*peso_prod;
-            volumen_total -= intercambio*vol_prod;
+            peso_total -= abs(intercambio)*peso_prod;
+            volumen_total -= abs(intercambio)*vol_prod;
         }
     }
     void Ciudad::quitar_prod(const int& ident_prod, Cjt_productos p){
@@ -145,16 +145,17 @@ typedef map<int, pair <int, int>>::iterator iterador;
     }
     int Ciudad::barco_comprar(int id_producto, int max_compra_ciudad, Cjt_productos& p) { //si el barco puede comprar es que la ciudad vende
         auto it = productos.find(id_producto);
-        bool poner = false;
+        bool poner = true;
         if (it != productos.end()) {
             int intercambio = it->second.second - it->second.first;
             if(intercambio < 0){
                 if(max_compra_ciudad-abs(intercambio) >= 0){
                     comerciar_ajustes(id_producto, intercambio, poner, p);
+                    it->second.first += intercambio;
                     return max_compra_ciudad-abs(intercambio);
                 }
                 else {
-                    comerciar_ajustes(id_producto, max_compra_ciudad, poner, p);
+                    //comerciar_ajustes(id_producto, max_compra_ciudad, poner, p);
                     return 0;
                 }
             }
@@ -163,16 +164,17 @@ typedef map<int, pair <int, int>>::iterator iterador;
     }
     int Ciudad::barco_vender(int id_producto, int max_vender_ciudad, Cjt_productos& p) { //si el barco puede comprar es que la ciudad vende
         auto it = productos.find(id_producto);
-        bool poner = true;
+        bool poner = false;
         if (it != productos.end()) {
             int intercambio = it->second.second - it->second.first;
             if(intercambio > 0){
                 if(max_vender_ciudad-intercambio >= 0){
                     comerciar_ajustes(id_producto, intercambio, poner, p);
+                    it->second.first += intercambio;
                     return max_vender_ciudad-intercambio;
                 }
                 else {
-                    comerciar_ajustes(id_producto, max_vender_ciudad, poner, p);
+                    //comerciar_ajustes(id_producto, max_vender_ciudad, poner, p);
                     return 0;
                 }
             }

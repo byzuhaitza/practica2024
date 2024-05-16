@@ -53,3 +53,12 @@
     void Barco::hacer_viaje(string ult_ciudad){
         viajes.push_back(ult_ciudad);
     }
+    void Barco::actualizarListaCiudades(const Cjt_rios& Cjt_rios) {
+        list<string>::iterator it = viajes.begin();
+        while(it != viajes.end()) {
+            if(not Cjt_rios.existe_ciudad(*it)) {
+                it = viajes.erase(it);
+            }
+            ++it;
+        }
+    }

@@ -172,8 +172,10 @@ typedef map<string, Ciudad>::iterator no_fijo;
         int ya_comprado = 0;
         int ya_vendido = 0;
         int total_compvend = calcular_ruta_rec(mejor_ruta, b, ya_comprado, ya_vendido, arbol);
-        string ult_ciudad = viajar_ruta(mejor_ruta,b,Cjt_productos); //recorrer la ruta y ir comprando y vendiendo sin superar el maximo del barco
-        b.hacer_viaje(ult_ciudad);//actualizar las cantidades de los productos y guardar la ultima ciudad. no cambia cantidad
+        if(total_compvend != 0) {
+           string ult_ciudad = viajar_ruta(mejor_ruta,b,Cjt_productos); //recorrer la ruta y ir comprando y vendiendo sin superar el maximo del barco
+            b.hacer_viaje(ult_ciudad);//actualizar las cantidades de los productos y guardar la ultima ciudad. no cambia cantidad
+        }
         return total_compvend;
     }
 
@@ -194,7 +196,7 @@ typedef map<string, Ciudad>::iterator no_fijo;
             int total1 = calcular_ruta_rec(ruta1,b,ya_comprado,ya_vendido,a.left());
             int total2 = calcular_ruta_rec(ruta2,b,ya_comprado,ya_vendido,a.right());
             //comparaciones de las dos rutas 1 y 2
-            if (total1 > total2) {
+            if (total1 >= total2) {
                 mejor_ruta = ruta1;
                 int total = total1 + comprado_aqui + vendido_aqui;
                 if(total > 0) mejor_ruta.insert(mejor_ruta.begin(), a.value());
