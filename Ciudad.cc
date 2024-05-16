@@ -145,27 +145,37 @@ typedef map<int, pair <int, int>>::iterator iterador;
     }
     int Ciudad::barco_comprar(int id_producto, int max_compra_ciudad, Cjt_productos& p) { //si el barco puede comprar es que la ciudad vende
         auto it = productos.find(id_producto);
+        bool poner = false;
         if (it != productos.end()) {
             int intercambio = it->second.second - it->second.first;
-            if(max_compra_ciudad-abs(intercambio) >= 0) {
-                bool poner = false;
-                comerciar_ajustes(id_producto, intercambio, poner, p);
-                return max_compra_ciudad-abs(intercambio);
+            if(intercambio < 0){
+                if(max_compra_ciudad-abs(intercambio) >= 0){
+                    comerciar_ajustes(id_producto, intercambio, poner, p);
+                    return max_compra_ciudad-abs(intercambio);
+                }
+                else {
+                    comerciar_ajustes(id_producto, max_compra_ciudad, poner, p);
+                    return 0;
+                }
             }
-            else return max_compra_ciudad;
         }
-        else return max_compra_ciudad;
+        return max_compra_ciudad;
     }
     int Ciudad::barco_vender(int id_producto, int max_vender_ciudad, Cjt_productos& p) { //si el barco puede comprar es que la ciudad vende
         auto it = productos.find(id_producto);
+        bool poner = true;
         if (it != productos.end()) {
             int intercambio = it->second.second - it->second.first;
-            if(max_vender_ciudad-abs(intercambio) >= 0) {
-                bool poner = true;
-                comerciar_ajustes(id_producto, intercambio, poner, p);
-                return max_vender_ciudad-abs(intercambio);
+            if(intercambio > 0){
+                if(max_vender_ciudad-intercambio >= 0){
+                    comerciar_ajustes(id_producto, intercambio, poner, p);
+                    return max_vender_ciudad-intercambio;
+                }
+                else {
+                    comerciar_ajustes(id_producto, max_vender_ciudad, poner, p);
+                    return 0;
+                }
             }
-            else return max_vender_ciudad;
         }
-        else return max_vender_ciudad;
+        return max_vender_ciudad;
     }

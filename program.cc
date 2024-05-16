@@ -152,7 +152,7 @@ int main() {
         }
         else if (op == "hacer_viaje" or op == "hv") {
             cout << "#" << op << endl;
-            r.hacer_viaje(b,p);
+            cout << r.hacer_viaje(b,p) << endl;
         }
     }
 }
