@@ -196,7 +196,7 @@ typedef map<string, Ciudad>::iterator no_fijo;
             int total1 = calcular_ruta_rec(ruta1,b,ya_comprado,ya_vendido,a.left());
             int total2 = calcular_ruta_rec(ruta2,b,ya_comprado,ya_vendido,a.right());
             //comparaciones de las dos rutas 1 y 2
-            if (total1 >= total2) {
+            if (total1 > total2 or (total1 == total2 and ruta1.size() <= ruta2.size())) {
                 mejor_ruta = ruta1;
                 int total = total1 + comprado_aqui + vendido_aqui;
                 if(total > 0) mejor_ruta.insert(mejor_ruta.begin(), a.value());

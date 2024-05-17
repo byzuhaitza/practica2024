@@ -12,7 +12,6 @@
 #include <list>
 #endif
 #include "Cjt_productos.hh"
-#include "Cjt_rios.hh"
 
 using namespace std;
 
@@ -79,6 +78,6 @@ class Barco{
     int consultar_cantidad_venta();
     int consultar_id_prod_vend();
     int consultar_id_prod_comp();
-    void actualizarListaCiudades(const Cjt_rios& Cjt_rios);
+    void actualizar_viajes();
 };
 #endif

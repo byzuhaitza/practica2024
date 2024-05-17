@@ -127,7 +127,8 @@ typedef map<int, pair <int, int>>::iterator iterador;
         }
         else {
             int cantidad_disponible = it->second.second - it->second.first;
-            if(cantidad_disponible < 0 and cantidad_disponible <= max_compra_ciudad) return abs(cantidad_disponible);
+            if(cantidad_disponible < 0 and abs(cantidad_disponible) <= max_compra_ciudad) return abs(cantidad_disponible);
+            else if(cantidad_disponible < 0) return max_compra_ciudad;
             else return 0;
         }
     }
@@ -140,12 +141,13 @@ typedef map<int, pair <int, int>>::iterator iterador;
         else {
             int cantidad_disponible = it->second.second - it->second.first;
             if(cantidad_disponible > 0 and cantidad_disponible <= max_venta_ciudad) return abs(cantidad_disponible);
+            else if(cantidad_disponible > 0) return max_venta_ciudad;
             else return 0;
         }
     }
     int Ciudad::barco_comprar(int id_producto, int max_compra_ciudad, Cjt_productos& p) { //si el barco puede comprar es que la ciudad vende
         auto it = productos.find(id_producto);
-        bool poner = true;
+        bool poner = false;
         if (it != productos.end()) {
             int intercambio = it->second.second - it->second.first;
             if(intercambio < 0){
@@ -155,7 +157,8 @@ typedef map<int, pair <int, int>>::iterator iterador;
                     return max_compra_ciudad-abs(intercambio);
                 }
                 else {
-                    //comerciar_ajustes(id_producto, max_compra_ciudad, poner, p);
+                    comerciar_ajustes(id_producto, max_compra_ciudad, poner, p);
+                    it->second.first -= max_compra_ciudad;
                     return 0;
                 }
             }
@@ -164,7 +167,7 @@ typedef map<int, pair <int, int>>::iterator iterador;
     }
     int Ciudad::barco_vender(int id_producto, int max_vender_ciudad, Cjt_productos& p) { //si el barco puede comprar es que la ciudad vende
         auto it = productos.find(id_producto);
-        bool poner = false;
+        bool poner = true;
         if (it != productos.end()) {
             int intercambio = it->second.second - it->second.first;
             if(intercambio > 0){
@@ -174,7 +177,8 @@ typedef map<int, pair <int, int>>::iterator iterador;
                     return max_vender_ciudad-intercambio;
                 }
                 else {
-                    //comerciar_ajustes(id_producto, max_vender_ciudad, poner, p);
+                    comerciar_ajustes(id_producto, max_vender_ciudad, poner, p);
+                    it->second.first += max_vender_ciudad;
                     return 0;
                 }
             }

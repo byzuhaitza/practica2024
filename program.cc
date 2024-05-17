@@ -41,7 +41,7 @@ int main() {
         else if (op == "leer_rio" or op == "lr") {
             cout << "#" << op << endl;
             r.inicializar_cuenca();
-            b.actualizarListaCiudades(r);
+            b.actualizar_viajes();
         }
         else if (op == "leer_inventario" or op == "li") {
             string ident_ciudad;
