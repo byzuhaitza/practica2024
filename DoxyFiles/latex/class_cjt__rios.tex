@@ -1,0 +1,857 @@
+\hypertarget{class_cjt__rios}{}\doxysection{Referencia de la Clase Cjt\+\_\+rios}
+\label{class_cjt__rios}\index{Cjt\_rios@{Cjt\_rios}}
+
+
+El conjunto de rios que forma la cuenca fluvial.  
+
+
+\doxysubsection*{Métodos públicos}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_cjt__rios_a5fe382b08d5ae3d9e42fd515bca7e1d0}{Cjt\+\_\+rios}} ()
+\begin{DoxyCompactList}\small\item\em Creador por defecto. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_cjt__rios_a4d5b8e53e1ff674988f0ed25ee4f5878}{inicializar\+\_\+cuenca}} ()
+\begin{DoxyCompactList}\small\item\em Inicializa el árbol, es decir, crea el conjunto de rios. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_cjt__rios_a313e6d9be5b01a9b8cabc58f323b1420}{existe\+\_\+ciudad}} (const string \&ident\+\_\+ciudad) const
+\begin{DoxyCompactList}\small\item\em Dice si el identificador de ciudad que hemos leido esta asociado a alguna ciudad de la cuenca. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_cjt__rios_a5f7847b7788922f58bb896dd424756a3}{leer\+\_\+inventario}} (const string \&ident\+\_\+ciudad, const \mbox{\hyperlink{class_cjt__productos}{Cjt\+\_\+productos}} \&\mbox{\hyperlink{class_cjt__productos}{Cjt\+\_\+productos}})
+\begin{DoxyCompactList}\small\item\em Imprime el inventario de una ciudad. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_cjt__rios_a0bab76f85263a9a9bc5d7cb37e522a02}{leer\+\_\+inventarios}} (const \mbox{\hyperlink{class_cjt__productos}{Cjt\+\_\+productos}} \&\mbox{\hyperlink{class_cjt__productos}{Cjt\+\_\+productos}})
+\begin{DoxyCompactList}\small\item\em Imprime los inventarios de las ciudades del rio. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_cjt__rios_a386f66298d0ace252a03372a40549a78}{escribir\+\_\+ciudad}} (const string \&ident\+\_\+ciudad)
+\begin{DoxyCompactList}\small\item\em Imprime el inventario de la ciudad junto con el peso y el volumen de todos los productos almacenados. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_cjt__rios_adff5d759560b7054601254bf4c086e18}{existe\+\_\+prod\+\_\+ciudad}} (const string \&ident\+\_\+ciudad, const int \&ident\+\_\+prod) const
+\begin{DoxyCompactList}\small\item\em Indica si el producto que ha leido esta en la ciudad indicada. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_cjt__rios_ae4e7db15bf806bb170e596da9d60b9ed}{consultar}} (const string \&ident\+\_\+ciudad, const int \&ident\+\_\+prod, const \mbox{\hyperlink{class_cjt__productos}{Cjt\+\_\+productos}} \&\mbox{\hyperlink{class_cjt__productos}{Cjt\+\_\+productos}}) const
+\begin{DoxyCompactList}\small\item\em Busca en la ciudad un determinado producto y miramos la informacion que tenemos sobre el. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_cjt__rios_abb09456062e64dec9beff02708bc76df}{inv\+\_\+ciu\+\_\+vacio}} (const string \&ident\+\_\+ciudad) const
+\begin{DoxyCompactList}\small\item\em Busca en la ciudad un determinado producto y miramos la informacion que tenemos sobre el. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_cjt__rios_a13b2e9003f294b5dd922dd55c720c3b1}{modificar\+\_\+prod}} (const string \&ident\+\_\+ciudad, const int \&ident\+\_\+prod, int \&uni\+\_\+tiene, int \&uni\+\_\+quiere, const \mbox{\hyperlink{class_cjt__productos}{Cjt\+\_\+productos}} \&\mbox{\hyperlink{class_cjt__productos}{Cjt\+\_\+productos}})
+\begin{DoxyCompactList}\small\item\em Busca una ciudad y cambia las unidades que tiene y que quiere del producto requerido. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_cjt__rios_a45fb09ae3045966679eb244c04bbb471}{poner\+\_\+prod}} (const string \&ident\+\_\+ciudad, const int \&ident\+\_\+prod, const int \&uni\+\_\+tiene, const int \&uni\+\_\+quiere, const \mbox{\hyperlink{class_cjt__productos}{Cjt\+\_\+productos}} \&\mbox{\hyperlink{class_cjt__productos}{Cjt\+\_\+productos}})
+\begin{DoxyCompactList}\small\item\em Va a la ciudad indicada y añade el producto que lee, junto con las unidades que tendra esta ciudad y las que necesita. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_cjt__rios_a6f2129aa2d061b23593fb1d2a5167c73}{quitar\+\_\+prod}} (const string \&ident\+\_\+ciudad, const int \&ident\+\_\+prod, const \mbox{\hyperlink{class_cjt__productos}{Cjt\+\_\+productos}} \&\mbox{\hyperlink{class_cjt__productos}{Cjt\+\_\+productos}})
+\begin{DoxyCompactList}\small\item\em Va a la ciudad indicada y elimina todos los datos que tiene del producto que acaba de leer. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_cjt__rios_a3e86735a4571c69095047f46cd361869}{comerciar}} (const string \&ident\+\_\+ciudad\+\_\+1, const string \&ident\+\_\+ciudad\+\_\+2, const \mbox{\hyperlink{class_cjt__productos}{Cjt\+\_\+productos}} \&\mbox{\hyperlink{class_cjt__productos}{Cjt\+\_\+productos}})
+\begin{DoxyCompactList}\small\item\em Intercambia productos entre las dos ciudades que recibe. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_cjt__rios_a752cfc9c4a80944c182f17acba51fda5}{redistribuir}} (const \mbox{\hyperlink{class_cjt__productos}{Cjt\+\_\+productos}} \&\mbox{\hyperlink{class_cjt__productos}{Cjt\+\_\+productos}})
+\begin{DoxyCompactList}\small\item\em Intercambia productos entre las ciudades de la cuenca, siempre y cuando no tengan un invetario vacio. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_cjt__rios_a8dcb63271c4d627417430e93b5ceeb81}{hacer\+\_\+viaje}} (\mbox{\hyperlink{class_barco}{Barco}} \&b, const \mbox{\hyperlink{class_cjt__productos}{Cjt\+\_\+productos}} \&\mbox{\hyperlink{class_cjt__productos}{Cjt\+\_\+productos}})
+\begin{DoxyCompactList}\small\item\em El barco viaja a traves del rio, calculando la ruta por donde puede intercambiar el maximo productos. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_cjt__rios_acf16927f8d4a562057c75a9edc9ea0e6}{viajar\+\_\+ruta}} (vector$<$ string $>$ \&mejor\+\_\+ruta, \mbox{\hyperlink{class_barco}{Barco}} \&b, \mbox{\hyperlink{class_cjt__productos}{Cjt\+\_\+productos}} \mbox{\hyperlink{class_cjt__productos}{Cjt\+\_\+productos}})
+\begin{DoxyCompactList}\small\item\em Viaja a traves de la ruta calculada. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Métodos privados}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_cjt__rios_a1e7ee57ac88bea763f74921f7ec8b870}{redistribuir\+\_\+rec}} (const Bin\+Tree$<$ string $>$ \&a, const \mbox{\hyperlink{class_cjt__productos}{Cjt\+\_\+productos}} \&\mbox{\hyperlink{class_cjt__productos}{Cjt\+\_\+productos}})
+\begin{DoxyCompactList}\small\item\em Inicializa el árbol, es decir, crea el conjunto de rios. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_cjt__rios_a7d3cf0ac9fe048c59d535538873555ca}{calcular\+\_\+ruta\+\_\+rec}} (vector$<$ string $>$ \&mejor\+\_\+ruta, \mbox{\hyperlink{class_barco}{Barco}} \&b, int ya\+\_\+comprado, int ya\+\_\+vendido, const Bin\+Tree$<$ string $>$ \&a)
+\begin{DoxyCompactList}\small\item\em Inicializa el árbol, es decir, crea el conjunto de rios. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_cjt__rios_abce7cad32d03aa82a11d132ce670c6bc}{ini\+\_\+cuenca}} (Bin\+Tree$<$ string $>$ \&a)
+\begin{DoxyCompactList}\small\item\em Inicializa el árbol, es decir, crea el conjunto de rios. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Atributos privados}
+\begin{DoxyCompactItemize}
+\item 
+Bin\+Tree$<$ string $>$ \mbox{\hyperlink{class_cjt__rios_a24c0316caa26d9e6ff0839277267de54}{arbol}}
+\begin{DoxyCompactList}\small\item\em Árbol que contiene todas las ciudades. ~\newline
+ \end{DoxyCompactList}\item 
+map$<$ string, \mbox{\hyperlink{class_ciudad}{Ciudad}} $>$ \mbox{\hyperlink{class_cjt__rios_a06fed09470daa606a9ca070854071302}{ciudades}}
+\begin{DoxyCompactList}\small\item\em Mapa que relaciona el identificador de cada ciudad con su informacion correspondiente. ~\newline
+ \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descripción detallada}
+El conjunto de rios que forma la cuenca fluvial. 
+
+Está definido por un árbol que contiene todas las ciudades, un mapa donde se relaciona cada identificador de ciudad con su correspondiente información y el número de productos diferentes, junto con sus caracteristicas. 
+
+Definición en la línea 29 del archivo Cjt\+\_\+rios.\+hh.
+
+
+
+\doxysubsection{Documentación del constructor y destructor}
+\mbox{\Hypertarget{class_cjt__rios_a5fe382b08d5ae3d9e42fd515bca7e1d0}\label{class_cjt__rios_a5fe382b08d5ae3d9e42fd515bca7e1d0}} 
+\index{Cjt\_rios@{Cjt\_rios}!Cjt\_rios@{Cjt\_rios}}
+\index{Cjt\_rios@{Cjt\_rios}!Cjt\_rios@{Cjt\_rios}}
+\doxysubsubsection{\texorpdfstring{Cjt\_rios()}{Cjt\_rios()}}
+{\footnotesize\ttfamily Cjt\+\_\+rios\+::\+Cjt\+\_\+rios (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Creador por defecto. 
+
+\begin{DoxyPrecond}{Precondición}
+{\itshape Cierto}. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+El conjunto de rios. ~\newline
+ 
+\end{DoxyPostcond}
+
+
+Definición en la línea 14 del archivo Cjt\+\_\+rios.\+cc.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{14 \{\}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Documentación de las funciones miembro}
+\mbox{\Hypertarget{class_cjt__rios_a1e7ee57ac88bea763f74921f7ec8b870}\label{class_cjt__rios_a1e7ee57ac88bea763f74921f7ec8b870}} 
+\index{Cjt\_rios@{Cjt\_rios}!redistribuir\_rec@{redistribuir\_rec}}
+\index{redistribuir\_rec@{redistribuir\_rec}!Cjt\_rios@{Cjt\_rios}}
+\doxysubsubsection{\texorpdfstring{redistribuir\_rec()}{redistribuir\_rec()}}
+{\footnotesize\ttfamily void Cjt\+\_\+rios\+::redistribuir\+\_\+rec (\begin{DoxyParamCaption}\item[{const Bin\+Tree$<$ string $>$ \&}]{a,  }\item[{const \mbox{\hyperlink{class_cjt__productos}{Cjt\+\_\+productos}} \&}]{Cjt\+\_\+productos }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Inicializa el árbol, es decir, crea el conjunto de rios. 
+
+\begin{DoxyPrecond}{Precondición}
+Cierto. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+-\/Si el árbol está vacio, se devuelve un -\/1. -\/Registramos un árbol no vacío. 
+\end{DoxyPostcond}
+
+
+Definición en la línea 156 del archivo Cjt\+\_\+rios.\+cc.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{156                                                                                                \{}
+\DoxyCodeLine{157         \textcolor{keywordflow}{if}(not a.empty() and not a.left().empty())\{}
+\DoxyCodeLine{158             \textcolor{keywordtype}{string} ciudad\_ahora = a.value();}
+\DoxyCodeLine{159             \textcolor{keywordtype}{string} ciudad\_izquierda = a.left().value();}
+\DoxyCodeLine{160             \textcolor{keywordtype}{string} ciudad\_derecha = a.right().value();}
+\DoxyCodeLine{161 }
+\DoxyCodeLine{162             \mbox{\hyperlink{class_cjt__rios_a3e86735a4571c69095047f46cd361869}{comerciar}}(ciudad\_ahora, ciudad\_izquierda,\mbox{\hyperlink{class_cjt__productos}{Cjt\_productos}});}
+\DoxyCodeLine{163             \mbox{\hyperlink{class_cjt__rios_a1e7ee57ac88bea763f74921f7ec8b870}{redistribuir\_rec}}(a.left(), \mbox{\hyperlink{class_cjt__productos}{Cjt\_productos}});}
+\DoxyCodeLine{164 }
+\DoxyCodeLine{165             \mbox{\hyperlink{class_cjt__rios_a3e86735a4571c69095047f46cd361869}{comerciar}}(ciudad\_ahora, ciudad\_derecha,\mbox{\hyperlink{class_cjt__productos}{Cjt\_productos}});}
+\DoxyCodeLine{166             \mbox{\hyperlink{class_cjt__rios_a1e7ee57ac88bea763f74921f7ec8b870}{redistribuir\_rec}}(a.right(), \mbox{\hyperlink{class_cjt__productos}{Cjt\_productos}});}
+\DoxyCodeLine{167         \}}
+\DoxyCodeLine{168     \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_cjt__rios_a7d3cf0ac9fe048c59d535538873555ca}\label{class_cjt__rios_a7d3cf0ac9fe048c59d535538873555ca}} 
+\index{Cjt\_rios@{Cjt\_rios}!calcular\_ruta\_rec@{calcular\_ruta\_rec}}
+\index{calcular\_ruta\_rec@{calcular\_ruta\_rec}!Cjt\_rios@{Cjt\_rios}}
+\doxysubsubsection{\texorpdfstring{calcular\_ruta\_rec()}{calcular\_ruta\_rec()}}
+{\footnotesize\ttfamily int Cjt\+\_\+rios\+::calcular\+\_\+ruta\+\_\+rec (\begin{DoxyParamCaption}\item[{vector$<$ string $>$ \&}]{mejor\+\_\+ruta,  }\item[{\mbox{\hyperlink{class_barco}{Barco}} \&}]{b,  }\item[{int}]{ya\+\_\+comprado,  }\item[{int}]{ya\+\_\+vendido,  }\item[{const Bin\+Tree$<$ string $>$ \&}]{a }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Inicializa el árbol, es decir, crea el conjunto de rios. 
+
+\begin{DoxyPrecond}{Precondición}
+Cierto. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+-\/Si el árbol está vacio, se devuelve un -\/1. -\/Registramos un árbol no vacío. 
+\end{DoxyPostcond}
+
+
+Definición en la línea 182 del archivo Cjt\+\_\+rios.\+cc.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{182                                                                                                                                    \{}
+\DoxyCodeLine{183         \textcolor{comment}{//ya\_comprado es lo que mis ascendientes ya han comprado}}
+\DoxyCodeLine{184         \textcolor{comment}{//ya\_vendido es lo que mis ascendientes ya han vendido}}
+\DoxyCodeLine{185         \textcolor{comment}{// return tiene q ser lo que yo y mis hijos hemos comprado + lo que hemos vendido}}
+\DoxyCodeLine{186         \textcolor{keywordtype}{int} max\_compra = b.\mbox{\hyperlink{class_barco_aa2f67c1454e309e9a08f92c9863153da}{consultar\_cantidad\_compra}}();}
+\DoxyCodeLine{187         \textcolor{keywordtype}{int} max\_venta = b.\mbox{\hyperlink{class_barco_a5e65e2b8162578ee7ecd75a72c176024}{consultar\_cantidad\_venta}}();}
+\DoxyCodeLine{188         \textcolor{keywordflow}{if}(not a.empty() and (ya\_comprado < max\_compra or ya\_vendido < max\_venta))\{}
+\DoxyCodeLine{189             \textcolor{comment}{//interaccion con la ciudad, a.value(), -\/-\/> c, v a la ciudad (teniendo en cuenta el maximo del barco)}}
+\DoxyCodeLine{190             map<string,Ciudad>::iterator it =  \mbox{\hyperlink{class_cjt__rios_a06fed09470daa606a9ca070854071302}{ciudades}}.find(a.value());}
+\DoxyCodeLine{191             \textcolor{keywordtype}{int} comprado\_aqui = it-\/>second.barco\_puede\_comprar(b.\mbox{\hyperlink{class_barco_af505b31afaf56b00149a7c1191f6491d}{consultar\_id\_prod\_comp}}(), (max\_compra-\/ya\_comprado));}
+\DoxyCodeLine{192             ya\_comprado += comprado\_aqui;}
+\DoxyCodeLine{193             \textcolor{keywordtype}{int} vendido\_aqui = it-\/>second.barco\_puede\_vender(b.\mbox{\hyperlink{class_barco_a7503955cd88bf36125b10ffb09b27f86}{consultar\_id\_prod\_vend}}(), (max\_venta-\/ya\_vendido));}
+\DoxyCodeLine{194             ya\_vendido += vendido\_aqui;}
+\DoxyCodeLine{195             vector<string> ruta1, ruta2;}
+\DoxyCodeLine{196             \textcolor{keywordtype}{int} total1 = \mbox{\hyperlink{class_cjt__rios_a7d3cf0ac9fe048c59d535538873555ca}{calcular\_ruta\_rec}}(ruta1,b,ya\_comprado,ya\_vendido,a.left());}
+\DoxyCodeLine{197             \textcolor{keywordtype}{int} total2 = \mbox{\hyperlink{class_cjt__rios_a7d3cf0ac9fe048c59d535538873555ca}{calcular\_ruta\_rec}}(ruta2,b,ya\_comprado,ya\_vendido,a.right());}
+\DoxyCodeLine{198             \textcolor{comment}{//comparaciones de las dos rutas 1 y 2}}
+\DoxyCodeLine{199             \textcolor{keywordflow}{if} (total1 > total2 or (total1 == total2 and ruta1.size() <= ruta2.size())) \{}
+\DoxyCodeLine{200                 mejor\_ruta = ruta1;}
+\DoxyCodeLine{201                 \textcolor{keywordtype}{int} total = total1 + comprado\_aqui + vendido\_aqui;}
+\DoxyCodeLine{202                 \textcolor{keywordflow}{if}(total > 0) mejor\_ruta.insert(mejor\_ruta.begin(), a.value());}
+\DoxyCodeLine{203                 \textcolor{keywordflow}{return} total;}
+\DoxyCodeLine{204             \} }
+\DoxyCodeLine{205             \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{206                 mejor\_ruta = ruta2;}
+\DoxyCodeLine{207                 \textcolor{keywordtype}{int} total = total2 + comprado\_aqui + vendido\_aqui;}
+\DoxyCodeLine{208                 \textcolor{keywordflow}{if}(total > 0) mejor\_ruta.insert(mejor\_ruta.begin(), a.value());}
+\DoxyCodeLine{209                 \textcolor{keywordflow}{return} total;}
+\DoxyCodeLine{210             \}}
+\DoxyCodeLine{211         \}}
+\DoxyCodeLine{212         \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{213     \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_cjt__rios_abce7cad32d03aa82a11d132ce670c6bc}\label{class_cjt__rios_abce7cad32d03aa82a11d132ce670c6bc}} 
+\index{Cjt\_rios@{Cjt\_rios}!ini\_cuenca@{ini\_cuenca}}
+\index{ini\_cuenca@{ini\_cuenca}!Cjt\_rios@{Cjt\_rios}}
+\doxysubsubsection{\texorpdfstring{ini\_cuenca()}{ini\_cuenca()}}
+{\footnotesize\ttfamily void Cjt\+\_\+rios\+::ini\+\_\+cuenca (\begin{DoxyParamCaption}\item[{Bin\+Tree$<$ string $>$ \&}]{a }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Inicializa el árbol, es decir, crea el conjunto de rios. 
+
+\begin{DoxyPrecond}{Precondición}
+{\itshape Cierto}. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+Registramos un árbol no vacío, que sera la estructura de la cuenca. 
+\end{DoxyPostcond}
+
+
+Definición en la línea 21 del archivo Cjt\+\_\+rios.\+cc.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{21                                                 \{}
+\DoxyCodeLine{22         \textcolor{keywordtype}{string} x;}
+\DoxyCodeLine{23         cin >> x;}
+\DoxyCodeLine{24         \textcolor{keywordflow}{if} (x != \textcolor{stringliteral}{"{}\#"{}}) \{}
+\DoxyCodeLine{25             \mbox{\hyperlink{class_ciudad}{Ciudad}} c;}
+\DoxyCodeLine{26             \mbox{\hyperlink{class_cjt__rios_a06fed09470daa606a9ca070854071302}{ciudades}}.insert(make\_pair(x, c));}
+\DoxyCodeLine{27             }
+\DoxyCodeLine{28             BinTree<string> left, right;}
+\DoxyCodeLine{29             \mbox{\hyperlink{class_cjt__rios_abce7cad32d03aa82a11d132ce670c6bc}{ini\_cuenca}}(left);}
+\DoxyCodeLine{30             \mbox{\hyperlink{class_cjt__rios_abce7cad32d03aa82a11d132ce670c6bc}{ini\_cuenca}}(right);    }
+\DoxyCodeLine{31             a = BinTree<string>(x, left, right);}
+\DoxyCodeLine{32             }
+\DoxyCodeLine{33         \}}
+\DoxyCodeLine{34     \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_cjt__rios_a4d5b8e53e1ff674988f0ed25ee4f5878}\label{class_cjt__rios_a4d5b8e53e1ff674988f0ed25ee4f5878}} 
+\index{Cjt\_rios@{Cjt\_rios}!inicializar\_cuenca@{inicializar\_cuenca}}
+\index{inicializar\_cuenca@{inicializar\_cuenca}!Cjt\_rios@{Cjt\_rios}}
+\doxysubsubsection{\texorpdfstring{inicializar\_cuenca()}{inicializar\_cuenca()}}
+{\footnotesize\ttfamily void Cjt\+\_\+rios\+::inicializar\+\_\+cuenca (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Inicializa el árbol, es decir, crea el conjunto de rios. 
+
+\begin{DoxyPrecond}{Precondición}
+{\itshape Cierto}. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+-\/Si el árbol está vacio, se devuelve un -\/1. -\/Registramos un árbol no vacío. 
+\end{DoxyPostcond}
+
+
+Definición en la línea 16 del archivo Cjt\+\_\+rios.\+cc.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{16                                       \{}
+\DoxyCodeLine{17         \mbox{\hyperlink{class_cjt__rios_a06fed09470daa606a9ca070854071302}{ciudades}}.clear();}
+\DoxyCodeLine{18         \mbox{\hyperlink{class_cjt__rios_abce7cad32d03aa82a11d132ce670c6bc}{ini\_cuenca}}(\mbox{\hyperlink{class_cjt__rios_a24c0316caa26d9e6ff0839277267de54}{arbol}});}
+\DoxyCodeLine{19     \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_cjt__rios_a313e6d9be5b01a9b8cabc58f323b1420}\label{class_cjt__rios_a313e6d9be5b01a9b8cabc58f323b1420}} 
+\index{Cjt\_rios@{Cjt\_rios}!existe\_ciudad@{existe\_ciudad}}
+\index{existe\_ciudad@{existe\_ciudad}!Cjt\_rios@{Cjt\_rios}}
+\doxysubsubsection{\texorpdfstring{existe\_ciudad()}{existe\_ciudad()}}
+{\footnotesize\ttfamily bool Cjt\+\_\+rios\+::existe\+\_\+ciudad (\begin{DoxyParamCaption}\item[{const string \&}]{ident\+\_\+ciudad }\end{DoxyParamCaption}) const}
+
+
+
+Dice si el identificador de ciudad que hemos leido esta asociado a alguna ciudad de la cuenca. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em ident\+\_\+ciudad} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondición}
+Todos los parametros están inicializados. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+Devuelve si la ciudad existe o no. 
+\end{DoxyPostcond}
+
+
+Definición en la línea 38 del archivo Cjt\+\_\+rios.\+cc.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{38                                                                 \{}
+\DoxyCodeLine{39         \mbox{\hyperlink{_cjt__rios_8cc_aaa0e769dc76249a1175faec9600b8701}{fijo}} it = \mbox{\hyperlink{class_cjt__rios_a06fed09470daa606a9ca070854071302}{ciudades}}.find(ident\_ciudad);}
+\DoxyCodeLine{40         \textcolor{keywordflow}{if} (it != \mbox{\hyperlink{class_cjt__rios_a06fed09470daa606a9ca070854071302}{ciudades}}.end()) \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{41         \textcolor{keywordflow}{else} \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{42     \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_cjt__rios_a5f7847b7788922f58bb896dd424756a3}\label{class_cjt__rios_a5f7847b7788922f58bb896dd424756a3}} 
+\index{Cjt\_rios@{Cjt\_rios}!leer\_inventario@{leer\_inventario}}
+\index{leer\_inventario@{leer\_inventario}!Cjt\_rios@{Cjt\_rios}}
+\doxysubsubsection{\texorpdfstring{leer\_inventario()}{leer\_inventario()}}
+{\footnotesize\ttfamily int Cjt\+\_\+rios\+::leer\+\_\+inventario (\begin{DoxyParamCaption}\item[{const string \&}]{ident\+\_\+ciudad,  }\item[{const \mbox{\hyperlink{class_cjt__productos}{Cjt\+\_\+productos}} \&}]{Cjt\+\_\+productos }\end{DoxyParamCaption})}
+
+
+
+Imprime el inventario de una ciudad. 
+
+\begin{DoxyWarning}{Atención}
+Salta un error en caso de que la ciudad no exista. 
+\end{DoxyWarning}
+
+\begin{DoxyParams}{Parámetros}
+{\em ident\+\_\+ciudad,\mbox{\hyperlink{class_cjt__productos}{Cjt\+\_\+productos}}} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondición}
+Todos los parametros están inicializados. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+La funcion nos escribe todos los productos que hay en la dicha ciudad, junto con la cantidad que tienen y necesitan de cada uno de sus productos. 
+\end{DoxyPostcond}
+
+
+Definición en la línea 44 del archivo Cjt\+\_\+rios.\+cc.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{44                                                                                                \{}
+\DoxyCodeLine{45         \textcolor{keywordflow}{if} (not \mbox{\hyperlink{class_cjt__rios_a313e6d9be5b01a9b8cabc58f323b1420}{existe\_ciudad}}(ident\_ciudad)) \textcolor{keywordflow}{return} 23;}
+\DoxyCodeLine{46             \textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{47                 \mbox{\hyperlink{_cjt__rios_8cc_a481fc232f7949b1a67763e91e3534f3a}{no\_fijo}} itc = \mbox{\hyperlink{class_cjt__rios_a06fed09470daa606a9ca070854071302}{ciudades}}.find(ident\_ciudad);}
+\DoxyCodeLine{48                 itc-\/>second.eliminar\_inventario();}
+\DoxyCodeLine{49                 \textcolor{keywordtype}{int} num;}
+\DoxyCodeLine{50                 cin >> num;}
+\DoxyCodeLine{51                 \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 1; i <= num; ++i) \{}
+\DoxyCodeLine{52                     \textcolor{keywordtype}{int} ident\_prod, uni\_tiene, uni\_quiere;}
+\DoxyCodeLine{53                     cin >> ident\_prod >> uni\_tiene >> uni\_quiere;}
+\DoxyCodeLine{54                     \textcolor{keywordtype}{bool} leer = \textcolor{keyword}{true};}
+\DoxyCodeLine{55                     itc-\/>second.poner\_prod(ident\_prod, uni\_tiene, uni\_quiere, \mbox{\hyperlink{class_cjt__productos}{Cjt\_productos}}, leer);}
+\DoxyCodeLine{56                 \}}
+\DoxyCodeLine{57                 \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{58             \}}
+\DoxyCodeLine{59     \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_cjt__rios_a0bab76f85263a9a9bc5d7cb37e522a02}\label{class_cjt__rios_a0bab76f85263a9a9bc5d7cb37e522a02}} 
+\index{Cjt\_rios@{Cjt\_rios}!leer\_inventarios@{leer\_inventarios}}
+\index{leer\_inventarios@{leer\_inventarios}!Cjt\_rios@{Cjt\_rios}}
+\doxysubsubsection{\texorpdfstring{leer\_inventarios()}{leer\_inventarios()}}
+{\footnotesize\ttfamily void Cjt\+\_\+rios\+::leer\+\_\+inventarios (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_cjt__productos}{Cjt\+\_\+productos}} \&}]{Cjt\+\_\+productos }\end{DoxyParamCaption})}
+
+
+
+Imprime los inventarios de las ciudades del rio. 
+
+\begin{DoxyWarning}{Atención}
+Salta un error en caso de que alguna de las ciudades no exista. 
+\end{DoxyWarning}
+
+\begin{DoxyParams}{Parámetros}
+{\em \mbox{\hyperlink{class_cjt__productos}{Cjt\+\_\+productos}}} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondición}
+Todos los parametros están inicializados. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+La funcion nos escribe todos los productos que hay en la dichas ciudades, junto con la cantidad que tienen y necesitan de cada uno de sus productos. 
+\end{DoxyPostcond}
+
+
+Definición en la línea 61 del archivo Cjt\+\_\+rios.\+cc.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{61                                                                      \{}
+\DoxyCodeLine{62         \textcolor{keywordtype}{string} ident\_ciudad;}
+\DoxyCodeLine{63         \textcolor{keywordflow}{while}(cin >> ident\_ciudad and ident\_ciudad != \textcolor{stringliteral}{"{}\#"{}})\{}
+\DoxyCodeLine{64             \mbox{\hyperlink{class_cjt__rios_a5f7847b7788922f58bb896dd424756a3}{leer\_inventario}}(ident\_ciudad, \mbox{\hyperlink{class_cjt__productos}{Cjt\_productos}});}
+\DoxyCodeLine{65         \}}
+\DoxyCodeLine{66     \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_cjt__rios_a386f66298d0ace252a03372a40549a78}\label{class_cjt__rios_a386f66298d0ace252a03372a40549a78}} 
+\index{Cjt\_rios@{Cjt\_rios}!escribir\_ciudad@{escribir\_ciudad}}
+\index{escribir\_ciudad@{escribir\_ciudad}!Cjt\_rios@{Cjt\_rios}}
+\doxysubsubsection{\texorpdfstring{escribir\_ciudad()}{escribir\_ciudad()}}
+{\footnotesize\ttfamily int Cjt\+\_\+rios\+::escribir\+\_\+ciudad (\begin{DoxyParamCaption}\item[{const string \&}]{ident\+\_\+ciudad }\end{DoxyParamCaption})}
+
+
+
+Imprime el inventario de la ciudad junto con el peso y el volumen de todos los productos almacenados. 
+
+\begin{DoxyWarning}{Atención}
+Salta un error en caso de que la ciudad no exista. 
+\end{DoxyWarning}
+
+\begin{DoxyParams}{Parámetros}
+{\em ident\+\_\+ciudad} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondición}
+Todos los parametros están inicializados. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+Devuelve todos los productos de la ciudad. Tambien el peso y el volumen total. 
+\end{DoxyPostcond}
+
+
+Definición en la línea 68 del archivo Cjt\+\_\+rios.\+cc.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{68                                                             \{}
+\DoxyCodeLine{69         \textcolor{keywordflow}{if}(not \mbox{\hyperlink{class_cjt__rios_a313e6d9be5b01a9b8cabc58f323b1420}{existe\_ciudad}}(ident\_ciudad)) \textcolor{keywordflow}{return} 23;}
+\DoxyCodeLine{70         \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{71             (\mbox{\hyperlink{class_cjt__rios_a06fed09470daa606a9ca070854071302}{ciudades}}.find(ident\_ciudad))-\/>second.escribir\_ciudad();}
+\DoxyCodeLine{72             \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{73         \} }
+\DoxyCodeLine{74     \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_cjt__rios_adff5d759560b7054601254bf4c086e18}\label{class_cjt__rios_adff5d759560b7054601254bf4c086e18}} 
+\index{Cjt\_rios@{Cjt\_rios}!existe\_prod\_ciudad@{existe\_prod\_ciudad}}
+\index{existe\_prod\_ciudad@{existe\_prod\_ciudad}!Cjt\_rios@{Cjt\_rios}}
+\doxysubsubsection{\texorpdfstring{existe\_prod\_ciudad()}{existe\_prod\_ciudad()}}
+{\footnotesize\ttfamily bool Cjt\+\_\+rios\+::existe\+\_\+prod\+\_\+ciudad (\begin{DoxyParamCaption}\item[{const string \&}]{ident\+\_\+ciudad,  }\item[{const int \&}]{ident\+\_\+prod }\end{DoxyParamCaption}) const}
+
+
+
+Indica si el producto que ha leido esta en la ciudad indicada. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em ident\+\_\+ciudad,ident\+\_\+prod} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondición}
+Todos los parametros están inicializados. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+Devuelve si existe dicho producto en la ciudad. 
+\end{DoxyPostcond}
+
+
+Definición en la línea 76 del archivo Cjt\+\_\+rios.\+cc.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{76                                                                                             \{}
+\DoxyCodeLine{77         \textcolor{keywordflow}{return} (\mbox{\hyperlink{class_cjt__rios_a06fed09470daa606a9ca070854071302}{ciudades}}.find(ident\_ciudad))-\/>second.existe\_prod(ident\_prod);}
+\DoxyCodeLine{78     \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_cjt__rios_ae4e7db15bf806bb170e596da9d60b9ed}\label{class_cjt__rios_ae4e7db15bf806bb170e596da9d60b9ed}} 
+\index{Cjt\_rios@{Cjt\_rios}!consultar@{consultar}}
+\index{consultar@{consultar}!Cjt\_rios@{Cjt\_rios}}
+\doxysubsubsection{\texorpdfstring{consultar()}{consultar()}}
+{\footnotesize\ttfamily int Cjt\+\_\+rios\+::consultar (\begin{DoxyParamCaption}\item[{const string \&}]{ident\+\_\+ciudad,  }\item[{const int \&}]{ident\+\_\+prod,  }\item[{const \mbox{\hyperlink{class_cjt__productos}{Cjt\+\_\+productos}} \&}]{Cjt\+\_\+productos }\end{DoxyParamCaption}) const}
+
+
+
+Busca en la ciudad un determinado producto y miramos la informacion que tenemos sobre el. 
+
+\begin{DoxyWarning}{Atención}
+Salta un error en caso de que el producto no exista, la ciudad no exista o el producto no exista en dicha ciudad. 
+\end{DoxyWarning}
+
+\begin{DoxyParams}{Parámetros}
+{\em ident\+\_\+ciudad,ident\+\_\+prod,\mbox{\hyperlink{class_cjt__productos}{Cjt\+\_\+productos}}} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondición}
+Todos los parametros están inicializados. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+Devuelve cuantas unidades tiene y necesita la ciudad de este producto. 
+\end{DoxyPostcond}
+
+
+Definición en la línea 80 del archivo Cjt\+\_\+rios.\+cc.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{80                                                                                                                       \{}
+\DoxyCodeLine{81         \textcolor{keywordflow}{if} (not \mbox{\hyperlink{class_cjt__productos}{Cjt\_productos}}.\mbox{\hyperlink{class_cjt__productos_ae5acda09c3c1a62b64f1d57fbd71b70f}{existe\_prod}}(ident\_prod)) \textcolor{keywordflow}{return} 21;}
+\DoxyCodeLine{82         \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{83             \textcolor{keywordflow}{if} (not \mbox{\hyperlink{class_cjt__rios_a313e6d9be5b01a9b8cabc58f323b1420}{existe\_ciudad}}(ident\_ciudad)) \textcolor{keywordflow}{return} 23;}
+\DoxyCodeLine{84             \textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{85                 \textcolor{keywordflow}{if} (not \mbox{\hyperlink{class_cjt__rios_adff5d759560b7054601254bf4c086e18}{existe\_prod\_ciudad}}(ident\_ciudad, ident\_prod)) \textcolor{keywordflow}{return} 20; }
+\DoxyCodeLine{86                 \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{87                     (\mbox{\hyperlink{class_cjt__rios_a06fed09470daa606a9ca070854071302}{ciudades}}.find(ident\_ciudad))-\/>second.consultar\_prod(ident\_prod);}
+\DoxyCodeLine{88                     \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{89                 \}   }
+\DoxyCodeLine{90             \}}
+\DoxyCodeLine{91         \}}
+\DoxyCodeLine{92     \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_cjt__rios_abb09456062e64dec9beff02708bc76df}\label{class_cjt__rios_abb09456062e64dec9beff02708bc76df}} 
+\index{Cjt\_rios@{Cjt\_rios}!inv\_ciu\_vacio@{inv\_ciu\_vacio}}
+\index{inv\_ciu\_vacio@{inv\_ciu\_vacio}!Cjt\_rios@{Cjt\_rios}}
+\doxysubsubsection{\texorpdfstring{inv\_ciu\_vacio()}{inv\_ciu\_vacio()}}
+{\footnotesize\ttfamily bool Cjt\+\_\+rios\+::inv\+\_\+ciu\+\_\+vacio (\begin{DoxyParamCaption}\item[{const string \&}]{ident\+\_\+ciudad }\end{DoxyParamCaption}) const}
+
+
+
+Busca en la ciudad un determinado producto y miramos la informacion que tenemos sobre el. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em ident\+\_\+ciudad} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondición}
+Todos los parametros están inicializados. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+Devuelve cuantas unidades tiene y necesita la ciudad. 
+\end{DoxyPostcond}
+
+
+Definición en la línea 93 del archivo Cjt\+\_\+rios.\+cc.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{93                                                                 \{}
+\DoxyCodeLine{94         \textcolor{keywordflow}{return} (\mbox{\hyperlink{class_cjt__rios_a06fed09470daa606a9ca070854071302}{ciudades}}.find(ident\_ciudad))-\/>second.inv\_ciu\_vacio();}
+\DoxyCodeLine{95     \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_cjt__rios_a13b2e9003f294b5dd922dd55c720c3b1}\label{class_cjt__rios_a13b2e9003f294b5dd922dd55c720c3b1}} 
+\index{Cjt\_rios@{Cjt\_rios}!modificar\_prod@{modificar\_prod}}
+\index{modificar\_prod@{modificar\_prod}!Cjt\_rios@{Cjt\_rios}}
+\doxysubsubsection{\texorpdfstring{modificar\_prod()}{modificar\_prod()}}
+{\footnotesize\ttfamily int Cjt\+\_\+rios\+::modificar\+\_\+prod (\begin{DoxyParamCaption}\item[{const string \&}]{ident\+\_\+ciudad,  }\item[{const int \&}]{ident\+\_\+prod,  }\item[{int \&}]{uni\+\_\+tiene,  }\item[{int \&}]{uni\+\_\+quiere,  }\item[{const \mbox{\hyperlink{class_cjt__productos}{Cjt\+\_\+productos}} \&}]{Cjt\+\_\+productos }\end{DoxyParamCaption})}
+
+
+
+Busca una ciudad y cambia las unidades que tiene y que quiere del producto requerido. 
+
+\begin{DoxyWarning}{Atención}
+Salta un error en caso de que el producto no exista, la ciudad no exista o el producto no exista en dicha ciudad. 
+\end{DoxyWarning}
+
+\begin{DoxyParams}{Parámetros}
+{\em ident\+\_\+ciudad,ident\+\_\+prod,uni\+\_\+tiene,uni\+\_\+quiere,\mbox{\hyperlink{class_cjt__productos}{Cjt\+\_\+productos}}} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondición}
+Todos los parametros están inicializados. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+Devuelve el peso y volumen total de la ciudad una vez cambiada, debido al posible cambio de las unidades que tiene la ciudad. 
+\end{DoxyPostcond}
+
+
+Definición en la línea 99 del archivo Cjt\+\_\+rios.\+cc.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{99                                                                                                                                                       \{}
+\DoxyCodeLine{100         \textcolor{keywordflow}{if} (not \mbox{\hyperlink{class_cjt__productos}{Cjt\_productos}}.\mbox{\hyperlink{class_cjt__productos_ae5acda09c3c1a62b64f1d57fbd71b70f}{existe\_prod}}(ident\_prod)) \textcolor{keywordflow}{return} 21;}
+\DoxyCodeLine{101         \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{102             \textcolor{keywordflow}{if} (not \mbox{\hyperlink{class_cjt__rios_a313e6d9be5b01a9b8cabc58f323b1420}{existe\_ciudad}}(ident\_ciudad)) \textcolor{keywordflow}{return} 23;}
+\DoxyCodeLine{103             \textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{104                 \textcolor{keywordflow}{if} (not \mbox{\hyperlink{class_cjt__rios_adff5d759560b7054601254bf4c086e18}{existe\_prod\_ciudad}}(ident\_ciudad, ident\_prod)) \textcolor{keywordflow}{return} 20; }
+\DoxyCodeLine{105                 \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{106                     (\mbox{\hyperlink{class_cjt__rios_a06fed09470daa606a9ca070854071302}{ciudades}}.find(ident\_ciudad))-\/>second.modificar\_prod(ident\_prod, uni\_tiene, uni\_quiere, \mbox{\hyperlink{class_cjt__productos}{Cjt\_productos}});}
+\DoxyCodeLine{107                     \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{108                 \}}
+\DoxyCodeLine{109             \}}
+\DoxyCodeLine{110         \}}
+\DoxyCodeLine{111     \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_cjt__rios_a45fb09ae3045966679eb244c04bbb471}\label{class_cjt__rios_a45fb09ae3045966679eb244c04bbb471}} 
+\index{Cjt\_rios@{Cjt\_rios}!poner\_prod@{poner\_prod}}
+\index{poner\_prod@{poner\_prod}!Cjt\_rios@{Cjt\_rios}}
+\doxysubsubsection{\texorpdfstring{poner\_prod()}{poner\_prod()}}
+{\footnotesize\ttfamily int Cjt\+\_\+rios\+::poner\+\_\+prod (\begin{DoxyParamCaption}\item[{const string \&}]{ident\+\_\+ciudad,  }\item[{const int \&}]{ident\+\_\+prod,  }\item[{const int \&}]{uni\+\_\+tiene,  }\item[{const int \&}]{uni\+\_\+quiere,  }\item[{const \mbox{\hyperlink{class_cjt__productos}{Cjt\+\_\+productos}} \&}]{Cjt\+\_\+productos }\end{DoxyParamCaption})}
+
+
+
+Va a la ciudad indicada y añade el producto que lee, junto con las unidades que tendra esta ciudad y las que necesita. 
+
+\begin{DoxyWarning}{Atención}
+Salta un error en caso de que el producto no exista, la ciudad no exista o en caso de que el producto ya exista en dicha ciudad. 
+\end{DoxyWarning}
+
+\begin{DoxyParams}{Parámetros}
+{\em ident\+\_\+ciudad,ident\+\_\+prod,uni\+\_\+tiene,uni\+\_\+quiere,\mbox{\hyperlink{class_cjt__productos}{Cjt\+\_\+productos}}} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondición}
+Todos los parametros están inicializados. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+Devuelve el peso y volumen total de la ciudad una vez cambiada, debido al posible cambio de las unidades que tiene la ciudad. 
+\end{DoxyPostcond}
+
+
+Definición en la línea 113 del archivo Cjt\+\_\+rios.\+cc.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{113                                                                                                                                                                \{}
+\DoxyCodeLine{114         \textcolor{keywordflow}{if} (not \mbox{\hyperlink{class_cjt__productos}{Cjt\_productos}}.\mbox{\hyperlink{class_cjt__productos_ae5acda09c3c1a62b64f1d57fbd71b70f}{existe\_prod}}(ident\_prod)) \textcolor{keywordflow}{return} 21;}
+\DoxyCodeLine{115         \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{116              \textcolor{keywordflow}{if} (not \mbox{\hyperlink{class_cjt__rios_a313e6d9be5b01a9b8cabc58f323b1420}{existe\_ciudad}}(ident\_ciudad)) \textcolor{keywordflow}{return} 23;}
+\DoxyCodeLine{117                 \textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{118                     \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_cjt__rios_adff5d759560b7054601254bf4c086e18}{existe\_prod\_ciudad}}(ident\_ciudad, ident\_prod)) \textcolor{keywordflow}{return} 18;}
+\DoxyCodeLine{119                     \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{120                         \textcolor{keywordtype}{bool} leer = \textcolor{keyword}{false};}
+\DoxyCodeLine{121                         (\mbox{\hyperlink{class_cjt__rios_a06fed09470daa606a9ca070854071302}{ciudades}}.find(ident\_ciudad))-\/>second.poner\_prod(ident\_prod, uni\_tiene, uni\_quiere, \mbox{\hyperlink{class_cjt__productos}{Cjt\_productos}}, leer);}
+\DoxyCodeLine{122                         \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{123                     \}}
+\DoxyCodeLine{124             \}}
+\DoxyCodeLine{125         \}}
+\DoxyCodeLine{126     \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_cjt__rios_a6f2129aa2d061b23593fb1d2a5167c73}\label{class_cjt__rios_a6f2129aa2d061b23593fb1d2a5167c73}} 
+\index{Cjt\_rios@{Cjt\_rios}!quitar\_prod@{quitar\_prod}}
+\index{quitar\_prod@{quitar\_prod}!Cjt\_rios@{Cjt\_rios}}
+\doxysubsubsection{\texorpdfstring{quitar\_prod()}{quitar\_prod()}}
+{\footnotesize\ttfamily int Cjt\+\_\+rios\+::quitar\+\_\+prod (\begin{DoxyParamCaption}\item[{const string \&}]{ident\+\_\+ciudad,  }\item[{const int \&}]{ident\+\_\+prod,  }\item[{const \mbox{\hyperlink{class_cjt__productos}{Cjt\+\_\+productos}} \&}]{Cjt\+\_\+productos }\end{DoxyParamCaption})}
+
+
+
+Va a la ciudad indicada y elimina todos los datos que tiene del producto que acaba de leer. 
+
+\begin{DoxyWarning}{Atención}
+Salta un error en caso de que el producto no exista, la ciudad no exista o el producto no exista en dicha ciudad. 
+\end{DoxyWarning}
+
+\begin{DoxyParams}{Parámetros}
+{\em ident\+\_\+ciudad,ident\+\_\+prod,\mbox{\hyperlink{class_cjt__productos}{Cjt\+\_\+productos}}} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondición}
+Todos los parametros están inicializados. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+Devuelve el peso y volumen total de la ciudad una vez cambiada, debido al posible cambio de las unidades que tiene la ciudad. 
+\end{DoxyPostcond}
+
+
+Definición en la línea 128 del archivo Cjt\+\_\+rios.\+cc.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{128                                                                                                                   \{}
+\DoxyCodeLine{129         \textcolor{keywordflow}{if} (not \mbox{\hyperlink{class_cjt__productos}{Cjt\_productos}}.\mbox{\hyperlink{class_cjt__productos_ae5acda09c3c1a62b64f1d57fbd71b70f}{existe\_prod}}(ident\_prod)) \textcolor{keywordflow}{return} 21;}
+\DoxyCodeLine{130         \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{131             \textcolor{keywordflow}{if} (not \mbox{\hyperlink{class_cjt__rios_a313e6d9be5b01a9b8cabc58f323b1420}{existe\_ciudad}}(ident\_ciudad)) \textcolor{keywordflow}{return} 23;}
+\DoxyCodeLine{132             \textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{133                 \textcolor{keywordflow}{if} (not \mbox{\hyperlink{class_cjt__rios_adff5d759560b7054601254bf4c086e18}{existe\_prod\_ciudad}}(ident\_ciudad, ident\_prod)) \textcolor{keywordflow}{return} 20; }
+\DoxyCodeLine{134                 \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{135                     (\mbox{\hyperlink{class_cjt__rios_a06fed09470daa606a9ca070854071302}{ciudades}}.find(ident\_ciudad))-\/>second.quitar\_prod(ident\_prod, \mbox{\hyperlink{class_cjt__productos}{Cjt\_productos}});}
+\DoxyCodeLine{136                     \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{137                 \}}
+\DoxyCodeLine{138             \}}
+\DoxyCodeLine{139         \}}
+\DoxyCodeLine{140     \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_cjt__rios_a3e86735a4571c69095047f46cd361869}\label{class_cjt__rios_a3e86735a4571c69095047f46cd361869}} 
+\index{Cjt\_rios@{Cjt\_rios}!comerciar@{comerciar}}
+\index{comerciar@{comerciar}!Cjt\_rios@{Cjt\_rios}}
+\doxysubsubsection{\texorpdfstring{comerciar()}{comerciar()}}
+{\footnotesize\ttfamily int Cjt\+\_\+rios\+::comerciar (\begin{DoxyParamCaption}\item[{const string \&}]{ident\+\_\+ciudad\+\_\+1,  }\item[{const string \&}]{ident\+\_\+ciudad\+\_\+2,  }\item[{const \mbox{\hyperlink{class_cjt__productos}{Cjt\+\_\+productos}} \&}]{Cjt\+\_\+productos }\end{DoxyParamCaption})}
+
+
+
+Intercambia productos entre las dos ciudades que recibe. 
+
+\begin{DoxyWarning}{Atención}
+Salta un error en caso de que los identificadores sean iguales o en caso de que alguna de las dos ciudades no exista. 
+\end{DoxyWarning}
+
+\begin{DoxyParams}{Parámetros}
+{\em ident\+\_\+ciudad\+\_\+1,ident\+\_\+ciudad\+\_\+2,\mbox{\hyperlink{class_cjt__productos}{Cjt\+\_\+productos}}} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondición}
+Todos los parametros están inicializados. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+En caso de poder comerciar algo entre las ciudades, la informacion de cada una de ellas es actualizada, en caso contrario, seguiran con la misma informacion. 
+\end{DoxyPostcond}
+
+
+Definición en la línea 142 del archivo Cjt\+\_\+rios.\+cc.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{142                                                                                                                          \{}
+\DoxyCodeLine{143         \textcolor{keywordflow}{if}(ident\_ciudad\_1 == ident\_ciudad\_2) \textcolor{keywordflow}{return} 22;}
+\DoxyCodeLine{144         \mbox{\hyperlink{_cjt__rios_8cc_a481fc232f7949b1a67763e91e3534f3a}{no\_fijo}} it1 = \mbox{\hyperlink{class_cjt__rios_a06fed09470daa606a9ca070854071302}{ciudades}}.find(ident\_ciudad\_1);}
+\DoxyCodeLine{145         \textcolor{keywordflow}{if} (it1 == \mbox{\hyperlink{class_cjt__rios_a06fed09470daa606a9ca070854071302}{ciudades}}.end()) \textcolor{keywordflow}{return} 23;}
+\DoxyCodeLine{146         \mbox{\hyperlink{_cjt__rios_8cc_a481fc232f7949b1a67763e91e3534f3a}{no\_fijo}} it2 = \mbox{\hyperlink{class_cjt__rios_a06fed09470daa606a9ca070854071302}{ciudades}}.find(ident\_ciudad\_2);}
+\DoxyCodeLine{147         \textcolor{keywordflow}{if} (it2 == \mbox{\hyperlink{class_cjt__rios_a06fed09470daa606a9ca070854071302}{ciudades}}.end()) \textcolor{keywordflow}{return} 23;}
+\DoxyCodeLine{148         it1-\/>second.comerciar\_prod(it2-\/>second, \mbox{\hyperlink{class_cjt__productos}{Cjt\_productos}});}
+\DoxyCodeLine{149         \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{150     \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_cjt__rios_a752cfc9c4a80944c182f17acba51fda5}\label{class_cjt__rios_a752cfc9c4a80944c182f17acba51fda5}} 
+\index{Cjt\_rios@{Cjt\_rios}!redistribuir@{redistribuir}}
+\index{redistribuir@{redistribuir}!Cjt\_rios@{Cjt\_rios}}
+\doxysubsubsection{\texorpdfstring{redistribuir()}{redistribuir()}}
+{\footnotesize\ttfamily void Cjt\+\_\+rios\+::redistribuir (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_cjt__productos}{Cjt\+\_\+productos}} \&}]{Cjt\+\_\+productos }\end{DoxyParamCaption})}
+
+
+
+Intercambia productos entre las ciudades de la cuenca, siempre y cuando no tengan un invetario vacio. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em \mbox{\hyperlink{class_cjt__productos}{Cjt\+\_\+productos}}} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondición}
+Todos los parametros están inicializados. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+En caso de poder comerciar algo entre las ciudades, la informacion de cada una de ellas es actualizada, en caso contrario, seguiran con la misma informacion. 
+\end{DoxyPostcond}
+
+
+Definición en la línea 152 del archivo Cjt\+\_\+rios.\+cc.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{152                                                      \{}
+\DoxyCodeLine{153         \mbox{\hyperlink{class_cjt__rios_a1e7ee57ac88bea763f74921f7ec8b870}{redistribuir\_rec}}(\mbox{\hyperlink{class_cjt__rios_a24c0316caa26d9e6ff0839277267de54}{arbol}},p);}
+\DoxyCodeLine{154     \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_cjt__rios_a8dcb63271c4d627417430e93b5ceeb81}\label{class_cjt__rios_a8dcb63271c4d627417430e93b5ceeb81}} 
+\index{Cjt\_rios@{Cjt\_rios}!hacer\_viaje@{hacer\_viaje}}
+\index{hacer\_viaje@{hacer\_viaje}!Cjt\_rios@{Cjt\_rios}}
+\doxysubsubsection{\texorpdfstring{hacer\_viaje()}{hacer\_viaje()}}
+{\footnotesize\ttfamily int Cjt\+\_\+rios\+::hacer\+\_\+viaje (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_barco}{Barco}} \&}]{b,  }\item[{const \mbox{\hyperlink{class_cjt__productos}{Cjt\+\_\+productos}} \&}]{Cjt\+\_\+productos }\end{DoxyParamCaption})}
+
+
+
+El barco viaja a traves del rio, calculando la ruta por donde puede intercambiar el maximo productos. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em \mbox{\hyperlink{class_barco}{Barco}},\mbox{\hyperlink{class_cjt__productos}{Cjt\+\_\+productos}}} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondición}
+Todos los parametros están inicializados. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+Devuelve la suma del total de productos comprados y vendidos por el barco. 
+\end{DoxyPostcond}
+
+
+Definición en la línea 170 del archivo Cjt\+\_\+rios.\+cc.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{170                                                                          \{}
+\DoxyCodeLine{171         vector<string> mejor\_ruta;}
+\DoxyCodeLine{172         \textcolor{keywordtype}{int} ya\_comprado = 0;}
+\DoxyCodeLine{173         \textcolor{keywordtype}{int} ya\_vendido = 0;}
+\DoxyCodeLine{174         \textcolor{keywordtype}{int} total\_compvend = \mbox{\hyperlink{class_cjt__rios_a7d3cf0ac9fe048c59d535538873555ca}{calcular\_ruta\_rec}}(mejor\_ruta, b, ya\_comprado, ya\_vendido, \mbox{\hyperlink{class_cjt__rios_a24c0316caa26d9e6ff0839277267de54}{arbol}});}
+\DoxyCodeLine{175         \textcolor{keywordflow}{if}(total\_compvend != 0) \{}
+\DoxyCodeLine{176            \textcolor{keywordtype}{string} ult\_ciudad = \mbox{\hyperlink{class_cjt__rios_acf16927f8d4a562057c75a9edc9ea0e6}{viajar\_ruta}}(mejor\_ruta,b,\mbox{\hyperlink{class_cjt__productos}{Cjt\_productos}}); \textcolor{comment}{//recorrer la ruta y ir comprando y vendiendo sin superar el maximo del barco}}
+\DoxyCodeLine{177             b.\mbox{\hyperlink{class_barco_aea54015473845b40d31547a49cbf4271}{hacer\_viaje}}(ult\_ciudad);\textcolor{comment}{//actualizar las cantidades de los productos y guardar la ultima ciudad. no cambia cantidad}}
+\DoxyCodeLine{178         \}}
+\DoxyCodeLine{179         \textcolor{keywordflow}{return} total\_compvend;}
+\DoxyCodeLine{180     \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_cjt__rios_acf16927f8d4a562057c75a9edc9ea0e6}\label{class_cjt__rios_acf16927f8d4a562057c75a9edc9ea0e6}} 
+\index{Cjt\_rios@{Cjt\_rios}!viajar\_ruta@{viajar\_ruta}}
+\index{viajar\_ruta@{viajar\_ruta}!Cjt\_rios@{Cjt\_rios}}
+\doxysubsubsection{\texorpdfstring{viajar\_ruta()}{viajar\_ruta()}}
+{\footnotesize\ttfamily string Cjt\+\_\+rios\+::viajar\+\_\+ruta (\begin{DoxyParamCaption}\item[{vector$<$ string $>$ \&}]{mejor\+\_\+ruta,  }\item[{\mbox{\hyperlink{class_barco}{Barco}} \&}]{b,  }\item[{\mbox{\hyperlink{class_cjt__productos}{Cjt\+\_\+productos}}}]{Cjt\+\_\+productos }\end{DoxyParamCaption})}
+
+
+
+Viaja a traves de la ruta calculada. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em mejor\+\_\+ruta,\mbox{\hyperlink{class_barco}{Barco}},\mbox{\hyperlink{class_cjt__productos}{Cjt\+\_\+productos}}} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondición}
+Todos los parametros están inicializados. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+Devuelve la ultima ciudad visitada y actualiza la informacion de las ciudades que hayan hecho algun tipo de intercambio con el barco. 
+\end{DoxyPostcond}
+
+
+Definición en la línea 214 del archivo Cjt\+\_\+rios.\+cc.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{214                                                                                                   \{}
+\DoxyCodeLine{215                \textcolor{comment}{//simplemente cambio las cantidades de la ciudad, porque se supone que el barco no tengo que tocarlo.}}
+\DoxyCodeLine{216         \textcolor{keywordtype}{int} max\_compra\_ciudad = b.\mbox{\hyperlink{class_barco_aa2f67c1454e309e9a08f92c9863153da}{consultar\_cantidad\_compra}}();}
+\DoxyCodeLine{217         \textcolor{keywordtype}{int} max\_venta\_ciudad = b.\mbox{\hyperlink{class_barco_a5e65e2b8162578ee7ecd75a72c176024}{consultar\_cantidad\_venta}}();}
+\DoxyCodeLine{218         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < mejor\_ruta.size(); ++i) \{}
+\DoxyCodeLine{219             \textcolor{keywordtype}{int} nuevo1 = \mbox{\hyperlink{class_cjt__rios_a06fed09470daa606a9ca070854071302}{ciudades}}.find(mejor\_ruta[i])-\/>second.barco\_comprar(b.\mbox{\hyperlink{class_barco_af505b31afaf56b00149a7c1191f6491d}{consultar\_id\_prod\_comp}}(), max\_compra\_ciudad, \mbox{\hyperlink{class_cjt__productos}{Cjt\_productos}});}
+\DoxyCodeLine{220             max\_compra\_ciudad = nuevo1;}
+\DoxyCodeLine{221             \textcolor{keywordtype}{int} nuevo2 = \mbox{\hyperlink{class_cjt__rios_a06fed09470daa606a9ca070854071302}{ciudades}}.find(mejor\_ruta[i])-\/>second.barco\_vender(b.\mbox{\hyperlink{class_barco_a7503955cd88bf36125b10ffb09b27f86}{consultar\_id\_prod\_vend}}(), max\_venta\_ciudad, \mbox{\hyperlink{class_cjt__productos}{Cjt\_productos}});}
+\DoxyCodeLine{222             max\_venta\_ciudad = nuevo2;}
+\DoxyCodeLine{223         \}}
+\DoxyCodeLine{224         \textcolor{keywordflow}{return} mejor\_ruta[mejor\_ruta.size()-\/1];}
+\DoxyCodeLine{225     \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Documentación de los datos miembro}
+\mbox{\Hypertarget{class_cjt__rios_a24c0316caa26d9e6ff0839277267de54}\label{class_cjt__rios_a24c0316caa26d9e6ff0839277267de54}} 
+\index{Cjt\_rios@{Cjt\_rios}!arbol@{arbol}}
+\index{arbol@{arbol}!Cjt\_rios@{Cjt\_rios}}
+\doxysubsubsection{\texorpdfstring{arbol}{arbol}}
+{\footnotesize\ttfamily Bin\+Tree$<$string$>$ Cjt\+\_\+rios\+::arbol\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Árbol que contiene todas las ciudades. ~\newline
+ 
+
+
+
+Definición en la línea 34 del archivo Cjt\+\_\+rios.\+hh.
+
+\mbox{\Hypertarget{class_cjt__rios_a06fed09470daa606a9ca070854071302}\label{class_cjt__rios_a06fed09470daa606a9ca070854071302}} 
+\index{Cjt\_rios@{Cjt\_rios}!ciudades@{ciudades}}
+\index{ciudades@{ciudades}!Cjt\_rios@{Cjt\_rios}}
+\doxysubsubsection{\texorpdfstring{ciudades}{ciudades}}
+{\footnotesize\ttfamily map$<$string, \mbox{\hyperlink{class_ciudad}{Ciudad}}$>$ Cjt\+\_\+rios\+::ciudades\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Mapa que relaciona el identificador de cada ciudad con su informacion correspondiente. ~\newline
+ 
+
+
+
+Definición en la línea 38 del archivo Cjt\+\_\+rios.\+hh.
+
+
+
+La documentación para esta clase fue generada a partir de los siguientes ficheros\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_cjt__rios_8hh}{Cjt\+\_\+rios.\+hh}}\item 
+\mbox{\hyperlink{_cjt__rios_8cc}{Cjt\+\_\+rios.\+cc}}\end{DoxyCompactItemize}

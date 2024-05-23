@@ -82,7 +82,6 @@ int main() {
             int ident_prod;
             cin >> ident_prod;
             cout << "#" << op << " " << ident_prod << endl;
-            //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
             if (not p.existe_prod(ident_prod)) {
                 cout << "error: no existe el producto" << endl;
             }

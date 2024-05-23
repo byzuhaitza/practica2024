@@ -23,6 +23,18 @@
             ++it;
         }
     }
+    int Barco::consultar_id_prod_vend() {
+        return id_prod_vend;
+    }
+    int Barco::consultar_id_prod_comp() {
+        return id_prod_comp;
+    }
+    int Barco::consultar_cantidad_compra() {
+        return total_uni_comp;
+    }
+    int Barco::consultar_cantidad_venta() {
+        return total_uni_vend;
+    }
 
     //MODIFICADORAS
     int Barco::modificar_barco(const int& ident_prod_comp, const int& ident_prod_vend, const int& cant_prod_comp, const int& cant_prod_vend, Cjt_productos& p){
@@ -37,18 +49,6 @@
                 return 0;
             }
         }
-    }
-    int Barco::consultar_id_prod_vend() {
-        return id_prod_vend;
-    }
-    int Barco::consultar_id_prod_comp() {
-        return id_prod_comp;
-    }
-    int Barco::consultar_cantidad_compra() {
-        return total_uni_comp;
-    }
-    int Barco::consultar_cantidad_venta() {
-        return total_uni_vend;
     }
     void Barco::hacer_viaje(string ult_ciudad){
         viajes.push_back(ult_ciudad);

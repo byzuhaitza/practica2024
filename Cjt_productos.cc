@@ -7,7 +7,8 @@
 
 #include "Cjt_productos.hh"
 
-Cjt_productos::Cjt_productos(){}
+    //CONSTRUCTORA
+    Cjt_productos::Cjt_productos(){}
 
     void Cjt_productos::inicializar_productos(){
         int num_prod;
@@ -19,21 +20,9 @@ Cjt_productos::Cjt_productos(){}
         }
     }
 
+    //CONSULTORA
     int Cjt_productos::num_total(){
         return prod_peso_volumen.size();
-    }
-
-    void Cjt_productos::nuevos_productos(int num_prod_nuevos){
-        int nuevo = prod_peso_volumen.size()+1;
-        int i = 0;
-        while (i <  num_prod_nuevos) {
-            int peso_prod, vol_prod;
-            cin >> peso_prod >> vol_prod;
-
-            prod_peso_volumen.insert(make_pair(nuevo, make_pair(peso_prod, vol_prod)));
-            ++i;
-            ++nuevo;
-        }
     }
 
     int Cjt_productos::peso(const int& ident_prod)const {
@@ -50,5 +39,19 @@ Cjt_productos::Cjt_productos(){}
         map<int, pair <int, int>>::const_iterator it = prod_peso_volumen.find(ident_prod);
         if (it != prod_peso_volumen.end()) return true;
         else return false;
+    }
+
+    //MODIFICADORA
+    void Cjt_productos::nuevos_productos(int num_prod_nuevos){
+        int nuevo = prod_peso_volumen.size()+1;
+        int i = 0;
+        while (i <  num_prod_nuevos) {
+            int peso_prod, vol_prod;
+            cin >> peso_prod >> vol_prod;
+
+            prod_peso_volumen.insert(make_pair(nuevo, make_pair(peso_prod, vol_prod)));
+            ++i;
+            ++nuevo;
+        }
     }
 

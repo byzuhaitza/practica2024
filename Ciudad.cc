@@ -41,6 +41,31 @@ typedef map<int, pair <int, int>>::iterator iterador;
         if (productos.empty()) return true;
         else return false;
     }
+    int Ciudad::barco_puede_comprar(int id_producto, int max_compra_ciudad) const {
+        auto it = productos.find(id_producto);
+        if (it == productos.end()) {
+            return 0; // El producto no está disponible en esta ciudad
+        }
+        else {
+            int cantidad_disponible = it->second.second - it->second.first;
+            if(cantidad_disponible < 0 and abs(cantidad_disponible) <= max_compra_ciudad) return abs(cantidad_disponible);
+            else if(cantidad_disponible < 0) return max_compra_ciudad;
+            else return 0;
+        }
+    }
+
+    int Ciudad::barco_puede_vender(int id_producto, int max_venta_ciudad) const {
+        auto it = productos.find(id_producto);
+        if (it == productos.end()) {
+            return 0; // El producto no está disponible en esta ciudad
+        }
+        else {
+            int cantidad_disponible = it->second.second - it->second.first;
+            if(cantidad_disponible > 0 and cantidad_disponible <= max_venta_ciudad) return abs(cantidad_disponible);
+            else if(cantidad_disponible > 0) return max_venta_ciudad;
+            else return 0;
+        }
+    }
 
     //MODIFICADORAS
     void Ciudad::comerciar_prod(Ciudad& otra_ciudad, const Cjt_productos& p ){
@@ -120,31 +145,6 @@ typedef map<int, pair <int, int>>::iterator iterador;
         peso_total = 0;
         volumen_total = 0;
     }
-    int Ciudad::barco_puede_comprar(int id_producto, int max_compra_ciudad) const {
-        auto it = productos.find(id_producto);
-        if (it == productos.end()) {
-            return 0; // El producto no está disponible en esta ciudad
-        }
-        else {
-            int cantidad_disponible = it->second.second - it->second.first;
-            if(cantidad_disponible < 0 and abs(cantidad_disponible) <= max_compra_ciudad) return abs(cantidad_disponible);
-            else if(cantidad_disponible < 0) return max_compra_ciudad;
-            else return 0;
-        }
-    }
-
-    int Ciudad::barco_puede_vender(int id_producto, int max_venta_ciudad) const {
-        auto it = productos.find(id_producto);
-        if (it == productos.end()) {
-            return 0; // El producto no está disponible en esta ciudad
-        }
-        else {
-            int cantidad_disponible = it->second.second - it->second.first;
-            if(cantidad_disponible > 0 and cantidad_disponible <= max_venta_ciudad) return abs(cantidad_disponible);
-            else if(cantidad_disponible > 0) return max_venta_ciudad;
-            else return 0;
-        }
-    }
     int Ciudad::barco_comprar(int id_producto, int max_compra_ciudad, Cjt_productos& p) { //si el barco puede comprar es que la ciudad vende
         auto it = productos.find(id_producto);
         bool poner = false;
@@ -165,7 +165,7 @@ typedef map<int, pair <int, int>>::iterator iterador;
         }
         return max_compra_ciudad;
     }
-    int Ciudad::barco_vender(int id_producto, int max_vender_ciudad, Cjt_productos& p) { //si el barco puede comprar es que la ciudad vende
+    int Ciudad::barco_vender(int id_producto, int max_vender_ciudad, Cjt_productos& p) { //si el barco puede vender es que la ciudad compra
         auto it = productos.find(id_producto);
         bool poner = true;
         if (it != productos.end()) {

@@ -14,44 +14,64 @@
 
 using namespace std;
 
-class Cjt_productos{
+class Cjt_productos {
     private:
     /**
         @brief Mapa que relaciona el identificador de cada producto con su peso y volumen correspondiente.   
     */
-    map<int, pair<int, int>> prod_peso_volumen;
+        map<int, pair<int, int>> prod_peso_volumen;
 
     public:
-    Cjt_productos();
-    /**  
-        @brief Inicializa el map de productos con sus correspondientes identificadores, y lo llenamos con sus pesos y volumenes correspondientes.
-        \pre: Cierto.
-        \post: -Registramos un map no vacío.
+    //CONSTRUCTORAS
+    /**
+        @brief Creador por defecto.
+        \pre <em>Cierto</em>.
+        \post El conjunto de productos.   
     */
-    void inicializar_productos();
+        Cjt_productos();
     /**  
-        @brief Devuelve el número de productos direferentes que existen en la cuenca.
-        \pre: Cierto.
-        \post: -La función nos devuelve el numero de productos diferentes.
+        @brief Inicializa el map de productos con sus correspondientes identificadores, y lo llenamos con sus pesos y volúmenes correspondientes.
+        \pre <em>Cierto</em>.
+        \post Registramos un map no vacío.
     */
-    int num_total();
+        void inicializar_productos();
+
+    //CONSULTORAS
     /**  
-        @brief Leeremos la instruccion y su peso y volumen respectivo.
-        \pre: Cierto.
-        \post: -Tendremos un nuevo producto, cuyo identificador será establecido por el ultimo producto del map, en nuestro conjunto de productos.
+        @brief Devuelve el número de productos diferentes que existen en la cuenca.
+        \pre <em>Cierto</em>.
+        \post La función nos devuelve el número de productos diferentes.
     */
-    void nuevos_productos(int num_prod_nuevos);
-
-    int peso(const int& ident_prod) const;
-
-    int volumen(const int& ident_prod)const;
-
+        int num_total();
     /**  
-    @brief Nos dice si el identificador del producto que hemos leido esta asociado a algun producto existente en la cuenca.
-    @param ident_prod
-    \pre: Cierto.
-    \post: -La funcion nos devuelve si el producto existe.
-*/
-    bool existe_prod(const int& ident_prod) const;
+        @brief Consultamos el peso de un producto.
+        @param ident_prod
+        \pre Todos los parámetros están inicializados.
+        \post Devuelve el peso del producto.
+    */
+        int peso(const int& ident_prod) const;
+    /**  
+        @brief Consultamos el volumen de un producto.
+        @param ident_prod
+        \pre Todos los parámetros están inicializados.
+        \post Devuelve el volumen del producto.
+    */
+        int volumen(const int& ident_prod) const;
+    /**  
+        @brief Nos dice si el identificador del producto que hemos leído está asociado a algún producto existente en la cuenca.
+        @param ident_prod
+        \pre Todos los parámetros están inicializados.
+        \post La función nos devuelve si el producto existe.
+    */
+        bool existe_prod(const int& ident_prod) const;
+
+    //MODIFICADORAS
+    /**  
+        @brief Leeremos la instrucción, y añadirá el/los producto/s con su/s peso/s y volumen/es correspondiente/s.
+        @param num_prod_nuevos
+        \pre Todos los parámetros están inicializados.
+        \post Tendremos un/os nuevo/s producto/s en nuestro conjunto de productos, cuyo/s identificador/es será/n establecido/s por el último producto del map.
+    */
+        void nuevos_productos(int num_prod_nuevos);
 };
 #endif

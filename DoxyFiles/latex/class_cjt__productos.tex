@@ -1,0 +1,289 @@
+\hypertarget{class_cjt__productos}{}\doxysection{Referencia de la Clase Cjt\+\_\+productos}
+\label{class_cjt__productos}\index{Cjt\_productos@{Cjt\_productos}}
+\doxysubsection*{Métodos públicos}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_cjt__productos_aa06fafc11ee04d28bd7d8491da5a045c}{Cjt\+\_\+productos}} ()
+\begin{DoxyCompactList}\small\item\em Creador por defecto. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_cjt__productos_ab0c22572c0b4abb11df1f43260ba960f}{inicializar\+\_\+productos}} ()
+\begin{DoxyCompactList}\small\item\em Inicializa el map de productos con sus correspondientes identificadores, y lo llenamos con sus pesos y volúmenes correspondientes. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_cjt__productos_a58b8814bf21c9c4c1a14bbdc740b1cbd}{num\+\_\+total}} ()
+\begin{DoxyCompactList}\small\item\em Devuelve el número de productos diferentes que existen en la cuenca. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_cjt__productos_a608a4de54006b5782894fc1ce97d7443}{peso}} (const int \&ident\+\_\+prod) const
+\begin{DoxyCompactList}\small\item\em Consultamos el peso de un producto. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_cjt__productos_a091751d9261a9e7f1310a1120aa4c83b}{volumen}} (const int \&ident\+\_\+prod) const
+\begin{DoxyCompactList}\small\item\em Consultamos el volumen de un producto. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_cjt__productos_ae5acda09c3c1a62b64f1d57fbd71b70f}{existe\+\_\+prod}} (const int \&ident\+\_\+prod) const
+\begin{DoxyCompactList}\small\item\em Nos dice si el identificador del producto que hemos leído está asociado a algún producto existente en la cuenca. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_cjt__productos_a813ad7bac866b053516ca561a044e18c}{nuevos\+\_\+productos}} (int num\+\_\+prod\+\_\+nuevos)
+\begin{DoxyCompactList}\small\item\em Leeremos la instrucción, y añadirá el/los producto/s con su/s peso/s y volumen/es correspondiente/s. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Atributos privados}
+\begin{DoxyCompactItemize}
+\item 
+map$<$ int, pair$<$ int, int $>$ $>$ \mbox{\hyperlink{class_cjt__productos_a1831ff5de5f3670932cc6d5e8fc84dc9}{prod\+\_\+peso\+\_\+volumen}}
+\begin{DoxyCompactList}\small\item\em Mapa que relaciona el identificador de cada producto con su peso y volumen correspondiente. ~\newline
+ \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descripción detallada}
+
+
+Definición en la línea 17 del archivo Cjt\+\_\+productos.\+hh.
+
+
+
+\doxysubsection{Documentación del constructor y destructor}
+\mbox{\Hypertarget{class_cjt__productos_aa06fafc11ee04d28bd7d8491da5a045c}\label{class_cjt__productos_aa06fafc11ee04d28bd7d8491da5a045c}} 
+\index{Cjt\_productos@{Cjt\_productos}!Cjt\_productos@{Cjt\_productos}}
+\index{Cjt\_productos@{Cjt\_productos}!Cjt\_productos@{Cjt\_productos}}
+\doxysubsubsection{\texorpdfstring{Cjt\_productos()}{Cjt\_productos()}}
+{\footnotesize\ttfamily Cjt\+\_\+productos\+::\+Cjt\+\_\+productos (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Creador por defecto. 
+
+\begin{DoxyPrecond}{Precondición}
+{\itshape Cierto}. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+El conjunto de productos. ~\newline
+ 
+\end{DoxyPostcond}
+
+
+Definición en la línea 11 del archivo Cjt\+\_\+productos.\+cc.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{11 \{\}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Documentación de las funciones miembro}
+\mbox{\Hypertarget{class_cjt__productos_ab0c22572c0b4abb11df1f43260ba960f}\label{class_cjt__productos_ab0c22572c0b4abb11df1f43260ba960f}} 
+\index{Cjt\_productos@{Cjt\_productos}!inicializar\_productos@{inicializar\_productos}}
+\index{inicializar\_productos@{inicializar\_productos}!Cjt\_productos@{Cjt\_productos}}
+\doxysubsubsection{\texorpdfstring{inicializar\_productos()}{inicializar\_productos()}}
+{\footnotesize\ttfamily void Cjt\+\_\+productos\+::inicializar\+\_\+productos (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Inicializa el map de productos con sus correspondientes identificadores, y lo llenamos con sus pesos y volúmenes correspondientes. 
+
+\begin{DoxyPrecond}{Precondición}
+{\itshape Cierto}. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+Registramos un map no vacío. 
+\end{DoxyPostcond}
+
+
+Definición en la línea 13 del archivo Cjt\+\_\+productos.\+cc.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{13                                              \{}
+\DoxyCodeLine{14         \textcolor{keywordtype}{int} num\_prod;}
+\DoxyCodeLine{15         cin >> num\_prod;}
+\DoxyCodeLine{16         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 1; i <= num\_prod; ++i) \{}
+\DoxyCodeLine{17             \textcolor{keywordtype}{int} \mbox{\hyperlink{class_cjt__productos_a608a4de54006b5782894fc1ce97d7443}{peso}}, \mbox{\hyperlink{class_cjt__productos_a091751d9261a9e7f1310a1120aa4c83b}{volumen}};}
+\DoxyCodeLine{18             cin >> \mbox{\hyperlink{class_cjt__productos_a608a4de54006b5782894fc1ce97d7443}{peso}} >> \mbox{\hyperlink{class_cjt__productos_a091751d9261a9e7f1310a1120aa4c83b}{volumen}};}
+\DoxyCodeLine{19             \mbox{\hyperlink{class_cjt__productos_a1831ff5de5f3670932cc6d5e8fc84dc9}{prod\_peso\_volumen}}.insert(make\_pair(i, make\_pair(\mbox{\hyperlink{class_cjt__productos_a608a4de54006b5782894fc1ce97d7443}{peso}}, \mbox{\hyperlink{class_cjt__productos_a091751d9261a9e7f1310a1120aa4c83b}{volumen}})));}
+\DoxyCodeLine{20         \}}
+\DoxyCodeLine{21     \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_cjt__productos_a58b8814bf21c9c4c1a14bbdc740b1cbd}\label{class_cjt__productos_a58b8814bf21c9c4c1a14bbdc740b1cbd}} 
+\index{Cjt\_productos@{Cjt\_productos}!num\_total@{num\_total}}
+\index{num\_total@{num\_total}!Cjt\_productos@{Cjt\_productos}}
+\doxysubsubsection{\texorpdfstring{num\_total()}{num\_total()}}
+{\footnotesize\ttfamily int Cjt\+\_\+productos\+::num\+\_\+total (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Devuelve el número de productos diferentes que existen en la cuenca. 
+
+\begin{DoxyPrecond}{Precondición}
+{\itshape Cierto}. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+La función nos devuelve el número de productos diferentes. 
+\end{DoxyPostcond}
+
+
+Definición en la línea 24 del archivo Cjt\+\_\+productos.\+cc.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{24                                 \{}
+\DoxyCodeLine{25         \textcolor{keywordflow}{return} \mbox{\hyperlink{class_cjt__productos_a1831ff5de5f3670932cc6d5e8fc84dc9}{prod\_peso\_volumen}}.size();}
+\DoxyCodeLine{26     \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_cjt__productos_a608a4de54006b5782894fc1ce97d7443}\label{class_cjt__productos_a608a4de54006b5782894fc1ce97d7443}} 
+\index{Cjt\_productos@{Cjt\_productos}!peso@{peso}}
+\index{peso@{peso}!Cjt\_productos@{Cjt\_productos}}
+\doxysubsubsection{\texorpdfstring{peso()}{peso()}}
+{\footnotesize\ttfamily int Cjt\+\_\+productos\+::peso (\begin{DoxyParamCaption}\item[{const int \&}]{ident\+\_\+prod }\end{DoxyParamCaption}) const}
+
+
+
+Consultamos el peso de un producto. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em ident\+\_\+prod} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondición}
+Todos los parámetros están inicializados. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+Devuelve el peso del producto. 
+\end{DoxyPostcond}
+
+
+Definición en la línea 28 del archivo Cjt\+\_\+productos.\+cc.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{28                                                       \{}
+\DoxyCodeLine{29         map<int, pair<int, int>>::const\_iterator it = \mbox{\hyperlink{class_cjt__productos_a1831ff5de5f3670932cc6d5e8fc84dc9}{prod\_peso\_volumen}}.find(ident\_prod);}
+\DoxyCodeLine{30         \textcolor{keywordflow}{return} it-\/>second.first;}
+\DoxyCodeLine{31     \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_cjt__productos_a091751d9261a9e7f1310a1120aa4c83b}\label{class_cjt__productos_a091751d9261a9e7f1310a1120aa4c83b}} 
+\index{Cjt\_productos@{Cjt\_productos}!volumen@{volumen}}
+\index{volumen@{volumen}!Cjt\_productos@{Cjt\_productos}}
+\doxysubsubsection{\texorpdfstring{volumen()}{volumen()}}
+{\footnotesize\ttfamily int Cjt\+\_\+productos\+::volumen (\begin{DoxyParamCaption}\item[{const int \&}]{ident\+\_\+prod }\end{DoxyParamCaption}) const}
+
+
+
+Consultamos el volumen de un producto. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em ident\+\_\+prod} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondición}
+Todos los parámetros están inicializados. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+Devuelve el volumen del producto. 
+\end{DoxyPostcond}
+
+
+Definición en la línea 33 del archivo Cjt\+\_\+productos.\+cc.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{33                                                          \{}
+\DoxyCodeLine{34         map<int, pair<int, int>>::const\_iterator it = \mbox{\hyperlink{class_cjt__productos_a1831ff5de5f3670932cc6d5e8fc84dc9}{prod\_peso\_volumen}}.find(ident\_prod);}
+\DoxyCodeLine{35         \textcolor{keywordflow}{return} it-\/>second.second;}
+\DoxyCodeLine{36     \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_cjt__productos_ae5acda09c3c1a62b64f1d57fbd71b70f}\label{class_cjt__productos_ae5acda09c3c1a62b64f1d57fbd71b70f}} 
+\index{Cjt\_productos@{Cjt\_productos}!existe\_prod@{existe\_prod}}
+\index{existe\_prod@{existe\_prod}!Cjt\_productos@{Cjt\_productos}}
+\doxysubsubsection{\texorpdfstring{existe\_prod()}{existe\_prod()}}
+{\footnotesize\ttfamily bool Cjt\+\_\+productos\+::existe\+\_\+prod (\begin{DoxyParamCaption}\item[{const int \&}]{ident\+\_\+prod }\end{DoxyParamCaption}) const}
+
+
+
+Nos dice si el identificador del producto que hemos leído está asociado a algún producto existente en la cuenca. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em ident\+\_\+prod} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondición}
+Todos los parámetros están inicializados. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+La función nos devuelve si el producto existe. 
+\end{DoxyPostcond}
+
+
+Definición en la línea 38 del archivo Cjt\+\_\+productos.\+cc.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{38                                                               \{}
+\DoxyCodeLine{39         map<int, pair <int, int>>::const\_iterator it = \mbox{\hyperlink{class_cjt__productos_a1831ff5de5f3670932cc6d5e8fc84dc9}{prod\_peso\_volumen}}.find(ident\_prod);}
+\DoxyCodeLine{40         \textcolor{keywordflow}{if} (it != \mbox{\hyperlink{class_cjt__productos_a1831ff5de5f3670932cc6d5e8fc84dc9}{prod\_peso\_volumen}}.end()) \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{41         \textcolor{keywordflow}{else} \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{42     \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_cjt__productos_a813ad7bac866b053516ca561a044e18c}\label{class_cjt__productos_a813ad7bac866b053516ca561a044e18c}} 
+\index{Cjt\_productos@{Cjt\_productos}!nuevos\_productos@{nuevos\_productos}}
+\index{nuevos\_productos@{nuevos\_productos}!Cjt\_productos@{Cjt\_productos}}
+\doxysubsubsection{\texorpdfstring{nuevos\_productos()}{nuevos\_productos()}}
+{\footnotesize\ttfamily void Cjt\+\_\+productos\+::nuevos\+\_\+productos (\begin{DoxyParamCaption}\item[{int}]{num\+\_\+prod\+\_\+nuevos }\end{DoxyParamCaption})}
+
+
+
+Leeremos la instrucción, y añadirá el/los producto/s con su/s peso/s y volumen/es correspondiente/s. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em num\+\_\+prod\+\_\+nuevos} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondición}
+Todos los parámetros están inicializados. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+Tendremos un/os nuevo/s producto/s en nuestro conjunto de productos, cuyo/s identificador/es será/n establecido/s por el último producto del map. 
+\end{DoxyPostcond}
+
+
+Definición en la línea 45 del archivo Cjt\+\_\+productos.\+cc.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{45                                                            \{}
+\DoxyCodeLine{46         \textcolor{keywordtype}{int} nuevo = \mbox{\hyperlink{class_cjt__productos_a1831ff5de5f3670932cc6d5e8fc84dc9}{prod\_peso\_volumen}}.size()+1;}
+\DoxyCodeLine{47         \textcolor{keywordtype}{int} i = 0;}
+\DoxyCodeLine{48         \textcolor{keywordflow}{while} (i <  num\_prod\_nuevos) \{}
+\DoxyCodeLine{49             \textcolor{keywordtype}{int} peso\_prod, vol\_prod;}
+\DoxyCodeLine{50             cin >> peso\_prod >> vol\_prod;}
+\DoxyCodeLine{51 }
+\DoxyCodeLine{52             \mbox{\hyperlink{class_cjt__productos_a1831ff5de5f3670932cc6d5e8fc84dc9}{prod\_peso\_volumen}}.insert(make\_pair(nuevo, make\_pair(peso\_prod, vol\_prod)));}
+\DoxyCodeLine{53             ++i;}
+\DoxyCodeLine{54             ++nuevo;}
+\DoxyCodeLine{55         \}}
+\DoxyCodeLine{56     \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Documentación de los datos miembro}
+\mbox{\Hypertarget{class_cjt__productos_a1831ff5de5f3670932cc6d5e8fc84dc9}\label{class_cjt__productos_a1831ff5de5f3670932cc6d5e8fc84dc9}} 
+\index{Cjt\_productos@{Cjt\_productos}!prod\_peso\_volumen@{prod\_peso\_volumen}}
+\index{prod\_peso\_volumen@{prod\_peso\_volumen}!Cjt\_productos@{Cjt\_productos}}
+\doxysubsubsection{\texorpdfstring{prod\_peso\_volumen}{prod\_peso\_volumen}}
+{\footnotesize\ttfamily map$<$int, pair$<$int, int$>$ $>$ Cjt\+\_\+productos\+::prod\+\_\+peso\+\_\+volumen\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Mapa que relaciona el identificador de cada producto con su peso y volumen correspondiente. ~\newline
+ 
+
+
+
+Definición en la línea 22 del archivo Cjt\+\_\+productos.\+hh.
+
+
+
+La documentación para esta clase fue generada a partir de los siguientes ficheros\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_cjt__productos_8hh}{Cjt\+\_\+productos.\+hh}}\item 
+\mbox{\hyperlink{_cjt__productos_8cc}{Cjt\+\_\+productos.\+cc}}\end{DoxyCompactItemize}
