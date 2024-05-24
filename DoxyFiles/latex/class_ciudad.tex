@@ -353,42 +353,48 @@ Definición en la línea 71 del archivo Ciudad.\+cc.
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{71                                                                            \{}
-\DoxyCodeLine{72         \mbox{\hyperlink{_ciudad_8cc_a4a455e59caed9d4e525586573d86437b}{iterador}} it1 = \mbox{\hyperlink{class_ciudad_a309301188ae126c1f12e16417cb201d5}{productos}}.begin();}
-\DoxyCodeLine{73         \mbox{\hyperlink{_ciudad_8cc_a4a455e59caed9d4e525586573d86437b}{iterador}} it2 = otra\_ciudad.productos.begin();}
-\DoxyCodeLine{74         \textcolor{keywordflow}{while}(it1 != \mbox{\hyperlink{class_ciudad_a309301188ae126c1f12e16417cb201d5}{productos}}.end() and it2 != otra\_ciudad.productos.end()) \{}
-\DoxyCodeLine{75             \textcolor{keywordflow}{if} (it1-\/>first < it2-\/>first) \{}
-\DoxyCodeLine{76                 ++it1;}
-\DoxyCodeLine{77             \}}
-\DoxyCodeLine{78             \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (it1-\/>first > it2-\/>first) \{}
-\DoxyCodeLine{79                 ++it2;}
-\DoxyCodeLine{80             \}}
-\DoxyCodeLine{81             \textcolor{keywordflow}{else} \{}
-\DoxyCodeLine{82                 \textcolor{keywordtype}{int} cant1 = it1-\/>second.second -\/ it1-\/>second.first;}
-\DoxyCodeLine{83                 \textcolor{keywordtype}{int} cant2 = it2-\/>second.second -\/ it2-\/>second.first;}
-\DoxyCodeLine{84                 \textcolor{keywordflow}{if} (cant1*cant2 < 0) \{ \textcolor{comment}{//es <}}
-\DoxyCodeLine{85                     \textcolor{keywordtype}{int} intercambio = min(abs(cant1), abs(cant2));}
-\DoxyCodeLine{86                     \textcolor{keywordtype}{bool} poner = \textcolor{keyword}{false};}
-\DoxyCodeLine{87                     \textcolor{keywordflow}{if} (cant1 < cant2) \{}
-\DoxyCodeLine{88                         it1-\/>second.first -\/= intercambio;}
-\DoxyCodeLine{89                         \mbox{\hyperlink{class_ciudad_a133553646f17a697c10377741baf7132}{comerciar\_ajustes}}(it1-\/>first, intercambio, poner, p);}
-\DoxyCodeLine{90                         poner = \textcolor{keyword}{true};}
-\DoxyCodeLine{91                         it2-\/>second.first += intercambio;}
-\DoxyCodeLine{92                         otra\_ciudad.comerciar\_ajustes(it1-\/>first, intercambio, poner, p);}
-\DoxyCodeLine{93                     \}}
-\DoxyCodeLine{94                     \textcolor{keywordflow}{else} \{}
-\DoxyCodeLine{95                         poner = \textcolor{keyword}{true};}
-\DoxyCodeLine{96                         it1-\/>second.first += intercambio;}
-\DoxyCodeLine{97                         \mbox{\hyperlink{class_ciudad_a133553646f17a697c10377741baf7132}{comerciar\_ajustes}}(it1-\/>first, intercambio, poner, p);}
-\DoxyCodeLine{98                         poner = \textcolor{keyword}{false};}
-\DoxyCodeLine{99                         it2-\/>second.first -\/= intercambio;}
-\DoxyCodeLine{100                         otra\_ciudad.comerciar\_ajustes(it1-\/>first, intercambio, poner, p);}
-\DoxyCodeLine{101                     \}}
-\DoxyCodeLine{102                 \}}
-\DoxyCodeLine{103                 ++it1;}
-\DoxyCodeLine{104                 ++it2;}
-\DoxyCodeLine{105             \}}
-\DoxyCodeLine{106         \}}
-\DoxyCodeLine{107     \}}
+\DoxyCodeLine{72     \mbox{\hyperlink{_ciudad_8cc_a4a455e59caed9d4e525586573d86437b}{iterador}} it1 = \mbox{\hyperlink{class_ciudad_a309301188ae126c1f12e16417cb201d5}{productos}}.begin();}
+\DoxyCodeLine{73     \mbox{\hyperlink{_ciudad_8cc_a4a455e59caed9d4e525586573d86437b}{iterador}} it2 = otra\_ciudad.productos.begin();}
+\DoxyCodeLine{74     \textcolor{comment}{// Iteramos sobre los productos de ambas ciudades}}
+\DoxyCodeLine{75     \textcolor{keywordflow}{while}(it1 != \mbox{\hyperlink{class_ciudad_a309301188ae126c1f12e16417cb201d5}{productos}}.end() and it2 != otra\_ciudad.productos.end()) \{}
+\DoxyCodeLine{76 \textcolor{comment}{/* \(\backslash\)pre Las ciudades existen en la cuenca.}}
+\DoxyCodeLine{77 \textcolor{comment}{        Los inventarios de ambas ciudades no están vacios.}}
+\DoxyCodeLine{78 \textcolor{comment}{    \(\backslash\)post Se efectua el intercambio de productos entre ciudades dependiendo de las necesidades de cada una.}}
+\DoxyCodeLine{79 \textcolor{comment}{*/}}
+\DoxyCodeLine{80         \textcolor{keywordflow}{if} (it1-\/>first < it2-\/>first) \{}
+\DoxyCodeLine{81             ++it1; \textcolor{comment}{// Avanzamos en el inventario de la primera ciudad}}
+\DoxyCodeLine{82         \}}
+\DoxyCodeLine{83         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (it1-\/>first > it2-\/>first) \{}
+\DoxyCodeLine{84             ++it2; \textcolor{comment}{// Avanzamos en el inventario de la otra ciudad}}
+\DoxyCodeLine{85         \}}
+\DoxyCodeLine{86         \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{87             \textcolor{comment}{// Calculamos la cantidad que necesita cada ciudad}}
+\DoxyCodeLine{88             \textcolor{keywordtype}{int} cant1 = it1-\/>second.second -\/ it1-\/>second.first;}
+\DoxyCodeLine{89             \textcolor{keywordtype}{int} cant2 = it2-\/>second.second -\/ it2-\/>second.first;}
+\DoxyCodeLine{90             \textcolor{keywordflow}{if} (cant1 * cant2 < 0) \{ \textcolor{comment}{// Si las necesidades son opuestas}}
+\DoxyCodeLine{91                 \textcolor{keywordtype}{int} intercambio = min(abs(cant1), abs(cant2)); \textcolor{comment}{// Calculamos la cantidad a intercambiar}}
+\DoxyCodeLine{92                 \textcolor{keywordtype}{bool} poner = \textcolor{keyword}{false};}
+\DoxyCodeLine{93                 \textcolor{keywordflow}{if} (cant1 < cant2) \{}
+\DoxyCodeLine{94                     it1-\/>second.first -\/= intercambio; \textcolor{comment}{// Actualizamos la primera ciudad}}
+\DoxyCodeLine{95                     \mbox{\hyperlink{class_ciudad_a133553646f17a697c10377741baf7132}{comerciar\_ajustes}}(it1-\/>first, intercambio, poner, p);}
+\DoxyCodeLine{96                     poner = \textcolor{keyword}{true};}
+\DoxyCodeLine{97                     it2-\/>second.first += intercambio; \textcolor{comment}{// Actualizamos la otra ciudad}}
+\DoxyCodeLine{98                     otra\_ciudad.comerciar\_ajustes(it1-\/>first, intercambio, poner, p);}
+\DoxyCodeLine{99                 \}}
+\DoxyCodeLine{100                 \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{101                     poner = \textcolor{keyword}{true};}
+\DoxyCodeLine{102                     it1-\/>second.first += intercambio; \textcolor{comment}{// Actualizamos la primera ciudad}}
+\DoxyCodeLine{103                     \mbox{\hyperlink{class_ciudad_a133553646f17a697c10377741baf7132}{comerciar\_ajustes}}(it1-\/>first, intercambio, poner, p);}
+\DoxyCodeLine{104                     poner = \textcolor{keyword}{false};}
+\DoxyCodeLine{105                     it2-\/>second.first -\/= intercambio; \textcolor{comment}{// Actualizamos la otra ciudad}}
+\DoxyCodeLine{106                     otra\_ciudad.comerciar\_ajustes(it1-\/>first, intercambio, poner, p);}
+\DoxyCodeLine{107                 \}}
+\DoxyCodeLine{108             \}}
+\DoxyCodeLine{109             ++it1; \textcolor{comment}{// Avanzamos en ambos inventarios}}
+\DoxyCodeLine{110             ++it2;}
+\DoxyCodeLine{111         \}}
+\DoxyCodeLine{112     \}}
+\DoxyCodeLine{113 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{class_ciudad_a4b637b9f5f7ab2be8c2fd70d6bda5aa9}\label{class_ciudad_a4b637b9f5f7ab2be8c2fd70d6bda5aa9}} 
@@ -414,18 +420,18 @@ La función nos devuelve el peso y volumen total de la ciudad una vez cambiada, 
 \end{DoxyPostcond}
 
 
-Definición en la línea 109 del archivo Ciudad.\+cc.
+Definición en la línea 116 del archivo Ciudad.\+cc.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{109                                                                                                              \{}
-\DoxyCodeLine{110         \mbox{\hyperlink{_ciudad_8cc_a4a455e59caed9d4e525586573d86437b}{iterador}} it = \mbox{\hyperlink{class_ciudad_a309301188ae126c1f12e16417cb201d5}{productos}}.find(ident\_prod);}
-\DoxyCodeLine{111         \mbox{\hyperlink{class_ciudad_acca02fdeea122b66162683bdb4a233e0}{peso\_total}} += (uni\_tiene-\/(it-\/>second.first))*p.\mbox{\hyperlink{class_cjt__productos_a608a4de54006b5782894fc1ce97d7443}{peso}}(ident\_prod);}
-\DoxyCodeLine{112         \mbox{\hyperlink{class_ciudad_a8f8767e000c1d7e9611bd0299d4942d9}{volumen\_total}} += (uni\_tiene-\/(it-\/>second.first))*p.\mbox{\hyperlink{class_cjt__productos_a091751d9261a9e7f1310a1120aa4c83b}{volumen}}(ident\_prod);}
-\DoxyCodeLine{113         it-\/>second.first = uni\_tiene;}
-\DoxyCodeLine{114         it-\/>second.second = uni\_quiere;}
-\DoxyCodeLine{115         cout << \mbox{\hyperlink{class_ciudad_acca02fdeea122b66162683bdb4a233e0}{peso\_total}} << \textcolor{charliteral}{' '} << \mbox{\hyperlink{class_ciudad_a8f8767e000c1d7e9611bd0299d4942d9}{volumen\_total}} << endl;}
-\DoxyCodeLine{116     \}}
+\DoxyCodeLine{116                                                                                                              \{}
+\DoxyCodeLine{117         \mbox{\hyperlink{_ciudad_8cc_a4a455e59caed9d4e525586573d86437b}{iterador}} it = \mbox{\hyperlink{class_ciudad_a309301188ae126c1f12e16417cb201d5}{productos}}.find(ident\_prod);}
+\DoxyCodeLine{118         \mbox{\hyperlink{class_ciudad_acca02fdeea122b66162683bdb4a233e0}{peso\_total}} += (uni\_tiene-\/(it-\/>second.first))*p.\mbox{\hyperlink{class_cjt__productos_a608a4de54006b5782894fc1ce97d7443}{peso}}(ident\_prod);}
+\DoxyCodeLine{119         \mbox{\hyperlink{class_ciudad_a8f8767e000c1d7e9611bd0299d4942d9}{volumen\_total}} += (uni\_tiene-\/(it-\/>second.first))*p.\mbox{\hyperlink{class_cjt__productos_a091751d9261a9e7f1310a1120aa4c83b}{volumen}}(ident\_prod);}
+\DoxyCodeLine{120         it-\/>second.first = uni\_tiene;}
+\DoxyCodeLine{121         it-\/>second.second = uni\_quiere;}
+\DoxyCodeLine{122         cout << \mbox{\hyperlink{class_ciudad_acca02fdeea122b66162683bdb4a233e0}{peso\_total}} << \textcolor{charliteral}{' '} << \mbox{\hyperlink{class_ciudad_a8f8767e000c1d7e9611bd0299d4942d9}{volumen\_total}} << endl;}
+\DoxyCodeLine{123     \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{class_ciudad_a71f50588f1b631bac315416540c830a8}\label{class_ciudad_a71f50588f1b631bac315416540c830a8}} 
@@ -451,16 +457,16 @@ La función nos devuelve el peso y volumen total de la ciudad una vez cambiada, 
 \end{DoxyPostcond}
 
 
-Definición en la línea 117 del archivo Ciudad.\+cc.
+Definición en la línea 124 del archivo Ciudad.\+cc.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{117                                                                                                                                  \{}
-\DoxyCodeLine{118         \mbox{\hyperlink{class_ciudad_a309301188ae126c1f12e16417cb201d5}{productos}}.insert(make\_pair(ident\_prod, make\_pair(uni\_tiene, uni\_quiere)));}
-\DoxyCodeLine{119         \mbox{\hyperlink{class_ciudad_acca02fdeea122b66162683bdb4a233e0}{peso\_total}} += uni\_tiene*p.\mbox{\hyperlink{class_cjt__productos_a608a4de54006b5782894fc1ce97d7443}{peso}}(ident\_prod);}
-\DoxyCodeLine{120         \mbox{\hyperlink{class_ciudad_a8f8767e000c1d7e9611bd0299d4942d9}{volumen\_total}} += uni\_tiene*p.\mbox{\hyperlink{class_cjt__productos_a091751d9261a9e7f1310a1120aa4c83b}{volumen}}(ident\_prod);}
-\DoxyCodeLine{121         \textcolor{keywordflow}{if}(not leer) cout << \mbox{\hyperlink{class_ciudad_acca02fdeea122b66162683bdb4a233e0}{peso\_total}} << \textcolor{charliteral}{' '} << \mbox{\hyperlink{class_ciudad_a8f8767e000c1d7e9611bd0299d4942d9}{volumen\_total}} << endl;}
-\DoxyCodeLine{122     \}}
+\DoxyCodeLine{124                                                                                                                                  \{}
+\DoxyCodeLine{125         \mbox{\hyperlink{class_ciudad_a309301188ae126c1f12e16417cb201d5}{productos}}.insert(make\_pair(ident\_prod, make\_pair(uni\_tiene, uni\_quiere)));}
+\DoxyCodeLine{126         \mbox{\hyperlink{class_ciudad_acca02fdeea122b66162683bdb4a233e0}{peso\_total}} += uni\_tiene*p.\mbox{\hyperlink{class_cjt__productos_a608a4de54006b5782894fc1ce97d7443}{peso}}(ident\_prod);}
+\DoxyCodeLine{127         \mbox{\hyperlink{class_ciudad_a8f8767e000c1d7e9611bd0299d4942d9}{volumen\_total}} += uni\_tiene*p.\mbox{\hyperlink{class_cjt__productos_a091751d9261a9e7f1310a1120aa4c83b}{volumen}}(ident\_prod);}
+\DoxyCodeLine{128         \textcolor{keywordflow}{if}(not leer) cout << \mbox{\hyperlink{class_ciudad_acca02fdeea122b66162683bdb4a233e0}{peso\_total}} << \textcolor{charliteral}{' '} << \mbox{\hyperlink{class_ciudad_a8f8767e000c1d7e9611bd0299d4942d9}{volumen\_total}} << endl;}
+\DoxyCodeLine{129     \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{class_ciudad_ad9605e0fe6f493f153bbf964519c9fd4}\label{class_ciudad_ad9605e0fe6f493f153bbf964519c9fd4}} 
@@ -486,18 +492,18 @@ La función nos devuelve el peso y volumen total de la ciudad una vez cambiada, 
 \end{DoxyPostcond}
 
 
-Definición en la línea 135 del archivo Ciudad.\+cc.
+Definición en la línea 142 del archivo Ciudad.\+cc.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{135                                                                   \{}
-\DoxyCodeLine{136         \mbox{\hyperlink{_ciudad_8cc_ac724d8f9dfd2b020140e98c571060979}{constante}} it = \mbox{\hyperlink{class_ciudad_a309301188ae126c1f12e16417cb201d5}{productos}}.find(ident\_prod);}
-\DoxyCodeLine{137         \textcolor{keywordtype}{int} cant = it-\/>second.first;}
-\DoxyCodeLine{138         \mbox{\hyperlink{class_ciudad_acca02fdeea122b66162683bdb4a233e0}{peso\_total}} -\/= cant*p.\mbox{\hyperlink{class_cjt__productos_a608a4de54006b5782894fc1ce97d7443}{peso}}(ident\_prod);}
-\DoxyCodeLine{139         \mbox{\hyperlink{class_ciudad_a8f8767e000c1d7e9611bd0299d4942d9}{volumen\_total}} -\/= cant*p.\mbox{\hyperlink{class_cjt__productos_a091751d9261a9e7f1310a1120aa4c83b}{volumen}}(ident\_prod);}
-\DoxyCodeLine{140         \mbox{\hyperlink{class_ciudad_a309301188ae126c1f12e16417cb201d5}{productos}}.erase(it);}
-\DoxyCodeLine{141         cout << \mbox{\hyperlink{class_ciudad_acca02fdeea122b66162683bdb4a233e0}{peso\_total}} << \textcolor{charliteral}{' '} << \mbox{\hyperlink{class_ciudad_a8f8767e000c1d7e9611bd0299d4942d9}{volumen\_total}} << endl;}
-\DoxyCodeLine{142     \}}
+\DoxyCodeLine{142                                                                   \{}
+\DoxyCodeLine{143         \mbox{\hyperlink{_ciudad_8cc_ac724d8f9dfd2b020140e98c571060979}{constante}} it = \mbox{\hyperlink{class_ciudad_a309301188ae126c1f12e16417cb201d5}{productos}}.find(ident\_prod);}
+\DoxyCodeLine{144         \textcolor{keywordtype}{int} cant = it-\/>second.first;}
+\DoxyCodeLine{145         \mbox{\hyperlink{class_ciudad_acca02fdeea122b66162683bdb4a233e0}{peso\_total}} -\/= cant*p.\mbox{\hyperlink{class_cjt__productos_a608a4de54006b5782894fc1ce97d7443}{peso}}(ident\_prod);}
+\DoxyCodeLine{146         \mbox{\hyperlink{class_ciudad_a8f8767e000c1d7e9611bd0299d4942d9}{volumen\_total}} -\/= cant*p.\mbox{\hyperlink{class_cjt__productos_a091751d9261a9e7f1310a1120aa4c83b}{volumen}}(ident\_prod);}
+\DoxyCodeLine{147         \mbox{\hyperlink{class_ciudad_a309301188ae126c1f12e16417cb201d5}{productos}}.erase(it);}
+\DoxyCodeLine{148         cout << \mbox{\hyperlink{class_ciudad_acca02fdeea122b66162683bdb4a233e0}{peso\_total}} << \textcolor{charliteral}{' '} << \mbox{\hyperlink{class_ciudad_a8f8767e000c1d7e9611bd0299d4942d9}{volumen\_total}} << endl;}
+\DoxyCodeLine{149     \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{class_ciudad_a133553646f17a697c10377741baf7132}\label{class_ciudad_a133553646f17a697c10377741baf7132}} 
@@ -523,22 +529,22 @@ La ciudad tiene toda la información actualizada.
 \end{DoxyPostcond}
 
 
-Definición en la línea 123 del archivo Ciudad.\+cc.
+Definición en la línea 130 del archivo Ciudad.\+cc.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{123                                                                                                               \{}
-\DoxyCodeLine{124         \textcolor{keywordtype}{int} peso\_prod = p.\mbox{\hyperlink{class_cjt__productos_a608a4de54006b5782894fc1ce97d7443}{peso}}(ident\_prod);}
-\DoxyCodeLine{125         \textcolor{keywordtype}{int} vol\_prod = p.\mbox{\hyperlink{class_cjt__productos_a091751d9261a9e7f1310a1120aa4c83b}{volumen}}(ident\_prod);}
-\DoxyCodeLine{126         \textcolor{keywordflow}{if}(poner)\{}
-\DoxyCodeLine{127             \mbox{\hyperlink{class_ciudad_acca02fdeea122b66162683bdb4a233e0}{peso\_total}} += abs(intercambio)*peso\_prod;}
-\DoxyCodeLine{128             \mbox{\hyperlink{class_ciudad_a8f8767e000c1d7e9611bd0299d4942d9}{volumen\_total}} += abs(intercambio)*vol\_prod;}
-\DoxyCodeLine{129         \}}
-\DoxyCodeLine{130         \textcolor{keywordflow}{else}\{}
-\DoxyCodeLine{131             \mbox{\hyperlink{class_ciudad_acca02fdeea122b66162683bdb4a233e0}{peso\_total}} -\/= abs(intercambio)*peso\_prod;}
-\DoxyCodeLine{132             \mbox{\hyperlink{class_ciudad_a8f8767e000c1d7e9611bd0299d4942d9}{volumen\_total}} -\/= abs(intercambio)*vol\_prod;}
-\DoxyCodeLine{133         \}}
-\DoxyCodeLine{134     \}}
+\DoxyCodeLine{130                                                                                                               \{}
+\DoxyCodeLine{131         \textcolor{keywordtype}{int} peso\_prod = p.\mbox{\hyperlink{class_cjt__productos_a608a4de54006b5782894fc1ce97d7443}{peso}}(ident\_prod);}
+\DoxyCodeLine{132         \textcolor{keywordtype}{int} vol\_prod = p.\mbox{\hyperlink{class_cjt__productos_a091751d9261a9e7f1310a1120aa4c83b}{volumen}}(ident\_prod);}
+\DoxyCodeLine{133         \textcolor{keywordflow}{if}(poner)\{}
+\DoxyCodeLine{134             \mbox{\hyperlink{class_ciudad_acca02fdeea122b66162683bdb4a233e0}{peso\_total}} += abs(intercambio)*peso\_prod;}
+\DoxyCodeLine{135             \mbox{\hyperlink{class_ciudad_a8f8767e000c1d7e9611bd0299d4942d9}{volumen\_total}} += abs(intercambio)*vol\_prod;}
+\DoxyCodeLine{136         \}}
+\DoxyCodeLine{137         \textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{138             \mbox{\hyperlink{class_ciudad_acca02fdeea122b66162683bdb4a233e0}{peso\_total}} -\/= abs(intercambio)*peso\_prod;}
+\DoxyCodeLine{139             \mbox{\hyperlink{class_ciudad_a8f8767e000c1d7e9611bd0299d4942d9}{volumen\_total}} -\/= abs(intercambio)*vol\_prod;}
+\DoxyCodeLine{140         \}}
+\DoxyCodeLine{141     \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{class_ciudad_aab8a0e53a42e7618ff4b883b33ea558b}\label{class_ciudad_aab8a0e53a42e7618ff4b883b33ea558b}} 
@@ -559,15 +565,15 @@ El inventario está vacío, y el peso y volumen total de la ciudad son 0.
 \end{DoxyPostcond}
 
 
-Definición en la línea 143 del archivo Ciudad.\+cc.
+Definición en la línea 150 del archivo Ciudad.\+cc.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{143                                     \{}
-\DoxyCodeLine{144         \mbox{\hyperlink{class_ciudad_a309301188ae126c1f12e16417cb201d5}{productos}}.clear();}
-\DoxyCodeLine{145         \mbox{\hyperlink{class_ciudad_acca02fdeea122b66162683bdb4a233e0}{peso\_total}} = 0;}
-\DoxyCodeLine{146         \mbox{\hyperlink{class_ciudad_a8f8767e000c1d7e9611bd0299d4942d9}{volumen\_total}} = 0;}
-\DoxyCodeLine{147     \}}
+\DoxyCodeLine{150                                     \{}
+\DoxyCodeLine{151         \mbox{\hyperlink{class_ciudad_a309301188ae126c1f12e16417cb201d5}{productos}}.clear();}
+\DoxyCodeLine{152         \mbox{\hyperlink{class_ciudad_acca02fdeea122b66162683bdb4a233e0}{peso\_total}} = 0;}
+\DoxyCodeLine{153         \mbox{\hyperlink{class_ciudad_a8f8767e000c1d7e9611bd0299d4942d9}{volumen\_total}} = 0;}
+\DoxyCodeLine{154     \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{class_ciudad_abf099d12bf3f78e938928fe1db3ed040}\label{class_ciudad_abf099d12bf3f78e938928fe1db3ed040}} 
@@ -593,30 +599,30 @@ La ciudad habrá cambiado su inventario tras comerciar con el barco.
 \end{DoxyPostcond}
 
 
-Definición en la línea 148 del archivo Ciudad.\+cc.
+Definición en la línea 155 del archivo Ciudad.\+cc.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{148                                                                                       \{ \textcolor{comment}{//si el barco puede comprar es que la ciudad vende}}
-\DoxyCodeLine{149         \textcolor{keyword}{auto} it = \mbox{\hyperlink{class_ciudad_a309301188ae126c1f12e16417cb201d5}{productos}}.find(id\_producto);}
-\DoxyCodeLine{150         \textcolor{keywordtype}{bool} poner = \textcolor{keyword}{false};}
-\DoxyCodeLine{151         \textcolor{keywordflow}{if} (it != \mbox{\hyperlink{class_ciudad_a309301188ae126c1f12e16417cb201d5}{productos}}.end()) \{}
-\DoxyCodeLine{152             \textcolor{keywordtype}{int} intercambio = it-\/>second.second -\/ it-\/>second.first;}
-\DoxyCodeLine{153             \textcolor{keywordflow}{if}(intercambio < 0)\{}
-\DoxyCodeLine{154                 \textcolor{keywordflow}{if}(max\_compra\_ciudad-\/abs(intercambio) >= 0)\{}
-\DoxyCodeLine{155                     \mbox{\hyperlink{class_ciudad_a133553646f17a697c10377741baf7132}{comerciar\_ajustes}}(id\_producto, intercambio, poner, p);}
-\DoxyCodeLine{156                     it-\/>second.first += intercambio;}
-\DoxyCodeLine{157                     \textcolor{keywordflow}{return} max\_compra\_ciudad-\/abs(intercambio);}
-\DoxyCodeLine{158                 \}}
-\DoxyCodeLine{159                 \textcolor{keywordflow}{else} \{}
-\DoxyCodeLine{160                     \mbox{\hyperlink{class_ciudad_a133553646f17a697c10377741baf7132}{comerciar\_ajustes}}(id\_producto, max\_compra\_ciudad, poner, p);}
-\DoxyCodeLine{161                     it-\/>second.first -\/= max\_compra\_ciudad;}
-\DoxyCodeLine{162                     \textcolor{keywordflow}{return} 0;}
-\DoxyCodeLine{163                 \}}
-\DoxyCodeLine{164             \}}
-\DoxyCodeLine{165         \}}
-\DoxyCodeLine{166         \textcolor{keywordflow}{return} max\_compra\_ciudad;}
-\DoxyCodeLine{167     \}}
+\DoxyCodeLine{155                                                                                       \{ \textcolor{comment}{//si el barco puede comprar es que la ciudad vende}}
+\DoxyCodeLine{156         \textcolor{keyword}{auto} it = \mbox{\hyperlink{class_ciudad_a309301188ae126c1f12e16417cb201d5}{productos}}.find(id\_producto);}
+\DoxyCodeLine{157         \textcolor{keywordtype}{bool} poner = \textcolor{keyword}{false};}
+\DoxyCodeLine{158         \textcolor{keywordflow}{if} (it != \mbox{\hyperlink{class_ciudad_a309301188ae126c1f12e16417cb201d5}{productos}}.end()) \{}
+\DoxyCodeLine{159             \textcolor{keywordtype}{int} intercambio = it-\/>second.second -\/ it-\/>second.first;}
+\DoxyCodeLine{160             \textcolor{keywordflow}{if}(intercambio < 0)\{}
+\DoxyCodeLine{161                 \textcolor{keywordflow}{if}(max\_compra\_ciudad-\/abs(intercambio) >= 0)\{}
+\DoxyCodeLine{162                     \mbox{\hyperlink{class_ciudad_a133553646f17a697c10377741baf7132}{comerciar\_ajustes}}(id\_producto, intercambio, poner, p);}
+\DoxyCodeLine{163                     it-\/>second.first += intercambio;}
+\DoxyCodeLine{164                     \textcolor{keywordflow}{return} max\_compra\_ciudad-\/abs(intercambio);}
+\DoxyCodeLine{165                 \}}
+\DoxyCodeLine{166                 \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{167                     \mbox{\hyperlink{class_ciudad_a133553646f17a697c10377741baf7132}{comerciar\_ajustes}}(id\_producto, max\_compra\_ciudad, poner, p);}
+\DoxyCodeLine{168                     it-\/>second.first -\/= max\_compra\_ciudad;}
+\DoxyCodeLine{169                     \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{170                 \}}
+\DoxyCodeLine{171             \}}
+\DoxyCodeLine{172         \}}
+\DoxyCodeLine{173         \textcolor{keywordflow}{return} max\_compra\_ciudad;}
+\DoxyCodeLine{174     \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{class_ciudad_a93ea9b1142f8db1ad3eca3d7f18a6a54}\label{class_ciudad_a93ea9b1142f8db1ad3eca3d7f18a6a54}} 
@@ -642,30 +648,30 @@ La ciudad habrá cambiado su inventario tras comerciar con el barco.
 \end{DoxyPostcond}
 
 
-Definición en la línea 168 del archivo Ciudad.\+cc.
+Definición en la línea 175 del archivo Ciudad.\+cc.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{168                                                                                      \{ \textcolor{comment}{//si el barco puede vender es que la ciudad compra}}
-\DoxyCodeLine{169         \textcolor{keyword}{auto} it = \mbox{\hyperlink{class_ciudad_a309301188ae126c1f12e16417cb201d5}{productos}}.find(id\_producto);}
-\DoxyCodeLine{170         \textcolor{keywordtype}{bool} poner = \textcolor{keyword}{true};}
-\DoxyCodeLine{171         \textcolor{keywordflow}{if} (it != \mbox{\hyperlink{class_ciudad_a309301188ae126c1f12e16417cb201d5}{productos}}.end()) \{}
-\DoxyCodeLine{172             \textcolor{keywordtype}{int} intercambio = it-\/>second.second -\/ it-\/>second.first;}
-\DoxyCodeLine{173             \textcolor{keywordflow}{if}(intercambio > 0)\{}
-\DoxyCodeLine{174                 \textcolor{keywordflow}{if}(max\_vender\_ciudad-\/intercambio >= 0)\{}
-\DoxyCodeLine{175                     \mbox{\hyperlink{class_ciudad_a133553646f17a697c10377741baf7132}{comerciar\_ajustes}}(id\_producto, intercambio, poner, p);}
-\DoxyCodeLine{176                     it-\/>second.first += intercambio;}
-\DoxyCodeLine{177                     \textcolor{keywordflow}{return} max\_vender\_ciudad-\/intercambio;}
-\DoxyCodeLine{178                 \}}
-\DoxyCodeLine{179                 \textcolor{keywordflow}{else} \{}
-\DoxyCodeLine{180                     \mbox{\hyperlink{class_ciudad_a133553646f17a697c10377741baf7132}{comerciar\_ajustes}}(id\_producto, max\_vender\_ciudad, poner, p);}
-\DoxyCodeLine{181                     it-\/>second.first += max\_vender\_ciudad;}
-\DoxyCodeLine{182                     \textcolor{keywordflow}{return} 0;}
-\DoxyCodeLine{183                 \}}
-\DoxyCodeLine{184             \}}
-\DoxyCodeLine{185         \}}
-\DoxyCodeLine{186         \textcolor{keywordflow}{return} max\_vender\_ciudad;}
-\DoxyCodeLine{187     \}}
+\DoxyCodeLine{175                                                                                      \{ \textcolor{comment}{//si el barco puede vender es que la ciudad compra}}
+\DoxyCodeLine{176         \textcolor{keyword}{auto} it = \mbox{\hyperlink{class_ciudad_a309301188ae126c1f12e16417cb201d5}{productos}}.find(id\_producto);}
+\DoxyCodeLine{177         \textcolor{keywordtype}{bool} poner = \textcolor{keyword}{true};}
+\DoxyCodeLine{178         \textcolor{keywordflow}{if} (it != \mbox{\hyperlink{class_ciudad_a309301188ae126c1f12e16417cb201d5}{productos}}.end()) \{}
+\DoxyCodeLine{179             \textcolor{keywordtype}{int} intercambio = it-\/>second.second -\/ it-\/>second.first;}
+\DoxyCodeLine{180             \textcolor{keywordflow}{if}(intercambio > 0)\{}
+\DoxyCodeLine{181                 \textcolor{keywordflow}{if}(max\_vender\_ciudad-\/intercambio >= 0)\{}
+\DoxyCodeLine{182                     \mbox{\hyperlink{class_ciudad_a133553646f17a697c10377741baf7132}{comerciar\_ajustes}}(id\_producto, intercambio, poner, p);}
+\DoxyCodeLine{183                     it-\/>second.first += intercambio;}
+\DoxyCodeLine{184                     \textcolor{keywordflow}{return} max\_vender\_ciudad-\/intercambio;}
+\DoxyCodeLine{185                 \}}
+\DoxyCodeLine{186                 \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{187                     \mbox{\hyperlink{class_ciudad_a133553646f17a697c10377741baf7132}{comerciar\_ajustes}}(id\_producto, max\_vender\_ciudad, poner, p);}
+\DoxyCodeLine{188                     it-\/>second.first += max\_vender\_ciudad;}
+\DoxyCodeLine{189                     \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{190                 \}}
+\DoxyCodeLine{191             \}}
+\DoxyCodeLine{192         \}}
+\DoxyCodeLine{193         \textcolor{keywordflow}{return} max\_vender\_ciudad;}
+\DoxyCodeLine{194     \}}
 
 \end{DoxyCode}
 

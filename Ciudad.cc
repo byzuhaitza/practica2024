@@ -69,42 +69,49 @@ typedef map<int, pair <int, int>>::iterator iterador;
 
     //MODIFICADORAS
     void Ciudad::comerciar_prod(Ciudad& otra_ciudad, const Cjt_productos& p ){
-        iterador it1 = productos.begin();
-        iterador it2 = otra_ciudad.productos.begin();
-        while(it1 != productos.end() and it2 != otra_ciudad.productos.end()) {
-            if (it1->first < it2->first) {
-                ++it1;
-            }
-            else if (it1->first > it2->first) {
-                ++it2;
-            }
-            else {
-                int cant1 = it1->second.second - it1->second.first;
-                int cant2 = it2->second.second - it2->second.first;
-                if (cant1*cant2 < 0) { //es <
-                    int intercambio = min(abs(cant1), abs(cant2));
-                    bool poner = false;
-                    if (cant1 < cant2) {
-                        it1->second.first -= intercambio;
-                        comerciar_ajustes(it1->first, intercambio, poner, p);
-                        poner = true;
-                        it2->second.first += intercambio;
-                        otra_ciudad.comerciar_ajustes(it1->first, intercambio, poner, p);
-                    }
-                    else {
-                        poner = true;
-                        it1->second.first += intercambio;
-                        comerciar_ajustes(it1->first, intercambio, poner, p);
-                        poner = false;
-                        it2->second.first -= intercambio;
-                        otra_ciudad.comerciar_ajustes(it1->first, intercambio, poner, p);
-                    }
+    iterador it1 = productos.begin();
+    iterador it2 = otra_ciudad.productos.begin();
+    // Iteramos sobre los productos de ambas ciudades
+    while(it1 != productos.end() and it2 != otra_ciudad.productos.end()) {
+/* \pre Las ciudades existen en la cuenca.
+        Los inventarios de ambas ciudades no están vacios.
+    \post Se efectua el intercambio de productos entre ciudades dependiendo de las necesidades de cada una.
+*/
+        if (it1->first < it2->first) {
+            ++it1; // Avanzamos en el inventario de la primera ciudad
+        }
+        else if (it1->first > it2->first) {
+            ++it2; // Avanzamos en el inventario de la otra ciudad
+        }
+        else {
+            // Calculamos la cantidad que necesita cada ciudad
+            int cant1 = it1->second.second - it1->second.first;
+            int cant2 = it2->second.second - it2->second.first;
+            if (cant1 * cant2 < 0) { // Si las necesidades son opuestas
+                int intercambio = min(abs(cant1), abs(cant2)); // Calculamos la cantidad a intercambiar
+                bool poner = false;
+                if (cant1 < cant2) {
+                    it1->second.first -= intercambio; // Actualizamos la primera ciudad
+                    comerciar_ajustes(it1->first, intercambio, poner, p);
+                    poner = true;
+                    it2->second.first += intercambio; // Actualizamos la otra ciudad
+                    otra_ciudad.comerciar_ajustes(it1->first, intercambio, poner, p);
                 }
-                ++it1;
-                ++it2;
+                else {
+                    poner = true;
+                    it1->second.first += intercambio; // Actualizamos la primera ciudad
+                    comerciar_ajustes(it1->first, intercambio, poner, p);
+                    poner = false;
+                    it2->second.first -= intercambio; // Actualizamos la otra ciudad
+                    otra_ciudad.comerciar_ajustes(it1->first, intercambio, poner, p);
+                }
             }
+            ++it1; // Avanzamos en ambos inventarios
+            ++it2;
         }
     }
+}
+
     
     void Ciudad::modificar_prod(const int& ident_prod, int& uni_tiene, int& uni_quiere, const Cjt_productos& p){
         iterador it = productos.find(ident_prod);
